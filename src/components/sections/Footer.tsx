@@ -1,104 +1,88 @@
+import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
-import { siteConfig, footer, navigation } from "@/content/site";
-import { LinkedInIcon, GitHubIcon } from "@/components/ui/Icons";
+import { siteConfig, footer } from "@/content/site";
+import { LinkedInIcon, GitHubIcon, XIcon } from "@/components/ui/Icons";
 
 export function Footer() {
+  const socialLinks = [
+    { icon: LinkedInIcon, href: siteConfig.social.linkedin, label: "LinkedIn" },
+    { icon: GitHubIcon, href: siteConfig.social.github, label: "GitHub" },
+    { icon: XIcon, href: siteConfig.social.twitter, label: "X" },
+  ];
+
   return (
-    <footer className="bg-surface-body border-t border-surface-border">
+    <footer className="bg-surface-elevated/50 border-t border-surface-border">
       <Container>
+        {/* Main footer content */}
         <div className="py-12 md:py-16">
-          <div className="grid md:grid-cols-4 gap-8 lg:gap-12">
-            {/* Brand */}
-            <div className="md:col-span-2">
-              <a href="#hero" className="inline-block mb-4">
-                <span className="text-2xl font-bold">
-                  <span className="text-accent">DRP</span>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            {/* Brand + tagline */}
+            <div>
+              <a href="#hero" className="inline-block mb-3 group">
+                <span className="text-xl font-bold">
+                  <span className="text-accent group-hover:text-accent-light transition-colors">DRP</span>
                   <span className="text-primary"> Ventures</span>
                 </span>
               </a>
-              <p className="text-secondary max-w-sm mb-6">
+              <p className="text-tertiary text-sm max-w-xs">
                 {footer.tagline}
               </p>
-              <div className="flex gap-3">
-                <a
-                  href={siteConfig.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-surface-elevated flex items-center justify-center text-tertiary hover:bg-accent hover:text-black transition-all"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedInIcon size={18} />
-                </a>
-                <a
-                  href={siteConfig.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-surface-elevated flex items-center justify-center text-tertiary hover:bg-accent hover:text-black transition-all"
-                  aria-label="GitHub"
-                >
-                  <GitHubIcon size={18} />
-                </a>
-              </div>
             </div>
 
-            {/* Quick links */}
-            <div>
-              <h4 className="text-primary font-semibold mb-4">Navigatie</h4>
-              <ul className="space-y-2">
-                {navigation.slice(0, 6).map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      className="text-secondary hover:text-accent transition-colors text-sm"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact info */}
-            <div>
-              <h4 className="text-primary font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-secondary">
-                <li>
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="hover:text-accent transition-colors"
-                  >
-                    {siteConfig.email}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`tel:${siteConfig.phone}`}
-                    className="hover:text-accent transition-colors"
-                  >
-                    {siteConfig.phone}
-                  </a>
-                </li>
-                <li>
-                  {siteConfig.address.city}, {siteConfig.address.country}
-                </li>
-              </ul>
+            {/* Social icons */}
+            <div className="flex items-center gap-2">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "w-10 h-10 rounded-lg flex items-center justify-center",
+                    "bg-surface-card border border-surface-border",
+                    "text-muted hover:text-accent hover:border-accent/30",
+                    "transition-all duration-300"
+                  )}
+                  aria-label={social.label}
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  <social.icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-surface-border flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-muted text-sm">{footer.copyright}</p>
-          <div className="flex gap-6">
-            {footer.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-muted hover:text-secondary text-sm transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+        <div className="py-6 border-t border-surface-border">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Copyright */}
+            <p className="text-muted text-xs">
+              {footer.copyright}
+            </p>
+
+            {/* Legal links */}
+            <div className="flex items-center gap-6">
+              {footer.links.map((link, index) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-muted hover:text-secondary text-xs transition-colors",
+                    index < footer.links.length - 1 && "relative after:content-[''] after:absolute after:-right-3 after:top-1/2 after:-translate-y-1/2 after:w-px after:h-3 after:bg-surface-border"
+                  )}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company details - subtle */}
+          <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-surface-border/50">
+            <span className="text-muted/60 text-xs">KvK: {siteConfig.kvk}</span>
+            <span className="w-1 h-1 rounded-full bg-surface-border" />
+            <span className="text-muted/60 text-xs">BTW: {siteConfig.btw}</span>
           </div>
         </div>
       </Container>
