@@ -19,21 +19,21 @@ const config: Config = {
           dark: "#6b9b37",
           muted: "rgba(139, 195, 74, 0.15)",
         },
-        // Surfaces - layered dark backgrounds
+        // Surfaces - layered dark backgrounds (deeper)
         surface: {
-          body: "#1a1a1a",
-          panel: "#232323",
-          card: "#2a2a2a",
-          elevated: "#303030",
-          border: "#333333",
-          "border-light": "#3a3a3a",
+          body: "#0f0f0f",
+          panel: "#161616",
+          card: "#1a1a1a",
+          elevated: "#222222",
+          border: "rgba(255, 255, 255, 0.06)",
+          "border-light": "rgba(255, 255, 255, 0.1)",
         },
-        // Content - text hierarchy
+        // Content - text hierarchy (softer)
         content: {
           primary: "#ffffff",
-          secondary: "#b0b0b0",
-          tertiary: "#808080",
-          muted: "#606060",
+          secondary: "#a0a0a0",
+          tertiary: "#707070",
+          muted: "#505050",
         },
       },
 
@@ -57,23 +57,23 @@ const config: Config = {
       // SPACING
       // ======================
       spacing: {
-        section: "7.5rem",
-        "section-sm": "5rem",
+        section: "7rem",
+        "section-sm": "4rem",
         18: "4.5rem",
         22: "5.5rem",
-        30: "7.5rem",
+        28: "7rem",
       },
 
       // ======================
-      // SHADOWS
+      // SHADOWS (subtler)
       // ======================
       boxShadow: {
-        panel: "0 4px 30px rgba(0, 0, 0, 0.3)",
-        card: "0 2px 20px rgba(0, 0, 0, 0.2)",
-        "card-hover": "0 8px 40px rgba(0, 0, 0, 0.4)",
-        glow: "0 0 30px rgba(139, 195, 74, 0.3)",
-        "glow-sm": "0 0 15px rgba(139, 195, 74, 0.2)",
-        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.03)",
+        panel: "0 4px 24px rgba(0, 0, 0, 0.4)",
+        card: "0 2px 16px rgba(0, 0, 0, 0.2)",
+        "card-hover": "0 8px 32px rgba(0, 0, 0, 0.35)",
+        glow: "0 0 24px rgba(139, 195, 74, 0.2)",
+        "glow-sm": "0 0 12px rgba(139, 195, 74, 0.15)",
+        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.02)",
       },
 
       // ======================

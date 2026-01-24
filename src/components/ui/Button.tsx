@@ -21,27 +21,27 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: cn(
     "bg-accent text-black font-semibold",
-    "hover:bg-accent-light hover:shadow-glow-sm",
+    "hover:bg-accent-light",
     "active:bg-accent-dark"
   ),
   secondary: cn(
-    "bg-surface-card text-secondary border border-surface-border",
-    "hover:bg-surface-elevated hover:border-surface-border-light"
+    "bg-transparent text-primary/80 border border-white/10",
+    "hover:bg-white/5 hover:border-white/15 hover:text-primary"
   ),
   ghost: cn(
     "bg-transparent text-secondary",
-    "hover:text-primary hover:bg-surface-card"
+    "hover:text-primary hover:bg-white/5"
   ),
   outline: cn(
-    "bg-transparent text-accent border border-accent",
-    "hover:bg-accent hover:text-black"
+    "bg-transparent text-primary border border-white/15",
+    "hover:bg-white/5 hover:border-white/20"
   ),
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-sm",
-  lg: "px-8 py-4 text-base",
+  sm: "px-4 py-2 text-xs",
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-6 py-3 text-sm",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
