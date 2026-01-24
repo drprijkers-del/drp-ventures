@@ -41,8 +41,8 @@ export function Process() {
     <section id="process" ref={sectionRef} className="py-section-sm md:py-section">
       <Container>
         <SectionHeader
-          title="Werkwijze"
-          subtitle="Ons proces"
+          label="Werkwijze"
+          title="Ons proces"
           description="Een gestructureerde aanpak die kwaliteit en transparantie garandeert."
         />
 

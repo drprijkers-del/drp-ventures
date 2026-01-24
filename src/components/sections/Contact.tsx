@@ -112,8 +112,8 @@ export function Contact() {
       <Container>
         <Panel>
           <SectionHeader
-            title="Contact"
-            subtitle={contact.title}
+            label="Contact"
+            title={contact.title}
             description={contact.description}
           />
 

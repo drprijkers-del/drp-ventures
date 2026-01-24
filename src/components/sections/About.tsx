@@ -18,8 +18,8 @@ export function About() {
   return (
     <Section id="about">
       <SectionHeader
-        title="Over Ons"
-        subtitle={about.subtitle}
+        label="Over Ons"
+        title={about.subtitle}
       />
 
       <Panel padding="lg">

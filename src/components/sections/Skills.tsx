@@ -119,8 +119,8 @@ export function Skills() {
     <section id="expertise" ref={sectionRef} className="py-section-sm md:py-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          title="Expertise"
-          subtitle="Technische vaardigheden"
+          label="Expertise"
+          title="Technische vaardigheden"
           description="Jarenlange ervaring in moderne technologieën en methodologieën."
         />
 

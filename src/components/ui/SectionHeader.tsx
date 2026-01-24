@@ -2,38 +2,57 @@ import { cn } from "@/lib/cn";
 
 interface SectionHeaderProps {
   /** Small uppercase label with line (e.g., "About", "Services") */
-  title: string;
+  label: string;
   /** Large heading text */
-  subtitle?: string;
+  title?: string;
   /** Optional description paragraph */
   description?: string;
+  /** Alignment */
+  align?: "left" | "center";
   className?: string;
 }
 
 export function SectionHeader({
+  label,
   title,
-  subtitle,
   description,
+  align = "left",
   className,
 }: SectionHeaderProps) {
   return (
-    <div className={cn("mb-10 md:mb-12", className)}>
-      {/* Label with line */}
-      <div className="flex items-center gap-3 mb-4">
+    <div
+      className={cn(
+        "mb-12 md:mb-16",
+        align === "center" && "text-center",
+        className
+      )}
+    >
+      {/* Label with line: ─ ABOUT */}
+      <div
+        className={cn(
+          "flex items-center gap-3 mb-5",
+          align === "center" && "justify-center"
+        )}
+      >
         <span className="section-line" aria-hidden="true" />
-        <span className="section-label">{title}</span>
+        <span className="section-label">{label}</span>
       </div>
 
       {/* Large heading */}
-      {subtitle && (
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary tracking-tight mb-3">
-          {subtitle}
+      {title && (
+        <h2 className="text-display-md md:text-display-lg text-text-primary mb-4">
+          {title}
         </h2>
       )}
 
       {/* Description */}
       {description && (
-        <p className="text-secondary text-base leading-relaxed max-w-xl">
+        <p
+          className={cn(
+            "text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl",
+            align === "center" && "mx-auto"
+          )}
+        >
           {description}
         </p>
       )}

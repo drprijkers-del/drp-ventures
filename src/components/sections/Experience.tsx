@@ -131,8 +131,8 @@ export function Experience() {
           {/* Left: Header */}
           <div className="lg:col-span-2">
             <SectionHeader
-              title="Ervaring"
-              subtitle="Track Record"
+              label="Ervaring"
+              title="Track Record"
             />
             <p className="text-secondary leading-relaxed mt-4">
               Een overzicht van professionele mijlpalen, ventures en sleutelposities door de jaren heen.

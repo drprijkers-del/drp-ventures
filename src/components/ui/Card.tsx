@@ -2,38 +2,46 @@ import { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 // ================================
-// Card Component
+// Card Component - Premium Dark Style
 // ================================
-
-type CardPadding = "none" | "sm" | "md" | "lg";
 
 interface CardProps {
   children: ReactNode;
-  padding?: CardPadding;
+  /** Padding size */
+  padding?: "none" | "sm" | "md" | "lg";
+  /** Enable hover effect */
   hover?: boolean;
+  /** Visual variant */
+  variant?: "default" | "flat" | "outline";
   className?: string;
 }
 
-const paddingStyles: Record<CardPadding, string> = {
+const paddingStyles = {
   none: "",
   sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
+  md: "p-5",
+  lg: "p-6",
 };
 
 export function Card({
   children,
   padding = "md",
   hover = true,
+  variant = "default",
   className,
 }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border border-surface-border bg-surface-card",
-        "transition-all duration-300",
-        hover && "hover:border-surface-border-light hover:shadow-card-hover hover:-translate-y-0.5",
+        "rounded-md",
+        // Variant styles
+        variant === "default" && "card",
+        variant === "flat" && "bg-card",
+        variant === "outline" && "border border-border bg-transparent",
+        // Padding
         paddingStyles[padding],
+        // Hover override if disabled
+        !hover && "transform-none! shadow-card!",
         className
       )}
     >
@@ -52,7 +60,7 @@ interface CardHeaderProps {
 }
 
 export function CardHeader({ children, className }: CardHeaderProps) {
-  return <div className={cn("mb-4", className)}>{children}</div>;
+  return <div className={cn("mb-3", className)}>{children}</div>;
 }
 
 // ================================
@@ -71,7 +79,7 @@ export function CardTitle({
   className,
 }: CardTitleProps) {
   return (
-    <Tag className={cn("text-lg font-semibold text-primary", className)}>
+    <Tag className={cn("text-base font-semibold text-text-primary", className)}>
       {children}
     </Tag>
   );
@@ -88,7 +96,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ children, className }: CardDescriptionProps) {
   return (
-    <p className={cn("text-secondary text-sm leading-relaxed", className)}>
+    <p className={cn("text-text-secondary text-sm leading-relaxed", className)}>
       {children}
     </p>
   );
@@ -118,29 +126,29 @@ interface CardFooterProps {
 
 export function CardFooter({ children, className }: CardFooterProps) {
   return (
-    <div className={cn("mt-6 pt-4 border-t border-surface-border", className)}>
+    <div className={cn("mt-4 pt-4 border-t border-border", className)}>
       {children}
     </div>
   );
 }
 
 // ================================
-// ImageCard - For portfolio items
+// ImageCard - For portfolio/gallery items
 // ================================
 
 interface ImageCardProps {
   children?: ReactNode;
   image?: string;
   alt?: string;
-  aspectRatio?: "square" | "video" | "portrait";
-  overlay?: boolean;
+  aspectRatio?: "square" | "video" | "portrait" | "wide";
   className?: string;
 }
 
-const aspectRatios: Record<string, string> = {
+const aspectRatios = {
   square: "aspect-square",
   video: "aspect-video",
-  portrait: "aspect-3/4",
+  portrait: "aspect-[3/4]",
+  wide: "aspect-[16/9]",
 };
 
 export function ImageCard({
@@ -148,14 +156,15 @@ export function ImageCard({
   image,
   alt = "",
   aspectRatio = "video",
-  overlay = true,
   className,
 }: ImageCardProps) {
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-lg",
-        "border border-surface-border bg-surface-card",
+        "group relative overflow-hidden rounded-md",
+        "border border-border bg-card",
+        "transition-all duration-250",
+        "hover:border-border-light",
         className
       )}
     >
@@ -165,21 +174,19 @@ export function ImageCard({
           <img
             src={image}
             alt={alt}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-350 group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="w-full h-full bg-surface-elevated" />
+          <div className="w-full h-full bg-panel-light" />
         )}
 
-        {/* Overlay on hover */}
-        {overlay && (
-          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        )}
+        {/* Gradient overlay - always visible, stronger on hover */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-250" />
       </div>
 
-      {/* Content slides up on hover */}
+      {/* Content at bottom */}
       {children && (
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <div className="absolute bottom-0 left-0 right-0 p-4">
           {children}
         </div>
       )}
@@ -188,7 +195,7 @@ export function ImageCard({
 }
 
 // ================================
-// IconCard - Card with icon
+// IconCard - Card with icon tile
 // ================================
 
 interface IconCardProps {
@@ -199,8 +206,8 @@ interface IconCardProps {
 
 export function IconCard({ children, icon, className }: IconCardProps) {
   return (
-    <Card className={className}>
-      <div className="icon-box rounded-lg mb-4">{icon}</div>
+    <Card padding="lg" className={className}>
+      <div className="icon-tile rounded-md mb-4">{icon}</div>
       {children}
     </Card>
   );

@@ -42,8 +42,8 @@ export function Services() {
       <Container>
         <Panel>
           <SectionHeader
-            title="Diensten"
-            subtitle="Wat wij bieden"
+            label="Diensten"
+            title="Wat wij bieden"
             description="Van strategische consultancy tot hands-on development. Wij ondersteunen organisaties in elke fase van hun digitale journey."
           />
 

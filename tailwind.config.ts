@@ -9,31 +9,45 @@ const config: Config = {
   theme: {
     extend: {
       // ======================
-      // COLORS
+      // COLORS - Premium Dark Template
       // ======================
       colors: {
-        // Accent - lime/green highlights
+        // Body background (darkest)
+        bg: {
+          DEFAULT: "#0a0a0a",
+          alt: "#080808",
+        },
+        // Panel backgrounds (slightly lighter, for sections)
+        panel: {
+          DEFAULT: "#111111",
+          light: "#151515",
+          border: "rgba(255, 255, 255, 0.04)",
+        },
+        // Card backgrounds
+        card: {
+          DEFAULT: "#141414",
+          hover: "#181818",
+          border: "rgba(255, 255, 255, 0.06)",
+        },
+        // Text hierarchy
+        text: {
+          primary: "#ffffff",
+          secondary: "#999999",
+          muted: "#666666",
+          faint: "#444444",
+        },
+        // Accent - lime/green (functional only)
         accent: {
           DEFAULT: "#8bc34a",
-          light: "#a2cf6e",
-          dark: "#6b9b37",
-          muted: "rgba(139, 195, 74, 0.15)",
+          light: "#9ccc65",
+          dark: "#7cb342",
+          muted: "rgba(139, 195, 74, 0.12)",
         },
-        // Surfaces - layered dark backgrounds (deeper)
-        surface: {
-          body: "#0f0f0f",
-          panel: "#161616",
-          card: "#1a1a1a",
-          elevated: "#222222",
-          border: "rgba(255, 255, 255, 0.06)",
-          "border-light": "rgba(255, 255, 255, 0.1)",
-        },
-        // Content - text hierarchy (softer)
-        content: {
-          primary: "#ffffff",
-          secondary: "#a0a0a0",
-          tertiary: "#707070",
-          muted: "#505050",
+        // Borders
+        border: {
+          DEFAULT: "rgba(255, 255, 255, 0.06)",
+          light: "rgba(255, 255, 255, 0.1)",
+          accent: "rgba(139, 195, 74, 0.3)",
         },
       },
 
@@ -42,97 +56,61 @@ const config: Config = {
       // ======================
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
-        display: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-2xl": ["5rem", { lineHeight: "1.0", letterSpacing: "-0.03em", fontWeight: "700" }],
-        "display-xl": ["4rem", { lineHeight: "1.05", letterSpacing: "-0.02em", fontWeight: "700" }],
-        "display-lg": ["3rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
-        "display-md": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
-        "display-sm": ["1.75rem", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
-        "section-label": ["0.75rem", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "600" }],
+        // Display sizes
+        "display-xl": ["3.5rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
+        "display-lg": ["2.75rem", { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "600" }],
+        "display-md": ["2rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "display-sm": ["1.5rem", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
+        // Section label
+        "label": ["0.6875rem", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "500" }],
       },
 
       // ======================
-      // SPACING
+      // SPACING - Large vertical rhythm
       // ======================
       spacing: {
-        section: "7rem",
-        "section-sm": "4rem",
-        18: "4.5rem",
-        22: "5.5rem",
-        28: "7rem",
+        "section": "7.5rem",     // 120px
+        "section-lg": "10rem",   // 160px
+        "section-sm": "5rem",    // 80px
+        "18": "4.5rem",
+        "22": "5.5rem",
+        "30": "7.5rem",
       },
 
       // ======================
-      // SHADOWS (subtler)
+      // SHADOWS - Very subtle
       // ======================
       boxShadow: {
-        panel: "0 4px 24px rgba(0, 0, 0, 0.4)",
-        card: "0 2px 16px rgba(0, 0, 0, 0.2)",
-        "card-hover": "0 8px 32px rgba(0, 0, 0, 0.35)",
-        glow: "0 0 24px rgba(139, 195, 74, 0.2)",
-        "glow-sm": "0 0 12px rgba(139, 195, 74, 0.15)",
-        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.02)",
+        "panel": "0 1px 0 rgba(255,255,255,0.02), 0 4px 40px rgba(0,0,0,0.5)",
+        "card": "0 1px 0 rgba(255,255,255,0.02)",
+        "card-hover": "0 1px 0 rgba(255,255,255,0.03), 0 8px 30px rgba(0,0,0,0.3)",
+        "inner": "inset 0 1px 0 rgba(255,255,255,0.02)",
+        "glow": "0 0 40px rgba(139, 195, 74, 0.15)",
+        "none": "none",
       },
 
       // ======================
-      // GRADIENTS
-      // ======================
-      backgroundImage: {
-        "body-gradient": "linear-gradient(180deg, #1a1a1a 0%, #141414 100%)",
-        "panel-gradient": "linear-gradient(180deg, #262626 0%, #232323 100%)",
-        "card-gradient": "linear-gradient(135deg, #2d2d2d 0%, #282828 100%)",
-        "accent-gradient": "linear-gradient(135deg, #8bc34a 0%, #6b9b37 100%)",
-        vignette: "radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)",
-        "overlay-bottom": "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
-      },
-
-      // ======================
-      // BORDER RADIUS
+      // BORDER RADIUS - Subtle
       // ======================
       borderRadius: {
-        "2xl": "1rem",
-        "3xl": "1.5rem",
-        "4xl": "2rem",
+        "sm": "0.25rem",
+        "DEFAULT": "0.375rem",
+        "md": "0.5rem",
+        "lg": "0.75rem",
+        "xl": "1rem",
       },
 
       // ======================
-      // ANIMATIONS
+      // TRANSITIONS
       // ======================
-      animation: {
-        "fade-in": "fadeIn 0.6s ease-out forwards",
-        "fade-in-up": "fadeInUp 0.6s ease-out forwards",
-        "slide-in-left": "slideInLeft 0.6s ease-out forwards",
-        "slide-in-right": "slideInRight 0.6s ease-out forwards",
-        "scale-in": "scaleIn 0.4s ease-out forwards",
-        progress: "progressBar 1.5s ease-out forwards",
+      transitionDuration: {
+        "250": "250ms",
+        "350": "350ms",
       },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        slideInLeft: {
-          "0%": { opacity: "0", transform: "translateX(-30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        slideInRight: {
-          "0%": { opacity: "0", transform: "translateX(30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        scaleIn: {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        progressBar: {
-          "0%": { width: "0%" },
-          "100%": { width: "var(--progress-width)" },
-        },
+      transitionTimingFunction: {
+        "smooth": "cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },

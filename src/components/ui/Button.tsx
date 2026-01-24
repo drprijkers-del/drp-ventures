@@ -4,7 +4,7 @@ import { forwardRef, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 // ================================
-// Button Component
+// Button Component - Premium Dark Style
 // ================================
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
@@ -20,20 +20,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: cn(
-    "bg-accent text-black font-semibold",
+    "bg-accent text-bg font-semibold",
     "hover:bg-accent-light",
-    "active:bg-accent-dark"
+    "active:bg-accent-dark",
+    "shadow-sm hover:shadow-glow"
   ),
   secondary: cn(
-    "bg-transparent text-primary/80 border border-white/10",
-    "hover:bg-white/5 hover:border-white/15 hover:text-primary"
+    "bg-panel text-text-primary border border-border",
+    "hover:bg-panel-light hover:border-border-light"
   ),
   ghost: cn(
-    "bg-transparent text-secondary",
-    "hover:text-primary hover:bg-white/5"
+    "bg-transparent text-text-secondary",
+    "hover:text-text-primary hover:bg-white/5"
   ),
   outline: cn(
-    "bg-transparent text-primary border border-white/15",
+    "bg-transparent text-text-primary border border-border-light",
     "hover:bg-white/5 hover:border-white/20"
   ),
 };
@@ -41,7 +42,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 const sizeStyles: Record<ButtonSize, string> = {
   sm: "px-4 py-2 text-xs",
   md: "px-5 py-2.5 text-sm",
-  lg: "px-6 py-3 text-sm",
+  lg: "px-7 py-3.5 text-sm",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -61,10 +62,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const baseStyles = cn(
       "inline-flex items-center justify-center gap-2",
-      "font-medium rounded-lg",
-      "transition-all duration-200",
-      "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-body",
-      "disabled:opacity-50 disabled:cursor-not-allowed",
+      "font-medium rounded-md",
+      "transition-all duration-250",
+      "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+      "disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none",
       variantStyles[variant],
       sizeStyles[size],
       className
@@ -133,7 +134,7 @@ function LoadingSpinner() {
 }
 
 // ================================
-// TabButton - For filters
+// TabButton - For filters/tabs
 // ================================
 
 interface TabButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -149,7 +150,14 @@ export function TabButton({
 }: TabButtonProps) {
   return (
     <button
-      className={cn("tab-button", active && "active", className)}
+      className={cn(
+        "px-4 py-2 text-sm font-medium rounded-md",
+        "transition-all duration-250",
+        active
+          ? "bg-accent/10 text-accent border border-accent/30"
+          : "text-text-secondary hover:text-text-primary hover:bg-white/5",
+        className
+      )}
       aria-pressed={active}
       type="button"
       {...props}

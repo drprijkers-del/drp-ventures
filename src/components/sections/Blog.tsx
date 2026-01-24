@@ -54,8 +54,8 @@ export function Blog() {
     <section id="blog" ref={sectionRef} className="py-section-sm md:py-section">
       <Container>
         <SectionHeader
-          title="Insights"
-          subtitle="Laatste artikelen"
+          label="Insights"
+          title="Laatste artikelen"
           description="Gedachten over technologie, architectuur en het bouwen van succesvolle digitale producten."
         />
 

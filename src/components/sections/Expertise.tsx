@@ -75,8 +75,8 @@ export function Expertise() {
       <Container>
         <Panel>
           <SectionHeader
-            title="Skills"
-            subtitle="Technische Expertise"
+            label="Skills"
+            title="Technische Expertise"
             description="Jarenlange ervaring in moderne technologieën en methodologieën."
           />
 

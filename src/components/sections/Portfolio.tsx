@@ -28,8 +28,8 @@ export function Portfolio() {
   return (
     <Section id="portfolio">
       <SectionHeader
-        title="Portfolio"
-        subtitle="Uitgelichte Projecten"
+        label="Portfolio"
+        title="Uitgelichte Projecten"
         description="Een selectie van recente projecten die onze expertise en werkwijze illustreren."
       />
 
