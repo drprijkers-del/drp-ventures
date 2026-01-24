@@ -77,10 +77,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="nl" className={inter.variable}>
-      <body className="bg-dark-950 text-dark-100 antialiased">
+    <html lang="nl" className={`${inter.variable} scroll-smooth`}>
+      <body className="bg-surface-body text-primary antialiased">
         <Nav />
-        <main>{children}</main>
+        <main className="pt-20">{children}</main>
       </body>
     </html>
   );
