@@ -1,7 +1,8 @@
 export { Hero } from "./Hero";
 export { About } from "./About";
 export { Services } from "./Services";
-export { Expertise } from "./Expertise";
+export { Skills } from "./Skills";
+export { Skills as Expertise } from "./Skills"; // Alias for backwards compatibility
 export { Experience } from "./Experience";
 export { Portfolio } from "./Portfolio";
 export { Process } from "./Process";
