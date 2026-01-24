@@ -25,8 +25,11 @@ export function Hero() {
       <div className="absolute inset-0">
         {/* Background image using CSS for reliability */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero.jpg')" }}
+          className="absolute inset-0 bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/hero.jpg')",
+            backgroundPosition: "30% center"
+          }}
         />
 
         {/* Fallback color in case image doesn't load */}
