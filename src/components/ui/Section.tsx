@@ -1,46 +1,40 @@
 import { ReactNode } from "react";
 import { Container } from "./Container";
 
-type SectionBackground = "default" | "dark" | "darker" | "gradient";
-type SectionSpacing = "sm" | "md" | "lg" | "xl";
+// ================================
+// Section Component
+// ================================
+
+type SectionVariant = "transparent" | "panel";
 
 interface SectionProps {
   children: ReactNode;
   id?: string;
-  background?: SectionBackground;
-  spacing?: SectionSpacing;
+  variant?: SectionVariant;
   className?: string;
   containerSize?: "sm" | "md" | "lg" | "xl" | "full";
   noContainer?: boolean;
 }
 
-const backgrounds: Record<SectionBackground, string> = {
-  default: "bg-dark-900",
-  dark: "bg-dark-950",
-  darker: "bg-[#050505]",
-  gradient: "bg-gradient-dark",
-};
-
-const spacings: Record<SectionSpacing, string> = {
-  sm: "py-12 md:py-16",
-  md: "py-16 md:py-24",
-  lg: "py-20 md:py-32",
-  xl: "py-24 md:py-40",
-};
-
 export function Section({
   children,
   id,
-  background = "default",
-  spacing = "lg",
+  variant = "transparent",
   className = "",
   containerSize = "xl",
   noContainer = false,
 }: SectionProps) {
+  const baseStyles = "relative py-section-sm md:py-section";
+
+  const variantStyles: Record<SectionVariant, string> = {
+    transparent: "",
+    panel: "panel rounded-none md:rounded-lg my-4 md:my-8",
+  };
+
   return (
     <section
       id={id}
-      className={`relative ${backgrounds[background]} ${spacings[spacing]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
     >
       {noContainer ? (
         children
@@ -51,11 +45,43 @@ export function Section({
   );
 }
 
+// ================================
+// Panel Component - Elevated container
+// ================================
+
+interface PanelProps {
+  children: ReactNode;
+  className?: string;
+  padding?: "none" | "sm" | "md" | "lg";
+}
+
+const panelPaddings: Record<string, string> = {
+  none: "",
+  sm: "p-4 md:p-6",
+  md: "p-6 md:p-8",
+  lg: "p-8 md:p-12",
+};
+
+export function Panel({
+  children,
+  className = "",
+  padding = "lg",
+}: PanelProps) {
+  return (
+    <div className={`panel rounded-lg ${panelPaddings[padding]} ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+// ================================
+// SectionHeader Component - With left line
+// ================================
+
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   description?: string;
-  centered?: boolean;
   className?: string;
 }
 
@@ -63,24 +89,45 @@ export function SectionHeader({
   title,
   subtitle,
   description,
-  centered = true,
   className = "",
 }: SectionHeaderProps) {
-  const alignment = centered ? "text-center mx-auto" : "";
-
   return (
-    <div className={`max-w-3xl mb-12 md:mb-16 ${alignment} ${className}`}>
+    <div className={`mb-12 md:mb-16 ${className}`}>
+      {/* Title with line */}
+      <div className="section-header">
+        <span className="section-title">{title}</span>
+      </div>
+
+      {/* Optional subtitle (large heading) */}
       {subtitle && (
-        <p className="text-brand-lime font-medium text-sm uppercase tracking-wider mb-3">
+        <h2 className="text-display-md md:text-display-lg text-primary mb-4">
           {subtitle}
+        </h2>
+      )}
+
+      {/* Optional description */}
+      {description && (
+        <p className="text-secondary text-lg leading-relaxed max-w-2xl">
+          {description}
         </p>
       )}
-      <h2 className="text-display-sm md:text-display-md font-bold text-white mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-dark-300 text-lg leading-relaxed">{description}</p>
-      )}
+    </div>
+  );
+}
+
+// ================================
+// SectionTitle Component - Simple title with line
+// ================================
+
+interface SectionTitleProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function SectionTitle({ children, className = "" }: SectionTitleProps) {
+  return (
+    <div className={`section-header ${className}`}>
+      <span className="section-title">{children}</span>
     </div>
   );
 }

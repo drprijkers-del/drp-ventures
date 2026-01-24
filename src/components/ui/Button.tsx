@@ -14,18 +14,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-brand-lime text-dark-950 hover:bg-brand-lime-light shadow-glow-sm hover:shadow-glow",
+    "bg-accent text-black font-semibold hover:bg-accent-light shadow-glow-sm hover:shadow-glow",
   secondary:
-    "bg-dark-700 text-dark-100 hover:bg-dark-600 border border-dark-600",
-  ghost: "bg-transparent text-dark-200 hover:text-white hover:bg-dark-800",
+    "bg-surface-card text-content-secondary hover:bg-surface-elevated border border-surface-border hover:border-surface-border-light",
+  ghost:
+    "bg-transparent text-content-secondary hover:text-content-primary hover:bg-surface-card",
   outline:
-    "bg-transparent text-brand-lime border border-brand-lime hover:bg-brand-lime hover:text-dark-950",
+    "bg-transparent text-accent border border-accent hover:bg-accent hover:text-black",
 };
 
 const sizes: Record<ButtonSize, string> = {
   sm: "px-4 py-2 text-sm",
-  md: "px-6 py-3 text-base",
-  lg: "px-8 py-4 text-lg",
+  md: "px-6 py-3 text-sm",
+  lg: "px-8 py-4 text-base",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -43,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-lime focus:ring-offset-2 focus:ring-offset-dark-900 disabled:opacity-50 disabled:cursor-not-allowed";
+      "inline-flex items-center justify-center font-medium rounded transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-body disabled:opacity-50 disabled:cursor-not-allowed";
 
     const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
@@ -107,5 +108,29 @@ function LoadingSpinner() {
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
       />
     </svg>
+  );
+}
+
+// ================================
+// TabButton - For portfolio filters
+// ================================
+
+interface TabButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  active?: boolean;
+}
+
+export function TabButton({
+  children,
+  active = false,
+  className = "",
+  ...props
+}: TabButtonProps) {
+  return (
+    <button
+      className={`tab-button ${active ? "active" : ""} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
   );
 }

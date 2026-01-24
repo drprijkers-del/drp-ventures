@@ -1,87 +1,113 @@
 "use client";
 
-import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { hero } from "@/content/site";
-import { ArrowRightIcon } from "@/components/ui/Icons";
+import { hero, siteConfig } from "@/content/site";
 
 export function Hero() {
   return (
-    <Section
+    <section
       id="hero"
-      background="darker"
-      spacing="xl"
-      className="min-h-screen flex items-center pt-20"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        {/* Content */}
-        <div className="order-2 lg:order-1">
-          <h1 className="text-display-md md:text-display-lg lg:text-display-xl font-bold text-white mb-6 animate-fade-in-up">
-            {hero.headline}
-          </h1>
-          <p className="text-lg md:text-xl text-dark-300 leading-relaxed mb-8 max-w-xl animate-fade-in-up [animation-delay:100ms]">
-            {hero.subline}
-          </p>
+      {/* Background with subtle gradient */}
+      <div className="absolute inset-0 bg-linear-to-br from-surface-panel via-surface-body to-surface-body" />
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in-up [animation-delay:200ms]">
-            <Button href={hero.cta.primary.href} size="lg">
-              {hero.cta.primary.label}
-              <ArrowRightIcon size={20} className="ml-2" />
-            </Button>
-            <Button href={hero.cta.secondary.href} variant="outline" size="lg">
-              {hero.cta.secondary.label}
-            </Button>
-          </div>
+      <Container className="relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-5rem)] py-20">
+          {/* Left: Content */}
+          <div className="order-2 lg:order-1">
+            {/* Subtitle */}
+            <p className="text-tertiary text-sm uppercase tracking-widest mb-4 animate-fade-in">
+              {siteConfig.tagline}
+            </p>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 animate-fade-in-up [animation-delay:300ms]">
-            {hero.stats.map((stat, index) => (
-              <div key={index} className="text-center md:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-brand-lime mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-dark-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            {/* Main headline */}
+            <h1 className="text-display-xl md:text-display-2xl text-primary mb-6 animate-fade-in-up">
+              <span className="text-accent">DRP</span> Ventures
+            </h1>
 
-        {/* Visual */}
-        <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in [animation-delay:400ms]">
-          <div className="relative w-full max-w-md lg:max-w-lg">
-            {/* Placeholder voor hero visual - vervang door eigen afbeelding */}
-            <div className="aspect-square rounded-3xl bg-gradient-card border border-dark-700 overflow-hidden relative">
-              {/* Decorative elements */}
-              <div className="absolute inset-0 bg-gradient-radial from-brand-lime/10 via-transparent to-transparent" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-brand-lime/20 rounded-full blur-3xl animate-float" />
+            {/* Description */}
+            <p className="text-secondary text-lg leading-relaxed mb-8 max-w-lg animate-fade-in-up delay-100">
+              {hero.subline}
+            </p>
 
-              {/* Placeholder content - replace with actual image */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl font-bold text-brand-lime mb-4">DRP</div>
-                  <div className="text-dark-400 text-sm">
-                    Voeg hier uw hero afbeelding toe
-                    <br />
-                    <code className="text-dark-500 text-xs">/public/images/hero.jpg</code>
-                  </div>
-                </div>
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 mb-12 animate-fade-in-up delay-200">
+              <Button href={hero.cta.primary.href} size="lg">
+                {hero.cta.primary.label}
+              </Button>
+              <Button href={hero.cta.secondary.href} variant="outline" size="lg">
+                {hero.cta.secondary.label}
+              </Button>
             </div>
 
-            {/* Decorative floating elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-brand-lime/10 rounded-2xl blur-xl" />
-            <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-dark-700/50 rounded-3xl -z-10" />
+            {/* Stats row */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 animate-fade-in-up delay-300">
+              {hero.stats.map((stat, index) => (
+                <div key={index}>
+                  <div className="text-2xl md:text-3xl font-bold text-accent mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-tertiary">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Portrait Image with vignette */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in delay-200">
+            <div className="relative w-full max-w-md lg:max-w-lg xl:max-w-xl">
+              {/* Image container with vignette */}
+              <div className="relative aspect-3/4 overflow-hidden">
+                {/* Placeholder image - replace with actual portrait */}
+                <div className="absolute inset-0 bg-surface-panel">
+                  {/* Gradient overlay for depth */}
+                  <div className="absolute inset-0 bg-linear-to-t from-surface-body via-transparent to-transparent opacity-60" />
+
+                  {/* Placeholder content */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center p-8">
+                      <div className="text-8xl font-bold text-accent/20 mb-4">
+                        DRP
+                      </div>
+                      <p className="text-tertiary text-sm">
+                        Portrait afbeelding
+                        <br />
+                        <code className="text-muted text-xs">
+                          /public/images/hero-portrait.jpg
+                        </code>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Vignette effect */}
+                <div className="absolute inset-0 vignette pointer-events-none" />
+
+                {/* Top gradient fade */}
+                <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-surface-body to-transparent" />
+
+                {/* Bottom gradient fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-48 bg-linear-to-t from-surface-body via-surface-body/80 to-transparent" />
+              </div>
+
+              {/* Decorative accent */}
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border border-accent/20 rounded-lg" />
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-accent/10 rounded-lg blur-xl" />
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block animate-bounce">
-        <div className="w-6 h-10 border-2 border-dark-600 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-brand-lime rounded-full" />
-        </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 animate-bounce">
+        <span className="text-tertiary text-xs uppercase tracking-widest">Scroll</span>
+        <div className="w-px h-8 bg-surface-border" />
       </div>
-    </Section>
+
+      {/* Side decoration */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-48 bg-linear-to-b from-transparent via-surface-border to-transparent hidden lg:block" />
+    </section>
   );
 }

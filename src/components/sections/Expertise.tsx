@@ -1,40 +1,112 @@
-import { Section, SectionHeader } from "@/components/ui/Section";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { Section, SectionHeader, Panel } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
 import { expertise } from "@/content/site";
 
-export function Expertise() {
+// Progress Bar Component
+function ProgressBar({
+  label,
+  percentage,
+  animate = false,
+}: {
+  label: string;
+  percentage: number;
+  animate?: boolean;
+}) {
   return (
-    <Section id="expertise" background="dark">
-      <SectionHeader
-        subtitle="Expertise"
-        title="Technische vaardigheden"
-        description="Decennia aan ervaring gecombineerd met continue bijscholing resulteren in diepgaande expertise over de volledige stack."
-      />
-
-      <div className="max-w-3xl mx-auto">
-        <div className="space-y-6">
-          {expertise.map((item, index) => (
-            <div key={index} className="group">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-white font-medium">{item.skill}</span>
-                <span className="text-brand-lime font-semibold">
-                  {item.level}%
-                </span>
-              </div>
-              <div className="h-3 bg-dark-800 rounded-full overflow-hidden border border-dark-700">
-                <div
-                  className="h-full bg-gradient-lime rounded-full transition-all duration-1000 ease-out group-hover:shadow-glow-sm"
-                  style={{ width: `${item.level}%` }}
-                  role="progressbar"
-                  aria-valuenow={item.level}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                  aria-label={`${item.skill}: ${item.level}%`}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className="group">
+      <div className="flex justify-between items-center mb-3">
+        <span className="text-primary font-medium text-sm uppercase tracking-wide">
+          {label}
+        </span>
+        <span className="text-accent font-bold text-sm">{percentage}%</span>
       </div>
-    </Section>
+      <div className="progress-bar">
+        <div
+          className="progress-bar-fill"
+          style={
+            {
+              "--progress-width": animate ? `${percentage}%` : "0%",
+              width: animate ? `${percentage}%` : "0%",
+            } as React.CSSProperties
+          }
+          role="progressbar"
+          aria-valuenow={percentage}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`${label}: ${percentage}%`}
+        />
+      </div>
+    </div>
+  );
+}
+
+export function Expertise() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Split skills into columns
+  const midPoint = Math.ceil(expertise.length / 2);
+  const leftColumn = expertise.slice(0, midPoint);
+  const rightColumn = expertise.slice(midPoint);
+
+  return (
+    <section id="expertise" ref={sectionRef} className="py-section-sm md:py-section">
+      <Container>
+        <Panel>
+          <SectionHeader
+            title="Skills"
+            subtitle="Technische Expertise"
+            description="Jarenlange ervaring in moderne technologieën en methodologieën."
+          />
+
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            {/* Left column */}
+            <div className="space-y-6">
+              {leftColumn.map((item, index) => (
+                <ProgressBar
+                  key={index}
+                  label={item.skill}
+                  percentage={item.level}
+                  animate={isVisible}
+                />
+              ))}
+            </div>
+
+            {/* Right column */}
+            <div className="space-y-6">
+              {rightColumn.map((item, index) => (
+                <ProgressBar
+                  key={index}
+                  label={item.skill}
+                  percentage={item.level}
+                  animate={isVisible}
+                />
+              ))}
+            </div>
+          </div>
+        </Panel>
+      </Container>
+    </section>
   );
 }

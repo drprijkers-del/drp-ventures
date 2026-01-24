@@ -4,7 +4,7 @@ import { LinkedInIcon, GitHubIcon } from "@/components/ui/Icons";
 
 export function Footer() {
   return (
-    <footer className="bg-dark-950 border-t border-dark-800">
+    <footer className="bg-surface-body border-t border-surface-border">
       <Container>
         <div className="py-12 md:py-16">
           <div className="grid md:grid-cols-4 gap-8 lg:gap-12">
@@ -12,11 +12,11 @@ export function Footer() {
             <div className="md:col-span-2">
               <a href="#hero" className="inline-block mb-4">
                 <span className="text-2xl font-bold">
-                  <span className="text-brand-lime">DRP</span>
-                  <span className="text-white"> Ventures</span>
+                  <span className="text-accent">DRP</span>
+                  <span className="text-primary"> Ventures</span>
                 </span>
               </a>
-              <p className="text-dark-400 max-w-sm mb-6">
+              <p className="text-secondary max-w-sm mb-6">
                 {footer.tagline}
               </p>
               <div className="flex gap-3">
@@ -24,7 +24,7 @@ export function Footer() {
                   href={siteConfig.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-dark-800 flex items-center justify-center text-dark-400 hover:bg-brand-lime hover:text-dark-950 transition-all"
+                  className="w-10 h-10 rounded-lg bg-surface-elevated flex items-center justify-center text-tertiary hover:bg-accent hover:text-black transition-all"
                   aria-label="LinkedIn"
                 >
                   <LinkedInIcon size={18} />
@@ -33,7 +33,7 @@ export function Footer() {
                   href={siteConfig.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-dark-800 flex items-center justify-center text-dark-400 hover:bg-brand-lime hover:text-dark-950 transition-all"
+                  className="w-10 h-10 rounded-lg bg-surface-elevated flex items-center justify-center text-tertiary hover:bg-accent hover:text-black transition-all"
                   aria-label="GitHub"
                 >
                   <GitHubIcon size={18} />
@@ -43,13 +43,13 @@ export function Footer() {
 
             {/* Quick links */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Navigatie</h4>
+              <h4 className="text-primary font-semibold mb-4">Navigatie</h4>
               <ul className="space-y-2">
                 {navigation.slice(0, 6).map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}
-                      className="text-dark-400 hover:text-brand-lime transition-colors text-sm"
+                      className="text-secondary hover:text-accent transition-colors text-sm"
                     >
                       {item.label}
                     </a>
@@ -60,12 +60,12 @@ export function Footer() {
 
             {/* Contact info */}
             <div>
-              <h4 className="text-white font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-dark-400">
+              <h4 className="text-primary font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-sm text-secondary">
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="hover:text-brand-lime transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
                     {siteConfig.email}
                   </a>
@@ -73,7 +73,7 @@ export function Footer() {
                 <li>
                   <a
                     href={`tel:${siteConfig.phone}`}
-                    className="hover:text-brand-lime transition-colors"
+                    className="hover:text-accent transition-colors"
                   >
                     {siteConfig.phone}
                   </a>
@@ -87,14 +87,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-dark-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-dark-500 text-sm">{footer.copyright}</p>
+        <div className="py-6 border-t border-surface-border flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-muted text-sm">{footer.copyright}</p>
           <div className="flex gap-6">
             {footer.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-dark-500 hover:text-dark-300 text-sm transition-colors"
+                className="text-muted hover:text-secondary text-sm transition-colors"
               >
                 {link.label}
               </a>

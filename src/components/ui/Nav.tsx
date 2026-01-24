@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { navigation, siteConfig } from "@/content/site";
+import { navigation } from "@/content/site";
 import { Container } from "./Container";
 import { Button } from "./Button";
 import { MenuIcon, XIcon } from "./Icons";
@@ -97,7 +97,7 @@ export function Nav() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-dark-950/90 backdrop-blur-lg border-b border-dark-800"
+          ? "bg-surface-body/90 backdrop-blur-lg border-b border-surface-border"
           : "bg-transparent"
       }`}
     >
@@ -111,10 +111,10 @@ export function Nav() {
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "#hero")}
-            className="flex items-center gap-2 text-white font-bold text-xl hover:text-brand-lime transition-colors"
+            className="flex items-center gap-2 text-primary font-bold text-xl hover:text-accent transition-colors"
             aria-label="Ga naar home"
           >
-            <span className="text-brand-lime">DRP</span>
+            <span className="text-accent">DRP</span>
             <span>Ventures</span>
           </a>
 
@@ -127,8 +127,8 @@ export function Nav() {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeSection === item.href.replace("#", "")
-                    ? "text-brand-lime bg-dark-800"
-                    : "text-dark-300 hover:text-white hover:bg-dark-800/50"
+                    ? "text-accent bg-surface-elevated"
+                    : "text-secondary hover:text-primary hover:bg-surface-elevated/50"
                 }`}
                 aria-current={
                   activeSection === item.href.replace("#", "")
@@ -150,7 +150,7 @@ export function Nav() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-dark-300 hover:text-white transition-colors"
+            className="lg:hidden p-2 text-secondary hover:text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
@@ -164,7 +164,7 @@ export function Nav() {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed inset-0 top-20 bg-dark-950/98 backdrop-blur-lg transition-all duration-300 ${
+        className={`lg:hidden fixed inset-0 top-20 bg-surface-body/98 backdrop-blur-lg transition-all duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -180,15 +180,15 @@ export function Nav() {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`px-4 py-3 text-lg font-medium rounded-xl transition-all duration-200 ${
                   activeSection === item.href.replace("#", "")
-                    ? "text-brand-lime bg-dark-800"
-                    : "text-dark-300 hover:text-white hover:bg-dark-800/50"
+                    ? "text-accent bg-surface-elevated"
+                    : "text-secondary hover:text-primary hover:bg-surface-elevated/50"
                 }`}
                 tabIndex={isMobileMenuOpen ? 0 : -1}
               >
                 {item.label}
               </a>
             ))}
-            <div className="mt-6 pt-6 border-t border-dark-800">
+            <div className="mt-6 pt-6 border-t border-surface-border">
               <Button href="#contact" className="w-full" size="lg">
                 Contact opnemen
               </Button>
