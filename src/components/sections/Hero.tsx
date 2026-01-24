@@ -27,8 +27,7 @@ export function Hero() {
         <img
           src="/images/hero.jpg"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: "80% center" }}
+          className="absolute inset-0 w-full h-full object-cover object-center md:object-[80%_center]"
         />
 
         {/* Fallback color in case image doesn't load */}

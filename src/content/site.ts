@@ -143,25 +143,25 @@ export interface FooterContent {
 // ============================================
 
 export const siteConfig: SiteConfig = {
-  name: "DRP Ventures BV",
-  tagline: "Holding & Ventures • Freelance Dienstverlening",
+  name: "Dennis Rijkers",
+  tagline: "Transformatie & Leiderschap",
   description:
-    "DRP Ventures is een Nederlandse holding gespecialiseerd in ventures, investeringen en high-end freelance dienstverlening op het gebied van software development, consultancy en digitale transformatie.",
+    "Senior transformation consultant gespecialiseerd in organisatieverandering, leiderschap en Agile op schaal. Begeleiding van complexe transities voor enterprise organisaties.",
   url: "https://drpventures.nl",
-  email: "info@drpventures.nl",
-  phone: "+31 6 12345678",
-  kvk: "12345678",
-  btw: "NL123456789B01",
+  email: "info@pinkpollos.com",
+  phone: "+31 6 28 975 904",
+  kvk: "",
+  btw: "",
   address: {
-    street: "Voorbeeldstraat 123",
-    city: "Amsterdam",
-    zip: "1012 AB",
+    street: "",
+    city: "Amersfoort",
+    zip: "",
     country: "Nederland",
   },
   social: {
-    linkedin: "https://linkedin.com/company/drpventures",
-    github: "https://github.com/drpventures",
-    twitter: "https://twitter.com/drpventures",
+    linkedin: "https://linkedin.com/in/dennisrijkers",
+    github: "",
+    twitter: "",
   },
 };
 
@@ -171,13 +171,11 @@ export const siteConfig: SiteConfig = {
 
 export const navigation: NavItem[] = [
   { label: "Home", href: "#hero" },
-  { label: "Over Ons", href: "#about" },
+  { label: "Over", href: "#about" },
   { label: "Diensten", href: "#services" },
   { label: "Expertise", href: "#expertise" },
   { label: "Ervaring", href: "#experience" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Proces", href: "#process" },
-  { label: "Insights", href: "#blog" },
+  { label: "Werkwijze", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -186,18 +184,17 @@ export const navigation: NavItem[] = [
 // ============================================
 
 export const hero: HeroContent = {
-  headline: "Bouwen aan de toekomst van digitale innovatie",
+  headline: "Transformatie met richting",
   subline:
-    "DRP Ventures combineert strategisch inzicht met technische excellentie. Van venture building tot high-end software development — wij realiseren ambitieuze digitale projecten.",
+    "Ik begeleid organisaties door complexe verandertrajecten. Van strategie tot uitvoering, van boardroom tot werkvloer.",
   cta: {
-    primary: { label: "Start een gesprek", href: "#contact" },
-    secondary: { label: "Bekijk portfolio", href: "#portfolio" },
+    primary: { label: "Neem contact op", href: "#contact" },
+    secondary: { label: "Meer over mij", href: "#about" },
   },
   stats: [
-    { value: "15+", label: "Jaar ervaring" },
-    { value: "50+", label: "Projecten afgerond" },
-    { value: "€2M+", label: "Ventures geïnvesteerd" },
-    { value: "98%", label: "Klanttevredenheid" },
+    { value: "20+", label: "Jaar ervaring" },
+    { value: "Enterprise", label: "Financieel, energie, overheid" },
+    { value: "Agile", label: "Leiderschap op schaal" },
   ],
 };
 
@@ -206,35 +203,35 @@ export const hero: HeroContent = {
 // ============================================
 
 export const about: AboutContent = {
-  title: "Over DRP Ventures",
-  subtitle: "Waar visie en vakmanschap samenkomen",
+  title: "Dennis Rijkers",
+  subtitle: "Senior Transformation Consultant",
   intro:
-    "DRP Ventures BV is een Nederlandse holding die ondernemerschap, investering en technologische expertise bundelt. Wij geloven in het bouwen van duurzame digitale oplossingen die echte waarde creëren.",
+    "Met een achtergrond in verandermanagement en ruim twee decennia ervaring als consultant en ondernemer, begeleid ik organisaties bij fundamentele transformaties. Mijn werk bevindt zich op het snijvlak van business en IT — waar strategische ambities vertaald worden naar werkende praktijk.",
   mission: {
-    title: "Onze Missie",
+    title: "Aanpak",
     description:
-      "Het ondersteunen van ambitieuze ondernemers en organisaties bij het realiseren van hun digitale ambities door middel van strategisch partnerschap, kapitaal en hands-on expertise.",
+      "Ik geloof in een pragmatische benadering. Geen methodologische dogma's, maar oplossingen die passen bij de context van de organisatie. Complexe vraagstukken ontleed ik systematisch tot behapbare onderdelen, wat de besluitvorming versnelt en teams in beweging brengt.",
   },
   values: [
     {
-      title: "Excellentie",
-      description: "Wij streven naar het hoogste niveau in alles wat we doen.",
-      icon: "Trophy",
+      title: "Verbinden",
+      description: "Partijen samenbrengen, synergieën creëren en samenwerking stimuleren.",
+      icon: "Users",
+    },
+    {
+      title: "Helderheid",
+      description: "Complexe uitdagingen systematisch ontrafelen naar beheersbare onderdelen.",
+      icon: "Target",
+    },
+    {
+      title: "Pragmatisch",
+      description: "Concrete resultaten realiseren met een participatieve rol waar dat waarde toevoegt.",
+      icon: "Zap",
     },
     {
       title: "Integriteit",
-      description: "Eerlijkheid en transparantie vormen de basis van elke samenwerking.",
+      description: "Heldere communicatie en adaptief leiderschap als fundament.",
       icon: "Shield",
-    },
-    {
-      title: "Innovatie",
-      description: "Continu verbeteren en vooroplopen in technologische ontwikkelingen.",
-      icon: "Lightbulb",
-    },
-    {
-      title: "Partnership",
-      description: "Langdurige relaties opbouwen gebaseerd op wederzijds succes.",
-      icon: "Handshake",
     },
   ],
 };
@@ -245,55 +242,55 @@ export const about: AboutContent = {
 
 export const services: Service[] = [
   {
-    id: "software-development",
-    title: "Software Development",
+    id: "organisatie-transformatie",
+    title: "Organisatie & Transformatie",
     description:
-      "Full-stack development van web- en mobiele applicaties met moderne technologieën. Van concept tot productie-ready oplossing.",
-    icon: "Code",
+      "Begeleiding bij het herinrichten van afdelingen, het opzetten van nieuwe teams en het vormgeven van aansturing. Van analyse tot implementatie, met oog voor zowel structuur als cultuur.",
+    icon: "Building",
     features: [
-      "React / Next.js / TypeScript",
-      "Node.js / Python / Go",
-      "Cloud-native architectuur",
-      "API development & integraties",
+      "Organisatieherontwerp",
+      "Teamontwikkeling",
+      "Verandermanagement",
+      "Stakeholdermanagement",
     ],
   },
   {
-    id: "consultancy",
-    title: "Technische Consultancy",
+    id: "agile-op-schaal",
+    title: "Agile op Schaal",
     description:
-      "Strategisch advies op het gebied van architectuur, tech-stack keuzes en digitale transformatie trajecten.",
-    icon: "MessageSquare",
+      "Ondersteuning bij de invoering en doorontwikkeling van Agile werkwijzen in complexe omgevingen. Inclusief frameworks als SAFe en LeSS, afgestemd op de specifieke situatie.",
+    icon: "Layers",
     features: [
-      "Architectuur reviews",
-      "Technology assessments",
-      "Team coaching & mentoring",
-      "Due diligence voor investeerders",
+      "SAFe & LeSS implementatie",
+      "Agile coaching",
+      "Scrum & Kanban",
+      "Portfolio management",
     ],
   },
   {
-    id: "venture-building",
-    title: "Venture Building",
+    id: "leiderschapsontwikkeling",
+    title: "Leiderschapsontwikkeling",
     description:
-      "Van idee tot schaalbare startup. Wij bouwen mee aan veelbelovende ventures als technisch co-founder of lead developer.",
-    icon: "Rocket",
-    features: [
-      "MVP development",
-      "Product-market fit validatie",
-      "Technische roadmap planning",
-      "Investor-ready deliverables",
-    ],
-  },
-  {
-    id: "interim-management",
-    title: "Interim CTO / Tech Lead",
-    description:
-      "Tijdelijke technische leiderschap voor scale-ups en organisaties in transitie. Hands-on en resultaatgericht.",
+      "Coaching van management en leiderschapsteams in veranderende contexten. Gericht op effectieve besluitvorming, heldere communicatie en het creëren van eigenaarschap.",
     icon: "Users",
     features: [
-      "Team opbouw & hiring",
-      "Proces optimalisatie",
-      "Stakeholder management",
-      "Kennisoverdracht & documentatie",
+      "Leiderschapscoaching",
+      "Teamcoaching",
+      "Facilitatie",
+      "Besluitvormingsprocessen",
+    ],
+  },
+  {
+    id: "transitiebegeleiding",
+    title: "Transitiebegeleiding",
+    description:
+      "Hands-on ondersteuning bij het doorvoeren van verandertrajecten. Van het inrichten van processen op value stream niveau tot het borgen van aansluiting met de bredere organisatie.",
+    icon: "ArrowRight",
+    features: [
+      "Value stream inrichting",
+      "Procesoptimalisatie",
+      "Offshoring begeleiding",
+      "Kennisoverdracht",
     ],
   },
 ];
@@ -303,14 +300,14 @@ export const services: Service[] = [
 // ============================================
 
 export const expertise: Skill[] = [
-  { skill: "TypeScript / JavaScript", level: 95 },
-  { skill: "React / Next.js", level: 92 },
-  { skill: "Node.js / Backend", level: 90 },
-  { skill: "Cloud (AWS / GCP / Azure)", level: 85 },
-  { skill: "Python / Data Engineering", level: 80 },
-  { skill: "DevOps / CI/CD", level: 82 },
-  { skill: "System Architecture", level: 88 },
-  { skill: "Team Leadership", level: 90 },
+  { skill: "Verandermanagement", level: 95 },
+  { skill: "Agile Coaching", level: 95 },
+  { skill: "Leiderschapscoaching", level: 90 },
+  { skill: "SAFe & LeSS", level: 90 },
+  { skill: "Teamontwikkeling", level: 92 },
+  { skill: "Stakeholdermanagement", level: 88 },
+  { skill: "Facilitatie", level: 90 },
+  { skill: "Portfolio Management", level: 85 },
 ];
 
 // ============================================
@@ -320,105 +317,77 @@ export const expertise: Skill[] = [
 export const experience: ExperienceItem[] = [
   {
     year: "2024 - heden",
-    title: "Founder & Managing Director",
-    company: "DRP Ventures BV",
+    title: "Agile Team Manager IAM",
+    company: "Jumbo Supermarkten (Hoofdkantoor)",
     description:
-      "Holding voor ventures en high-end freelance dienstverlening. Focus op software development, consultancy en investeringen in tech startups.",
-    type: "venture",
-  },
-  {
-    year: "2022 - 2024",
-    title: "Lead Software Architect",
-    company: "Enterprise FinTech",
-    description:
-      "Technische leiding over een team van 12 engineers. Verantwoordelijk voor de modernisering van legacy systemen naar cloud-native microservices.",
+      "Aansturing van Identity & Access Management teams binnen het hoofdkantoor. Verantwoordelijk voor teamontwikkeling, Agile werkwijzen en de aansluiting op de bredere IT-organisatie.",
     type: "employment",
   },
   {
-    year: "2020 - 2022",
-    title: "Co-Founder & CTO",
-    company: "TechStartup X",
+    year: "2008 - 2024",
+    title: "Oprichter & Principal Consultant",
+    company: "Pink Pollos",
     description:
-      "Mede-opgericht en technisch geleid van 0 naar Series A. Platform verwerkte €50M+ aan transacties per jaar.",
+      "Organisaties door complexe transities geleid binnen financiële sector, nutsbedrijven en media. Van het coachen van leiderschapsteams tot het faciliteren van Agile werkwijzen op team- en organisatieniveau.",
     type: "venture",
+  },
+  {
+    year: "2009 - 2019",
+    title: "Oprichter",
+    company: "Lifebrander.nl",
+    description:
+      "Platform voor professionele online CV's met aanvullende diensten voor CV-revisie en LinkedIn-optimalisatie. Verantwoordelijk voor strategische leiding en productontwikkeling.",
+    type: "venture",
+  },
+  {
+    year: "2001 - 2008",
+    title: "Business Consultant",
+    company: "Yacht / Falanx / Jufidet",
+    description:
+      "Projecten gericht op het herstructureren van bedrijfsprocessen en IT-systemen binnen zorg, financiën en overheid. Basis gelegd voor latere specialisatie in verandermanagement.",
+    type: "employment",
   },
 ];
 
 // ============================================
-// PORTFOLIO
+// PORTFOLIO (Key Engagements)
 // ============================================
 
 export const portfolio: PortfolioItem[] = [
   {
-    id: "fintech-platform",
-    title: "FinTech Payment Platform",
-    category: "fintech",
+    id: "alliander",
+    title: "Alliander",
+    category: "energie",
     description:
-      "Schaalbaar betalingsplatform met real-time transactieverwerking. Microservices architectuur op Kubernetes.",
-    image: "/images/portfolio/fintech.jpg",
-    tags: ["TypeScript", "Node.js", "Kubernetes", "PostgreSQL"],
-    stats: { users: "100K+", transactions: "€50M/jaar" },
+      "Herinrichting van een afdeling, opzetten van nieuwe teams en vormgeven van de managementaansturing.",
+    image: "/images/portfolio/alliander.jpg",
+    tags: ["Organisatieherontwerp", "Teamontwikkeling", "Agile"],
   },
   {
-    id: "saas-dashboard",
-    title: "SaaS Analytics Dashboard",
-    category: "saas",
+    id: "alfen",
+    title: "Alfen",
+    category: "energie",
     description:
-      "Business intelligence dashboard met real-time data visualisaties en AI-powered insights.",
-    image: "/images/portfolio/saas.jpg",
-    tags: ["React", "Python", "TensorFlow", "BigQuery"],
-    stats: { clients: "250+", datapoints: "1B+" },
+      "Verantwoordelijk voor de transitie van een bedrijfsonderdeel, van teaminrichting tot Agile processen op value stream niveau.",
+    image: "/images/portfolio/alfen.jpg",
+    tags: ["Value Stream", "Agile Transitie", "Scaling"],
   },
   {
-    id: "ecommerce-platform",
-    title: "E-commerce Platform",
-    category: "ecommerce",
+    id: "lvnl",
+    title: "LVNL",
+    category: "overheid",
     description:
-      "Headless commerce oplossing met gepersonaliseerde shopping experiences en omnichannel integraties.",
-    image: "/images/portfolio/ecommerce.jpg",
-    tags: ["Next.js", "Shopify", "Algolia", "Stripe"],
-    stats: { orders: "50K/maand", conversion: "+35%" },
-  },
-  {
-    id: "healthcare-app",
-    title: "Healthcare Mobile App",
-    category: "healthcare",
-    description:
-      "HIPAA-compliant patiënt portal met telemedicine functionaliteit en EHR integraties.",
-    image: "/images/portfolio/healthcare.jpg",
-    tags: ["React Native", "Node.js", "HL7 FHIR", "AWS"],
-    stats: { patients: "75K+", appointments: "10K/maand" },
-  },
-  {
-    id: "ai-tool",
-    title: "AI Content Generator",
-    category: "ai",
-    description:
-      "Enterprise tool voor geautomatiseerde content creatie met geavanceerde NLP en brand voice matching.",
-    image: "/images/portfolio/ai.jpg",
-    tags: ["Python", "OpenAI", "FastAPI", "Redis"],
-    stats: { content: "1M+ items", accuracy: "94%" },
-  },
-  {
-    id: "logistics-platform",
-    title: "Logistics Management",
-    category: "logistics",
-    description:
-      "End-to-end supply chain management platform met real-time tracking en route optimalisatie.",
-    image: "/images/portfolio/logistics.jpg",
-    tags: ["Vue.js", "Go", "MongoDB", "Google Maps"],
-    stats: { shipments: "500K/jaar", efficiency: "+40%" },
+      "In samenwerking met KPMG: begeleiding van een afdeling bij het inrichten van Agile werkwijzen en aansluiting op de bredere transitie.",
+    image: "/images/portfolio/lvnl.jpg",
+    tags: ["Agile Inrichting", "Transitie", "Samenwerking"],
   },
 ];
 
 export const portfolioCategories: PortfolioCategory[] = [
-  { id: "all", label: "Alle projecten" },
-  { id: "fintech", label: "FinTech" },
-  { id: "saas", label: "SaaS" },
-  { id: "ecommerce", label: "E-commerce" },
-  { id: "healthcare", label: "Healthcare" },
-  { id: "ai", label: "AI / ML" },
-  { id: "logistics", label: "Logistics" },
+  { id: "all", label: "Alle opdrachten" },
+  { id: "energie", label: "Energie" },
+  { id: "overheid", label: "Overheid" },
+  { id: "financieel", label: "Financieel" },
 ];
 
 // ============================================
@@ -428,90 +397,59 @@ export const portfolioCategories: PortfolioCategory[] = [
 export const process: ProcessStep[] = [
   {
     step: 1,
-    title: "Discovery",
+    title: "Analyse",
     description:
-      "We starten met een grondige analyse van uw doelen, uitdagingen en technische vereisten. Dit resulteert in een helder projectplan.",
+      "Grondige verkenning van de huidige situatie, stakeholders en onderliggende dynamiek. Geen aannames, maar een helder beeld van waar de organisatie staat.",
     icon: "Search",
   },
   {
     step: 2,
-    title: "Strategie",
+    title: "Ontwerp",
     description:
-      "Op basis van de discovery fase ontwikkelen we een technische strategie, architectuur en roadmap die past bij uw budget en timeline.",
+      "Samen met de opdrachtgever vormgeven van de gewenste richting. Concrete doelen, heldere rolverdeling en een aanpak die past bij de organisatiecultuur.",
     icon: "Target",
   },
   {
     step: 3,
-    title: "Executie",
+    title: "Implementatie",
     description:
-      "Agile development met wekelijkse sprints, continue feedback loops en transparante communicatie. Quality-first approach.",
+      "Hands-on begeleiding bij de uitvoering. Teams opzetten, processen inrichten, mensen meenemen in de verandering.",
     icon: "Zap",
   },
   {
     step: 4,
-    title: "Lancering & Support",
+    title: "Verankering",
     description:
-      "Zorgvuldige deployment, monitoring setup en kennisoverdracht. Optioneel doorlopend onderhoud en optimalisatie.",
+      "Zorgen dat veranderingen beklijven. Eigenaarschap overdragen, competenties ontwikkelen en de organisatie zelfstandig verder laten bouwen.",
     icon: "CheckCircle",
   },
 ];
 
 // ============================================
-// BLOG
+// BLOG (placeholder - kan later gevuld worden)
 // ============================================
 
-export const blog: BlogPost[] = [
-  {
-    id: "microservices-2024",
-    title: "Microservices in 2024: Wanneer wel en wanneer niet",
-    excerpt:
-      "Een nuchtere kijk op microservices architectuur. Niet elke applicatie heeft ze nodig, maar wanneer zijn ze de juiste keuze?",
-    date: "2024-01-15",
-    readTime: "8 min",
-    category: "Architecture",
-    image: "/images/blog/microservices.jpg",
-  },
-  {
-    id: "typescript-best-practices",
-    title: "TypeScript Best Practices voor Enterprise Projecten",
-    excerpt:
-      "Praktische tips en patterns voor het bouwen van onderhoudbare TypeScript codebases in grote teams.",
-    date: "2024-01-08",
-    readTime: "12 min",
-    category: "Development",
-    image: "/images/blog/typescript.jpg",
-  },
-  {
-    id: "startup-tech-choices",
-    title: "Tech Stack Keuzes voor Startups: Snelheid vs Schaalbaarheid",
-    excerpt:
-      "Hoe kies je de juiste technologieën als startup? Een framework voor het maken van pragmatische beslissingen.",
-    date: "2023-12-20",
-    readTime: "10 min",
-    category: "Strategy",
-    image: "/images/blog/startup.jpg",
-  },
-  {
-    id: "ai-development-workflow",
-    title: "AI-Assisted Development: Productiviteit verhogen zonder kwaliteit te verliezen",
-    excerpt:
-      "Hoe integreer je AI tools effectief in je development workflow? Praktische tips uit de praktijk.",
-    date: "2023-12-10",
-    readTime: "6 min",
-    category: "Productivity",
-    image: "/images/blog/ai-dev.jpg",
-  },
-];
+export const blog: BlogPost[] = [];
 
 // ============================================
 // CLIENTS
 // ============================================
 
 export const clients: Client[] = [
-  { name: "TechCorp", logo: "/images/clients/techcorp.svg" },
-  { name: "FinanceHub", logo: "/images/clients/financehub.svg" },
-  { name: "StartupX", logo: "/images/clients/startupx.svg" },
-  { name: "Enterprise Co", logo: "/images/clients/enterprise.svg" },
+  { name: "Jumbo", logo: "/images/clients/jumbo.svg" },
+  { name: "Alliander", logo: "/images/clients/alliander.svg" },
+  { name: "Alfen", logo: "/images/clients/alfen.svg" },
+  { name: "LVNL", logo: "/images/clients/lvnl.svg" },
+  { name: "Enexis", logo: "/images/clients/enexis.svg" },
+  { name: "ING", logo: "/images/clients/ing.svg" },
+  { name: "Rabobank", logo: "/images/clients/rabobank.svg" },
+  { name: "ABN AMRO", logo: "/images/clients/abnamro.svg" },
+  { name: "UWV", logo: "/images/clients/uwv.svg" },
+  { name: "Belastingdienst", logo: "/images/clients/belastingdienst.svg" },
+  { name: "ASML", logo: "/images/clients/asml.svg" },
+  { name: "Schiphol", logo: "/images/clients/schiphol.svg" },
+  { name: "DPG Media", logo: "/images/clients/dpgmedia.svg" },
+  { name: "PGGM", logo: "/images/clients/pggm.svg" },
 ];
 
 // ============================================
@@ -519,23 +457,23 @@ export const clients: Client[] = [
 // ============================================
 
 export const contact: ContactContent = {
-  title: "Laten we samenwerken",
-  subtitle: "Klaar om uw volgende project te bespreken?",
+  title: "Laten we kennismaken",
+  subtitle: "Klaar voor een gesprek?",
   description:
-    "Of het nu gaat om een nieuw venture, een complex development project of strategisch advies — wij denken graag met u mee. Neem vrijblijvend contact op voor een kennismaking.",
+    "Staat u voor een organisatieverandering of transitie? Ik ga graag het gesprek aan om te verkennen hoe ik van betekenis kan zijn.",
   formFields: {
     name: "Naam",
     email: "E-mailadres",
-    company: "Bedrijf (optioneel)",
+    company: "Organisatie",
     subject: "Onderwerp",
     message: "Uw bericht",
     submit: "Verstuur bericht",
   },
   subjects: [
-    "Software Development",
-    "Consultancy",
-    "Venture Building",
-    "Interim CTO",
+    "Organisatie & Transformatie",
+    "Agile op Schaal",
+    "Leiderschapsontwikkeling",
+    "Transitiebegeleiding",
     "Algemene vraag",
   ],
 };
@@ -545,10 +483,10 @@ export const contact: ContactContent = {
 // ============================================
 
 export const footer: FooterContent = {
-  tagline: "Bouwen aan digitale excellentie",
+  tagline: "Transformatie met richting",
   copyright: `© ${new Date().getFullYear()} DRP Ventures BV. Alle rechten voorbehouden.`,
   links: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Algemene Voorwaarden", href: "/terms" },
+    { label: "Privacy", href: "/privacy" },
+    { label: "Voorwaarden", href: "/terms" },
   ],
 };
