@@ -23,13 +23,12 @@ export function Hero() {
     >
       {/* Full-bleed background image */}
       <div className="absolute inset-0">
-        {/* Background image using CSS for reliability */}
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/hero.jpg')",
-            backgroundPosition: "85% center"
-          }}
+        {/* Background image using img element for better positioning control */}
+        <img
+          src="/images/hero.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "80% center" }}
         />
 
         {/* Fallback color in case image doesn't load */}
