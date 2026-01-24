@@ -1,9 +1,148 @@
 // ============================================
 // DRP Ventures BV - Central Content File
-// Pas deze data aan om de website te updaten
+// TypeScript types + alle content data
 // ============================================
 
-export const siteConfig = {
+// ============================================
+// TYPES
+// ============================================
+
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface SiteConfig {
+  name: string;
+  tagline: string;
+  description: string;
+  url: string;
+  email: string;
+  phone: string;
+  kvk: string;
+  btw: string;
+  address: {
+    street: string;
+    city: string;
+    zip: string;
+    country: string;
+  };
+  social: {
+    linkedin: string;
+    github: string;
+    twitter: string;
+  };
+}
+
+export interface HeroContent {
+  headline: string;
+  subline: string;
+  cta: {
+    primary: { label: string; href: string };
+    secondary: { label: string; href: string };
+  };
+  stats: Array<{ value: string; label: string }>;
+}
+
+export interface AboutContent {
+  title: string;
+  subtitle: string;
+  intro: string;
+  mission: {
+    title: string;
+    description: string;
+  };
+  values: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+}
+
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+export interface Skill {
+  skill: string;
+  level: number;
+}
+
+export interface ExperienceItem {
+  year: string;
+  title: string;
+  company: string;
+  description: string;
+  type: "venture" | "employment";
+}
+
+export interface PortfolioItem {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  tags: string[];
+  stats?: Record<string, string>;
+}
+
+export interface PortfolioCategory {
+  id: string;
+  label: string;
+}
+
+export interface ProcessStep {
+  step: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  image: string;
+}
+
+export interface Client {
+  name: string;
+  logo: string;
+}
+
+export interface ContactContent {
+  title: string;
+  subtitle: string;
+  description: string;
+  formFields: {
+    name: string;
+    email: string;
+    company: string;
+    subject: string;
+    message: string;
+    submit: string;
+  };
+  subjects: string[];
+}
+
+export interface FooterContent {
+  tagline: string;
+  copyright: string;
+  links: Array<{ label: string; href: string }>;
+}
+
+// ============================================
+// SITE CONFIGURATION
+// ============================================
+
+export const siteConfig: SiteConfig = {
   name: "DRP Ventures BV",
   tagline: "Holding & Ventures • Freelance Dienstverlening",
   description:
@@ -26,7 +165,11 @@ export const siteConfig = {
   },
 };
 
-export const navigation = [
+// ============================================
+// NAVIGATION
+// ============================================
+
+export const navigation: NavItem[] = [
   { label: "Home", href: "#hero" },
   { label: "Over Ons", href: "#about" },
   { label: "Diensten", href: "#services" },
@@ -38,7 +181,11 @@ export const navigation = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const hero = {
+// ============================================
+// HERO SECTION
+// ============================================
+
+export const hero: HeroContent = {
   headline: "Bouwen aan de toekomst van digitale innovatie",
   subline:
     "DRP Ventures combineert strategisch inzicht met technische excellentie. Van venture building tot high-end software development — wij realiseren ambitieuze digitale projecten.",
@@ -54,7 +201,11 @@ export const hero = {
   ],
 };
 
-export const about = {
+// ============================================
+// ABOUT SECTION
+// ============================================
+
+export const about: AboutContent = {
   title: "Over DRP Ventures",
   subtitle: "Waar visie en vakmanschap samenkomen",
   intro:
@@ -88,7 +239,11 @@ export const about = {
   ],
 };
 
-export const services = [
+// ============================================
+// SERVICES
+// ============================================
+
+export const services: Service[] = [
   {
     id: "software-development",
     title: "Software Development",
@@ -143,7 +298,11 @@ export const services = [
   },
 ];
 
-export const expertise = [
+// ============================================
+// EXPERTISE / SKILLS
+// ============================================
+
+export const expertise: Skill[] = [
   { skill: "TypeScript / JavaScript", level: 95 },
   { skill: "React / Next.js", level: 92 },
   { skill: "Node.js / Backend", level: 90 },
@@ -154,7 +313,11 @@ export const expertise = [
   { skill: "Team Leadership", level: 90 },
 ];
 
-export const experience = [
+// ============================================
+// EXPERIENCE TIMELINE
+// ============================================
+
+export const experience: ExperienceItem[] = [
   {
     year: "2024 - heden",
     title: "Founder & Managing Director",
@@ -179,25 +342,13 @@ export const experience = [
       "Mede-opgericht en technisch geleid van 0 naar Series A. Platform verwerkte €50M+ aan transacties per jaar.",
     type: "venture",
   },
-  {
-    year: "2018 - 2020",
-    title: "Senior Full-Stack Developer",
-    company: "Digital Agency",
-    description:
-      "Development van complexe web applicaties voor Fortune 500 klanten. Specialisatie in React, Node.js en cloud infrastructuur.",
-    type: "employment",
-  },
-  {
-    year: "2015 - 2018",
-    title: "Software Developer",
-    company: "Tech Consultancy",
-    description:
-      "Start van professionele carrière. Gewerkt aan diverse projecten in finance, healthcare en e-commerce sectoren.",
-    type: "employment",
-  },
 ];
 
-export const portfolio = [
+// ============================================
+// PORTFOLIO
+// ============================================
+
+export const portfolio: PortfolioItem[] = [
   {
     id: "fintech-platform",
     title: "FinTech Payment Platform",
@@ -260,7 +411,7 @@ export const portfolio = [
   },
 ];
 
-export const portfolioCategories = [
+export const portfolioCategories: PortfolioCategory[] = [
   { id: "all", label: "Alle projecten" },
   { id: "fintech", label: "FinTech" },
   { id: "saas", label: "SaaS" },
@@ -270,7 +421,11 @@ export const portfolioCategories = [
   { id: "logistics", label: "Logistics" },
 ];
 
-export const process = [
+// ============================================
+// PROCESS
+// ============================================
+
+export const process: ProcessStep[] = [
   {
     step: 1,
     title: "Discovery",
@@ -301,7 +456,11 @@ export const process = [
   },
 ];
 
-export const blog = [
+// ============================================
+// BLOG
+// ============================================
+
+export const blog: BlogPost[] = [
   {
     id: "microservices-2024",
     title: "Microservices in 2024: Wanneer wel en wanneer niet",
@@ -332,18 +491,34 @@ export const blog = [
     category: "Strategy",
     image: "/images/blog/startup.jpg",
   },
+  {
+    id: "ai-development-workflow",
+    title: "AI-Assisted Development: Productiviteit verhogen zonder kwaliteit te verliezen",
+    excerpt:
+      "Hoe integreer je AI tools effectief in je development workflow? Praktische tips uit de praktijk.",
+    date: "2023-12-10",
+    readTime: "6 min",
+    category: "Productivity",
+    image: "/images/blog/ai-dev.jpg",
+  },
 ];
 
-export const clients = [
+// ============================================
+// CLIENTS
+// ============================================
+
+export const clients: Client[] = [
   { name: "TechCorp", logo: "/images/clients/techcorp.svg" },
   { name: "FinanceHub", logo: "/images/clients/financehub.svg" },
   { name: "StartupX", logo: "/images/clients/startupx.svg" },
   { name: "Enterprise Co", logo: "/images/clients/enterprise.svg" },
-  { name: "Digital Agency", logo: "/images/clients/agency.svg" },
-  { name: "Innovation Lab", logo: "/images/clients/innovation.svg" },
 ];
 
-export const contact = {
+// ============================================
+// CONTACT
+// ============================================
+
+export const contact: ContactContent = {
   title: "Laten we samenwerken",
   subtitle: "Klaar om uw volgende project te bespreken?",
   description:
@@ -365,7 +540,11 @@ export const contact = {
   ],
 };
 
-export const footer = {
+// ============================================
+// FOOTER
+// ============================================
+
+export const footer: FooterContent = {
   tagline: "Bouwen aan digitale excellentie",
   copyright: `© ${new Date().getFullYear()} DRP Ventures BV. Alle rechten voorbehouden.`,
   links: [
