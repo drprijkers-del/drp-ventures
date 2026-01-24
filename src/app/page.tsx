@@ -2,11 +2,9 @@ import {
   Hero,
   About,
   Services,
-  Expertise,
+  Assignments,
   Experience,
-  Portfolio,
   Process,
-  Blog,
   Clients,
   Contact,
   Footer,
@@ -18,11 +16,9 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
-      <Expertise />
+      <Assignments />
       <Experience />
-      <Portfolio />
       <Process />
-      <Blog />
       <Clients />
       <Contact />
       <Footer />

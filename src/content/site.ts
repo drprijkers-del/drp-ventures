@@ -95,6 +95,14 @@ export interface PortfolioCategory {
   label: string;
 }
 
+export interface Assignment {
+  id: string;
+  organization: string;
+  role: string;
+  description: string;
+  sector: "financieel" | "energie" | "overheid" | "retail" | "media" | "infrastructuur";
+}
+
 export interface ProcessStep {
   step: number;
   title: string;
@@ -173,7 +181,7 @@ export const navigation: NavItem[] = [
   { label: "Home", href: "#hero" },
   { label: "Over", href: "#about" },
   { label: "Diensten", href: "#services" },
-  { label: "Expertise", href: "#expertise" },
+  { label: "Opdrachten", href: "#assignments" },
   { label: "Ervaring", href: "#experience" },
   { label: "Werkwijze", href: "#process" },
   { label: "Contact", href: "#contact" },
@@ -388,6 +396,100 @@ export const portfolioCategories: PortfolioCategory[] = [
   { id: "energie", label: "Energie" },
   { id: "overheid", label: "Overheid" },
   { id: "financieel", label: "Financieel" },
+];
+
+// ============================================
+// SELECTED ASSIGNMENTS
+// ============================================
+
+export const assignmentsSection = {
+  label: "Opdrachten",
+  title: "Geselecteerde opdrachten",
+  description:
+    "Een selectie uit een breder portfolio aan opdrachten in de financiële sector, energie, overheid en infrastructuur.",
+};
+
+export const assignments: Assignment[] = [
+  {
+    id: "jumbo",
+    organization: "Jumbo Supermarkten",
+    role: "Agile Team Manager – Identity & Access Management",
+    description:
+      "Aansturing van meerdere IAM-teams binnen het hoofdkantoor van een van de grootste Nederlandse retailers. Focus op teamontwikkeling, samenwerking tussen technische disciplines en het stroomlijnen van processen rondom toegangsbeheer. Verbinding tussen IT-operatie en de bredere digitale strategie van de organisatie.",
+    sector: "retail",
+  },
+  {
+    id: "alliander",
+    organization: "Alliander",
+    role: "Verandermanager & Agile Coach",
+    description:
+      "Begeleiding van een afdeling die kampte met onduidelijke verantwoordelijkheden en versnipperde aansturing. Samen met het management nieuwe teamstructuren ontworpen en geïmplementeerd. De focus lag op het creëren van eigenaarschap bij teamleads en het verbeteren van de dagelijkse samenwerking tussen development en operations.",
+    sector: "energie",
+  },
+  {
+    id: "alfen",
+    organization: "Alfen",
+    role: "Transitieleider & Agile Coach",
+    description:
+      "Verantwoordelijk voor de transitie van een bedrijfsonderdeel naar een Agile werkwijze op value stream niveau. Teams opnieuw ingericht rond productlijnen, rollen verduidelijkt en de samenwerking met stakeholders buiten IT verbeterd. Nadruk op pragmatische invoering zonder de operatie te verstoren.",
+    sector: "energie",
+  },
+  {
+    id: "ing",
+    organization: "ING",
+    role: "Agile Coach – Enterprise Transformatie",
+    description:
+      "Onderdeel van een grootschalige Agile transformatie binnen een van de grootste banken van Nederland. Directe ondersteuning van Scrum Masters en Product Owners in meerdere tribes. Gericht op het verhogen van voorspelbaarheid in delivery en het verbeteren van de samenwerking tussen business en IT.",
+    sector: "financieel",
+  },
+  {
+    id: "lvnl",
+    organization: "LVNL",
+    role: "Agile Coach (in samenwerking met KPMG)",
+    description:
+      "Begeleiding van een afdeling binnen de luchtverkeersleiding bij het inrichten van Agile werkwijzen. De uitdaging: een organisatie met hoge kwaliteitseisen en strikte protocollen laten wennen aan iteratieve werkwijzen. Focus op teambegeleiding, het faciliteren van retrospectives en het creëren van draagvlak bij het management.",
+    sector: "infrastructuur",
+  },
+  {
+    id: "rabobank",
+    organization: "Rabobank",
+    role: "Scrum Master & Agile Coach",
+    description:
+      "Ondersteuning van ontwikkelteams binnen een coöperatieve bank met complexe stakeholderrelaties. Verantwoordelijk voor het verbeteren van sprintprocessen en het wegnemen van structurele blokkades. Nauwe samenwerking met Product Owners om de balans tussen business-prioriteiten en technische schuld te bewaken.",
+    sector: "financieel",
+  },
+  {
+    id: "enexis",
+    organization: "Enexis",
+    role: "Agile Coach – Netbeheer",
+    description:
+      "Begeleiding van teams binnen een netbeheerder die te maken had met toenemende druk door de energietransitie. Focus op het verbeteren van werkprocessen in een omgeving waar IT en operationele technologie samenkomen. Ondersteuning bij het opzetten van cross-functionele samenwerking tussen kantoor en buitendienst.",
+    sector: "energie",
+  },
+  {
+    id: "dpg-media",
+    organization: "DPG Media",
+    role: "Verandermanager",
+    description:
+      "Ondersteuning bij een organisatorische herstructurering binnen een van de grootste mediabedrijven van de Benelux. Betrokken bij het samenbrengen van teams uit verschillende labels onder een gezamenlijke werkwijze. Nadruk op het behouden van autonomie binnen de teams terwijl de onderlinge afstemming verbeterde.",
+    sector: "media",
+  },
+  {
+    id: "uwv",
+    organization: "UWV",
+    role: "Agile Coach – Overheidscontext",
+    description:
+      "Begeleiding van teams binnen een uitvoeringsorganisatie met grote maatschappelijke verantwoordelijkheid. De uitdaging: wendbaarheid introduceren in een omgeving met strikte wet- en regelgeving. Focus op het coachen van Scrum Masters, het verbeteren van de samenwerking met ketenpartners en het realistisch managen van verwachtingen.",
+    sector: "overheid",
+  },
+  {
+    id: "pggm",
+    organization: "PGGM",
+    role: "Agile Coach – Pensioenbeheer",
+    description:
+      "Ondersteuning van IT-teams binnen een pensioenbeheerder tijdens een periode van systeemvernieuwing. Focus op het verbeteren van de samenwerking tussen development, beheer en de pensioenuitvoering. Begeleiding bij het vinden van een werkbare balans tussen stabiliteit en vernieuwing.",
+    sector: "financieel",
+  },
 ];
 
 // ============================================
