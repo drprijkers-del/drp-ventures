@@ -1,36 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DRP Ventures BV - Website
 
-## Getting Started
+Een professionele, minimalistische bedrijfswebsite gebouwd met Next.js 16, React 19, TypeScript en Tailwind CSS v4.
 
-First, run the development server:
+## Kenmerken
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16 App Router** - Nieuwste versie met server components
+- **TypeScript** - Type-safe development
+- **Tailwind CSS v4** - CSS-first configuratie met custom theme
+- **Data-driven content** - Alle teksten centraal in `/src/content/site.ts`
+- **Component-driven** - Herbruikbare UI en sectie componenten
+- **Responsive** - Mobile-first design
+- **Toegankelijk** - Semantische HTML, focus states, aria-labels
+- **SEO geoptimaliseerd** - Meta tags, OpenGraph, structured data ready
+
+## Projectstructuur
+
+```
+drp-ventures/
+├── public/
+│   └── images/
+│       ├── portfolio/     # Portfolio project afbeeldingen
+│       ├── blog/          # Blog post afbeeldingen
+│       └── clients/       # Client logo's
+├── src/
+│   ├── app/
+│   │   ├── globals.css    # Tailwind v4 theme & global styles
+│   │   ├── layout.tsx     # Root layout met Nav
+│   │   └── page.tsx       # Home page met alle secties
+│   ├── components/
+│   │   ├── sections/      # Page sections (Hero, About, etc.)
+│   │   └── ui/            # Reusable UI components
+│   └── content/
+│       └── site.ts        # Centrale content configuratie
+├── tailwind.config.ts     # Tailwind configuratie (legacy)
+├── vercel.json            # Vercel deployment config
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Secties
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Hero** - Headline, subline, CTA's, stats
+2. **About** - Intro, missie, kernwaarden
+3. **Services** - Diensten met features
+4. **Expertise** - Skills met progress bars
+5. **Experience** - Timeline met ventures & employment
+6. **Portfolio** - Project grid met filter tabs
+7. **Process** - 4-stappen werkwijze
+8. **Blog** - Laatste artikelen
+9. **Clients** - Logo strip
+10. **Contact** - Formulier + bedrijfsgegevens
+11. **Footer**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Aan de slag
 
-## Learn More
+### Installatie
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Clone de repository
+git clone https://github.com/drprijkers-del/drp-ventures.git
+cd drp-ventures
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Installeer dependencies
+npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Start development server
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) in je browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev       # Start development server
+npm run build     # Build voor productie
+npm run start     # Start productie server
+npm run lint      # Run ESLint
+npm run lint:fix  # Fix ESLint issues
+npm run type-check # TypeScript type checking
+```
+
+## Content Aanpassen
+
+Alle teksten, services, portfolio items, etc. staan in `/src/content/site.ts`. Pas dit bestand aan om de website content te wijzigen.
+
+### Voorbeeld: Service toevoegen
+
+```typescript
+// In src/content/site.ts
+export const services = [
+  // ... bestaande services
+  {
+    id: "nieuwe-service",
+    title: "Nieuwe Service",
+    description: "Beschrijving van de service...",
+    icon: "Code", // Zie Icons.tsx voor beschikbare icons
+    features: [
+      "Feature 1",
+      "Feature 2",
+    ],
+  },
+];
+```
+
+## Afbeeldingen Toevoegen
+
+Plaats afbeeldingen in de juiste map in `/public/images/`:
+
+- Portfolio: `/public/images/portfolio/[naam].jpg`
+- Blog: `/public/images/blog/[naam].jpg`
+- Clients: `/public/images/clients/[naam].svg`
+
+Update vervolgens de paden in `site.ts`.
+
+## Deployment naar Vercel
+
+### Via Vercel CLI
+
+```bash
+# Installeer Vercel CLI
+npm i -g vercel
+
+# Login
+vercel login
+
+# Deploy (preview)
+vercel
+
+# Deploy naar productie
+vercel --prod
+```
+
+### Via GitHub Integration
+
+1. Push je code naar GitHub
+2. Ga naar [vercel.com](https://vercel.com)
+3. Importeer je repository
+4. Vercel detecteert automatisch Next.js en deployed
+
+### Environment Variables
+
+Geen environment variables nodig voor de basissite. Voor het contactformulier kun je later toevoegen:
+
+- `SMTP_HOST` - Voor email verzending
+- `SMTP_USER` - SMTP gebruikersnaam
+- `SMTP_PASS` - SMTP wachtwoord
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [TypeScript 5](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+
+## Licentie
+
+Proprietary - DRP Ventures BV
+
+## Contact
+
+- Website: [drpventures.nl](https://drpventures.nl)
+- Email: info@drpventures.nl
