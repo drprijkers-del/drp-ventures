@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/Button";
 import { hero, siteConfig } from "@/content/site";
 
 export function Hero() {
-  const [imageError, setImageError] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -132,19 +131,14 @@ export function Hero() {
                 {/* Border frame */}
                 <div className="absolute inset-0 rounded-2xl border border-white/10 z-20 pointer-events-none" />
 
-                {/* Image or placeholder */}
-                {!imageError ? (
-                  <Image
-                    src="/hero.jpg"
-                    alt="Portrait"
-                    fill
-                    className="object-cover"
-                    priority
-                    onError={() => setImageError(true)}
-                  />
-                ) : (
-                  <PortraitPlaceholder />
-                )}
+                {/* Image */}
+                <Image
+                  src="/images/CheeseWorks-0028.jpg"
+                  alt="Dennis Rijkers - DRP Ventures"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
 
                 {/* Vignette overlay */}
                 <div
@@ -199,51 +193,5 @@ export function Hero() {
         aria-hidden="true"
       />
     </section>
-  );
-}
-
-/**
- * Premium gradient placeholder when no hero image exists
- */
-function PortraitPlaceholder() {
-  return (
-    <div className="absolute inset-0 bg-linear-to-br from-surface-elevated via-surface-card to-surface-panel">
-      {/* Diagonal lines pattern */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 20px,
-            rgba(139,195,74,0.3) 20px,
-            rgba(139,195,74,0.3) 21px
-          )`,
-        }}
-      />
-
-      {/* Center content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-        {/* Large initials */}
-        <div className="relative">
-          <span className="text-8xl font-bold text-accent/20">
-            DRP
-          </span>
-          {/* Glow effect */}
-          <div className="absolute inset-0 text-8xl font-bold text-accent/10 blur-xl">
-            DRP
-          </div>
-        </div>
-
-        {/* Placeholder text */}
-        <div className="mt-6 space-y-1">
-          <p className="text-tertiary text-sm">Portrait afbeelding</p>
-          <p className="text-muted text-xs font-mono">/public/hero.jpg</p>
-        </div>
-      </div>
-
-      {/* Gradient overlay for depth */}
-      <div className="absolute inset-0 bg-linear-to-t from-surface-body/50 via-transparent to-surface-body/30" />
-    </div>
   );
 }
