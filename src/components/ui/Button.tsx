@@ -1,6 +1,11 @@
 "use client";
 
-import { forwardRef, ButtonHTMLAttributes } from "react";
+import { forwardRef, ButtonHTMLAttributes, ReactNode } from "react";
+import { cn } from "@/lib/cn";
+
+// ================================
+// Button Component
+// ================================
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
@@ -10,20 +15,30 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   href?: string;
   isLoading?: boolean;
+  children: ReactNode;
 }
 
-const variants: Record<ButtonVariant, string> = {
-  primary:
-    "bg-accent text-black font-semibold hover:bg-accent-light shadow-glow-sm hover:shadow-glow",
-  secondary:
-    "bg-surface-card text-content-secondary hover:bg-surface-elevated border border-surface-border hover:border-surface-border-light",
-  ghost:
-    "bg-transparent text-content-secondary hover:text-content-primary hover:bg-surface-card",
-  outline:
-    "bg-transparent text-accent border border-accent hover:bg-accent hover:text-black",
+const variantStyles: Record<ButtonVariant, string> = {
+  primary: cn(
+    "bg-accent text-black font-semibold",
+    "hover:bg-accent-light hover:shadow-glow-sm",
+    "active:bg-accent-dark"
+  ),
+  secondary: cn(
+    "bg-surface-card text-secondary border border-surface-border",
+    "hover:bg-surface-elevated hover:border-surface-border-light"
+  ),
+  ghost: cn(
+    "bg-transparent text-secondary",
+    "hover:text-primary hover:bg-surface-card"
+  ),
+  outline: cn(
+    "bg-transparent text-accent border border-accent",
+    "hover:bg-accent hover:text-black"
+  ),
 };
 
-const sizes: Record<ButtonSize, string> = {
+const sizeStyles: Record<ButtonSize, string> = {
   sm: "px-4 py-2 text-sm",
   md: "px-6 py-3 text-sm",
   lg: "px-8 py-4 text-base",
@@ -36,30 +51,34 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "primary",
       size = "md",
       href,
-      isLoading,
-      className = "",
+      isLoading = false,
+      className,
       disabled,
+      type = "button",
       ...props
     },
     ref
   ) => {
-    const baseStyles =
-      "inline-flex items-center justify-center font-medium rounded transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-body disabled:opacity-50 disabled:cursor-not-allowed";
+    const baseStyles = cn(
+      "inline-flex items-center justify-center gap-2",
+      "font-medium rounded-lg",
+      "transition-all duration-200",
+      "focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-body",
+      "disabled:opacity-50 disabled:cursor-not-allowed",
+      variantStyles[variant],
+      sizeStyles[size],
+      className
+    );
 
-    const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
-
+    // Render as anchor if href is provided
     if (href) {
       return (
         <a
           href={href}
-          className={classes}
+          className={baseStyles}
           aria-disabled={disabled || isLoading}
         >
-          {isLoading ? (
-            <span className="mr-2">
-              <LoadingSpinner />
-            </span>
-          ) : null}
+          {isLoading && <LoadingSpinner />}
           {children}
         </a>
       );
@@ -68,15 +87,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={classes}
+        type={type}
+        className={baseStyles}
         disabled={disabled || isLoading}
+        aria-busy={isLoading}
         {...props}
       >
-        {isLoading ? (
-          <span className="mr-2">
-            <LoadingSpinner />
-          </span>
-        ) : null}
+        {isLoading && <LoadingSpinner />}
         {children}
       </button>
     );
@@ -84,6 +101,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = "Button";
+
+// ================================
+// Loading Spinner
+// ================================
 
 function LoadingSpinner() {
   return (
@@ -112,22 +133,25 @@ function LoadingSpinner() {
 }
 
 // ================================
-// TabButton - For portfolio filters
+// TabButton - For filters
 // ================================
 
 interface TabButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   active?: boolean;
+  children: ReactNode;
 }
 
 export function TabButton({
   children,
   active = false,
-  className = "",
+  className,
   ...props
 }: TabButtonProps) {
   return (
     <button
-      className={`tab-button ${active ? "active" : ""} ${className}`}
+      className={cn("tab-button", active && "active", className)}
+      aria-pressed={active}
+      type="button"
       {...props}
     >
       {children}

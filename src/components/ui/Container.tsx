@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { cn } from "@/lib/cn";
 
 type ContainerSize = "sm" | "md" | "lg" | "xl" | "full";
 
@@ -20,11 +21,17 @@ const sizes: Record<ContainerSize, string> = {
 export function Container({
   children,
   size = "xl",
-  className = "",
+  className,
   as: Tag = "div",
 }: ContainerProps) {
   return (
-    <Tag className={`mx-auto w-full px-4 sm:px-6 lg:px-8 ${sizes[size]} ${className}`}>
+    <Tag
+      className={cn(
+        "mx-auto w-full px-4 sm:px-6 lg:px-8",
+        sizes[size],
+        className
+      )}
+    >
       {children}
     </Tag>
   );

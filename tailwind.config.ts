@@ -8,15 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // ======================
+      // COLORS
+      // ======================
       colors: {
-        // Primary accent - lime/green
+        // Accent - lime/green highlights
         accent: {
           DEFAULT: "#8bc34a",
           light: "#a2cf6e",
           dark: "#6b9b37",
           muted: "rgba(139, 195, 74, 0.15)",
         },
-        // Surface colors - for panels and cards
+        // Surfaces - layered dark backgrounds
         surface: {
           body: "#1a1a1a",
           panel: "#232323",
@@ -25,7 +28,7 @@ const config: Config = {
           border: "#333333",
           "border-light": "#3a3a3a",
         },
-        // Text hierarchy
+        // Content - text hierarchy
         content: {
           primary: "#ffffff",
           secondary: "#b0b0b0",
@@ -33,65 +36,77 @@ const config: Config = {
           muted: "#606060",
         },
       },
+
+      // ======================
+      // TYPOGRAPHY
+      // ======================
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
         display: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Display sizes
         "display-2xl": ["5rem", { lineHeight: "1.0", letterSpacing: "-0.03em", fontWeight: "700" }],
         "display-xl": ["4rem", { lineHeight: "1.05", letterSpacing: "-0.02em", fontWeight: "700" }],
         "display-lg": ["3rem", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
         "display-md": ["2.25rem", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600" }],
         "display-sm": ["1.75rem", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
-        // Section header
-        "section-title": ["0.75rem", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "600" }],
+        "section-label": ["0.75rem", { lineHeight: "1", letterSpacing: "0.2em", fontWeight: "600" }],
       },
+
+      // ======================
+      // SPACING
+      // ======================
       spacing: {
-        // Section spacing
-        "section": "7.5rem", // 120px
-        "section-sm": "5rem", // 80px
-        "18": "4.5rem",
-        "22": "5.5rem",
-        "30": "7.5rem",
+        section: "7.5rem",
+        "section-sm": "5rem",
+        18: "4.5rem",
+        22: "5.5rem",
+        30: "7.5rem",
       },
+
+      // ======================
+      // SHADOWS
+      // ======================
       boxShadow: {
-        // Subtle shadows for dark theme
-        "panel": "0 4px 30px rgba(0, 0, 0, 0.3)",
-        "card": "0 2px 20px rgba(0, 0, 0, 0.2)",
+        panel: "0 4px 30px rgba(0, 0, 0, 0.3)",
+        card: "0 2px 20px rgba(0, 0, 0, 0.2)",
         "card-hover": "0 8px 40px rgba(0, 0, 0, 0.4)",
-        "glow": "0 0 30px rgba(139, 195, 74, 0.3)",
+        glow: "0 0 30px rgba(139, 195, 74, 0.3)",
         "glow-sm": "0 0 15px rgba(139, 195, 74, 0.2)",
-        "inner-subtle": "inset 0 1px 0 rgba(255, 255, 255, 0.03)",
+        "inner-highlight": "inset 0 1px 0 rgba(255, 255, 255, 0.03)",
       },
+
+      // ======================
+      // GRADIENTS
+      // ======================
       backgroundImage: {
-        // Body gradient - diagonal dark gradient
-        "body-gradient": "linear-gradient(135deg, #1a1a1a 0%, #141414 50%, #1a1a1a 100%)",
-        "body-radial": "radial-gradient(ellipse at top, #252525 0%, #1a1a1a 50%, #141414 100%)",
-        // Panel gradient
+        "body-gradient": "linear-gradient(180deg, #1a1a1a 0%, #141414 100%)",
         "panel-gradient": "linear-gradient(180deg, #262626 0%, #232323 100%)",
-        // Card gradients
         "card-gradient": "linear-gradient(135deg, #2d2d2d 0%, #282828 100%)",
-        // Accent gradient
         "accent-gradient": "linear-gradient(135deg, #8bc34a 0%, #6b9b37 100%)",
-        // Vignette for images
-        "vignette": "radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%)",
-        "vignette-strong": "radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.9) 100%)",
-        // Image overlay
-        "overlay-dark": "linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%)",
+        vignette: "radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.7) 100%)",
+        "overlay-bottom": "linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)",
       },
+
+      // ======================
+      // BORDER RADIUS
+      // ======================
       borderRadius: {
         "2xl": "1rem",
         "3xl": "1.5rem",
         "4xl": "2rem",
       },
+
+      // ======================
+      // ANIMATIONS
+      // ======================
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
         "fade-in-up": "fadeInUp 0.6s ease-out forwards",
         "slide-in-left": "slideInLeft 0.6s ease-out forwards",
         "slide-in-right": "slideInRight 0.6s ease-out forwards",
         "scale-in": "scaleIn 0.4s ease-out forwards",
-        "progress": "progress 1.5s ease-out forwards",
+        progress: "progressBar 1.5s ease-out forwards",
       },
       keyframes: {
         fadeIn: {
@@ -114,13 +129,10 @@ const config: Config = {
           "0%": { opacity: "0", transform: "scale(0.95)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        progress: {
+        progressBar: {
           "0%": { width: "0%" },
           "100%": { width: "var(--progress-width)" },
         },
-      },
-      transitionDuration: {
-        "400": "400ms",
       },
     },
   },
