@@ -133,7 +133,7 @@ export function Hero() {
 
                 {/* Image */}
                 <Image
-                  src="/images/CheeseWorks-0028.jpg"
+                  src="/images/hero-portrait.jpg"
                   alt="Dennis Rijkers - DRP Ventures"
                   fill
                   className="object-cover object-top"
