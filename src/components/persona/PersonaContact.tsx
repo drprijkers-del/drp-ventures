@@ -83,9 +83,9 @@ export function PersonaContact({ content }: PersonaContactProps) {
         description={contactSection.description}
       />
 
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <Panel padding="lg">
-          <ul className="space-y-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             {/* Phone */}
             <ContactItem icon="Phone" label={labels.phone}>
               {phoneRevealed ? (
