@@ -24,8 +24,8 @@ export function PersonaAbout({ content }: PersonaAboutProps) {
     <Section id="about">
       <SectionHeader label={sectionLabels.about} title={about.subtitle} />
 
-      <Panel padding="lg">
-        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
+      <Panel padding="md" className="sm:p-8 lg:p-10">
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-16">
           {/* Photo */}
           <div
             className={cn(
@@ -83,43 +83,44 @@ export function PersonaAbout({ content }: PersonaAboutProps) {
               mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
             )}
           >
-            <h3 className="text-2xl md:text-3xl font-semibold text-primary mb-4">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary mb-3 sm:mb-4">
               {about.title}
             </h3>
 
-            <p className="text-secondary text-lg leading-relaxed mb-8">
+            <p className="text-secondary text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
               {about.intro}
             </p>
 
             {/* Approach block */}
-            <div className="p-6 bg-surface-elevated/50 rounded-xl border border-surface-border mb-8">
-              <div className="flex items-center gap-3 mb-3">
+            <div className="p-4 sm:p-6 bg-surface-elevated/50 rounded-xl border border-surface-border mb-6 sm:mb-8">
+              <div className="flex items-center gap-3 mb-2 sm:mb-3">
                 <span className="w-6 h-px bg-accent" aria-hidden="true" />
-                <h4 className="text-accent font-semibold text-sm uppercase tracking-wider">
+                <h4 className="text-accent font-semibold text-xs sm:text-sm uppercase tracking-wider">
                   {about.approach.title}
                 </h4>
               </div>
-              <p className="text-secondary leading-relaxed">
+              <p className="text-secondary text-sm sm:text-base leading-relaxed">
                 {about.approach.description}
               </p>
             </div>
 
             {/* Values */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 min-[480px]:grid-cols-2 gap-3 sm:gap-4">
               {about.values.map((value, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "flex items-start gap-3 p-4 rounded-lg",
+                    "flex items-start gap-3 p-3 sm:p-4 rounded-lg",
                     "bg-surface-card/50 border border-surface-border/50",
                     "transition-all duration-300",
                     "hover:bg-surface-card hover:border-surface-border"
                   )}
                 >
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                    <Icon name={value.icon as IconName} size={18} />
+                  <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+                    <Icon name={value.icon as IconName} size={16} className="sm:hidden" />
+                    <Icon name={value.icon as IconName} size={18} className="hidden sm:block" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h5 className="text-primary font-medium text-sm mb-1">
                       {value.title}
                     </h5>

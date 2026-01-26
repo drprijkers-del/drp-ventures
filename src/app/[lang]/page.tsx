@@ -202,20 +202,20 @@ export default function LandingPage() {
       </header>
 
       {/* Main content */}
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="w-full max-w-5xl">
           {/* Headline */}
-          <div className="text-center mb-12 lg:mb-16">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-4 tracking-tight">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4 tracking-tight">
               {content.headline}
             </h1>
-            <p className="text-secondary text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-secondary text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
               {content.subline}
             </p>
           </div>
 
           {/* Persona cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {PERSONA_ORDER.map((persona) => (
               <PersonaCard
                 key={persona}
@@ -253,7 +253,7 @@ function PersonaCard({ lang, persona, content }: PersonaCardProps) {
     <Link
       href={`/${lang}/${persona}`}
       className={cn(
-        "group relative flex flex-col p-6 lg:p-8",
+        "group relative flex flex-col p-5 sm:p-6 lg:p-8",
         "bg-surface-card rounded-xl",
         "border border-surface-border",
         "transition-all duration-300 ease-out",

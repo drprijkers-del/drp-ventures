@@ -16,21 +16,22 @@ export function PersonaServices({ content }: PersonaServicesProps) {
     <Section id="services">
       <SectionHeader label={sectionLabels.services} />
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {services.map((service, index) => (
-          <Panel key={service.id} padding="md" className="group">
-            <div className="flex items-start gap-4">
+          <Panel key={service.id} padding="sm" className="group sm:p-6">
+            <div className="flex items-start gap-3 sm:gap-4">
               {/* Icon */}
-              <div className="shrink-0 w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent/20 transition-colors">
-                <Icon name={service.icon as IconName} size={24} />
+              <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent/20 transition-colors">
+                <Icon name={service.icon as IconName} size={20} className="sm:hidden" />
+                <Icon name={service.icon as IconName} size={24} className="hidden sm:block" />
               </div>
 
               {/* Content */}
-              <div className="flex-1">
-                <h3 className="text-lg font-semibold text-primary mb-2">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base sm:text-lg font-semibold text-primary mb-2">
                   {service.title}
                 </h3>
-                <p className="text-secondary text-sm leading-relaxed mb-4">
+                <p className="text-secondary text-sm leading-relaxed mb-3 sm:mb-4">
                   {service.description}
                 </p>
 
@@ -39,10 +40,10 @@ export function PersonaServices({ content }: PersonaServicesProps) {
                   {service.deliverables.map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-center gap-2 text-xs text-muted"
+                      className="flex items-start gap-2 text-xs text-muted"
                     >
-                      <span className="w-1 h-1 rounded-full bg-accent" />
-                      {item}
+                      <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>

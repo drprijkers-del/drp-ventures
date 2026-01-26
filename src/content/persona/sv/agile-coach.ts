@@ -16,7 +16,7 @@ export const content: PersonaContent = {
   sectionLabels: {
     about: "Om mig",
     services: "Tjänster",
-    assignments: "Uppdrag",
+    assignments: "Utvalda uppdrag",
     experience: "Karriär",
     process: "Arbetssätt",
     clients: "Kunder",

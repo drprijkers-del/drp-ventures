@@ -86,7 +86,7 @@ export function PersonaHero({ content, lang, persona }: PersonaHeroProps) {
 
           {/* Headline */}
           <h1 className="mb-2">
-            <span className="block text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
               {hero.headline.split(" ")[0]}{" "}
               <span className="text-accent">
                 {hero.headline.split(" ").slice(1).join(" ")}
@@ -95,35 +95,35 @@ export function PersonaHero({ content, lang, persona }: PersonaHeroProps) {
           </h1>
 
           {/* Subline */}
-          <p className="text-lg md:text-xl text-white/70 mb-6">{hero.subline}</p>
+          <p className="text-base sm:text-lg md:text-xl text-white/70 mb-4 sm:mb-6">{hero.subline}</p>
 
           {/* Description */}
-          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-lg">
+          <p className="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg">
             {hero.description}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 mb-12">
-            <Button href={hero.cta.primary.href} size="lg">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 mb-12">
+            <Button href={hero.cta.primary.href} size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
               {hero.cta.primary.label}
             </Button>
-            <Button href={hero.cta.secondary.href} variant="secondary" size="lg">
+            <Button href={hero.cta.secondary.href} variant="secondary" size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
               {hero.cta.secondary.label}
             </Button>
-            <Button href={cvUrl} variant="outline" size="lg">
+            <Button href={cvUrl} variant="outline" size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
               <Icon name="Download" className="w-4 h-4 mr-2" />
               Download CV
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 md:gap-8 pt-8 border-t border-white/10">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 pt-8 border-t border-white/10">
             {displayStats.map((stat, index) => (
               <div key={index}>
-                <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-accent mb-1">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-accent mb-1">
                   {stat.value}
                 </div>
-                <div className="text-xs md:text-sm text-white/50 leading-tight">
+                <div className="text-[10px] sm:text-xs md:text-sm text-white/50 leading-tight">
                   {stat.label}
                 </div>
               </div>
