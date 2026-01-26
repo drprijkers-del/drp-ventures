@@ -35,7 +35,7 @@ export const content: PersonaContent = {
     },
     stats: [
       { value: "20+", label: "Jaar ervaring" },
-      { value: "SAFe", label: "SPC Certified" },
+      { value: "SAFe & LeSS", label: "Certified" },
       { value: "Enterprise", label: "Transformaties" },
     ],
   },
@@ -92,7 +92,7 @@ export const content: PersonaContent = {
       id: "safe-implementation",
       title: "SAFe Implementatie",
       description:
-        "Praktische implementatie van het Scaled Agile Framework. Geen copy-paste, maar maatwerk voor de organisatie.",
+        "Praktische implementatie van het Scaled Agile Framework — of LeSS waar dat beter past. Geen copy-paste, maar maatwerk voor de organisatie.",
       icon: "Layers",
       deliverables: [
         "ART launch & support",

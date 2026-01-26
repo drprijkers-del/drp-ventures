@@ -35,7 +35,7 @@ export const content: PersonaContent = {
     },
     stats: [
       { value: "20+", label: "Års erfarenhet" },
-      { value: "SAFe", label: "SPC Certifierad" },
+      { value: "SAFe & LeSS", label: "Certifierad" },
       { value: "Enterprise", label: "Transformationer" },
     ],
   },
@@ -92,7 +92,7 @@ export const content: PersonaContent = {
       id: "safe-implementation",
       title: "SAFe-implementering",
       description:
-        "Praktisk implementering av Scaled Agile Framework. Ingen copy-paste, utan skräddarsytt för organisationen.",
+        "Praktisk implementering av Scaled Agile Framework — eller LeSS där det passar bättre. Ingen copy-paste, utan skräddarsytt för organisationen.",
       icon: "Layers",
       deliverables: [
         "ART-lansering & support",
