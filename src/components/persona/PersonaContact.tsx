@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Section, SectionHeader, Panel } from "@/components/ui/Section";
 import { PersonaContent, Language } from "@/content/persona";
-import { Icon } from "@/components/ui/Icons";
+import { Icon, IconName } from "@/components/ui/Icons";
 
 // ============================================
 // TRANSLATIONS
@@ -15,14 +15,38 @@ const LABELS: Record<Language, { phone: string; email: string; linkedin: string;
   sv: { phone: "Telefon", email: "E-post", linkedin: "LinkedIn", location: "Plats" },
 };
 
-const REVEAL_TEXT: Record<Language, { phone: string; email: string }> = {
-  nl: { phone: "Toon nummer", email: "Toon adres" },
-  en: { phone: "Show number", email: "Show address" },
-  sv: { phone: "Visa nummer", email: "Visa adress" },
+const REVEAL_TEXT: Record<Language, string> = {
+  nl: "Toon",
+  en: "Show",
+  sv: "Visa",
 };
 
 // ============================================
-// COMPONENT
+// CONTACT ITEM COMPONENT
+// ============================================
+
+interface ContactItemProps {
+  icon: IconName;
+  label: string;
+  children: React.ReactNode;
+}
+
+function ContactItem({ icon, label, children }: ContactItemProps) {
+  return (
+    <li className="flex items-center gap-4">
+      <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+        <Icon name={icon} size={22} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs text-muted uppercase tracking-wider mb-1">{label}</p>
+        <div className="text-primary font-medium">{children}</div>
+      </div>
+    </li>
+  );
+}
+
+// ============================================
+// MAIN COMPONENT
 // ============================================
 
 interface PersonaContactProps {
@@ -34,6 +58,7 @@ export function PersonaContact({ content }: PersonaContactProps) {
   const [phoneRevealed, setPhoneRevealed] = useState(false);
   const [emailRevealed, setEmailRevealed] = useState(false);
   const labels = LABELS[language];
+  const revealText = REVEAL_TEXT[language];
 
   // Mask phone: "+31 6 1234 5678" → "+31 6 •••• ••78"
   const maskPhone = (phone: string) => {
@@ -62,103 +87,67 @@ export function PersonaContact({ content }: PersonaContactProps) {
         <Panel padding="lg">
           <ul className="space-y-6">
             {/* Phone */}
-            <li className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-                <Icon name="Phone" size={22} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-muted uppercase tracking-wider mb-1">
-                  {labels.phone}
-                </p>
-                {phoneRevealed ? (
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="text-primary hover:text-accent transition-colors font-medium"
-                  >
-                    {contact.phone}
-                  </a>
-                ) : (
-                  <div className="flex items-center gap-3">
-                    <span className="text-secondary font-medium">
-                      {maskPhone(contact.phone)}
-                    </span>
-                    <button
-                      onClick={() => setPhoneRevealed(true)}
-                      className="text-xs text-accent hover:text-accent-light px-2 py-1 bg-accent/10 hover:bg-accent/20 rounded transition-colors"
-                    >
-                      {REVEAL_TEXT[language].phone}
-                    </button>
-                  </div>
-                )}
-              </div>
-            </li>
+            <ContactItem icon="Phone" label={labels.phone}>
+              {phoneRevealed ? (
+                <a
+                  href={`tel:${contact.phone}`}
+                  className="hover:text-accent transition-colors"
+                >
+                  {contact.phone}
+                </a>
+              ) : (
+                <button
+                  onClick={() => setPhoneRevealed(true)}
+                  className="flex items-center gap-3 group"
+                >
+                  <span className="text-secondary">{maskPhone(contact.phone)}</span>
+                  <span className="text-xs text-accent group-hover:text-accent-light px-2 py-0.5 bg-accent/10 group-hover:bg-accent/20 rounded transition-colors">
+                    {revealText}
+                  </span>
+                </button>
+              )}
+            </ContactItem>
 
             {/* Email */}
-            <li className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-                <Icon name="Mail" size={22} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-muted uppercase tracking-wider mb-1">
-                  {labels.email}
-                </p>
-                {emailRevealed ? (
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="text-primary hover:text-accent transition-colors font-medium"
-                  >
-                    {contact.email}
-                  </a>
-                ) : (
-                  <div className="flex items-center gap-3">
-                    <span className="text-secondary font-medium">
-                      {maskEmail(contact.email)}
-                    </span>
-                    <button
-                      onClick={() => setEmailRevealed(true)}
-                      className="text-xs text-accent hover:text-accent-light px-2 py-1 bg-accent/10 hover:bg-accent/20 rounded transition-colors"
-                    >
-                      {REVEAL_TEXT[language].email}
-                    </button>
-                  </div>
-                )}
-              </div>
-            </li>
+            <ContactItem icon="Mail" label={labels.email}>
+              {emailRevealed ? (
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="hover:text-accent transition-colors"
+                >
+                  {contact.email}
+                </a>
+              ) : (
+                <button
+                  onClick={() => setEmailRevealed(true)}
+                  className="flex items-center gap-3 group"
+                >
+                  <span className="text-secondary">{maskEmail(contact.email)}</span>
+                  <span className="text-xs text-accent group-hover:text-accent-light px-2 py-0.5 bg-accent/10 group-hover:bg-accent/20 rounded transition-colors">
+                    {revealText}
+                  </span>
+                </button>
+              )}
+            </ContactItem>
 
             {/* LinkedIn */}
             {contact.linkedin && (
-              <li className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-                  <Icon name="LinkedIn" size={22} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-muted uppercase tracking-wider mb-1">
-                    {labels.linkedin}
-                  </p>
-                  <a
-                    href={contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-accent transition-colors font-medium"
-                  >
-                    {contact.name}
-                  </a>
-                </div>
-              </li>
+              <ContactItem icon="LinkedIn" label={labels.linkedin}>
+                <a
+                  href={contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-accent transition-colors"
+                >
+                  {contact.name}
+                </a>
+              </ContactItem>
             )}
 
             {/* Location */}
-            <li className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
-                <Icon name="MapPin" size={22} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-muted uppercase tracking-wider mb-1">
-                  {labels.location}
-                </p>
-                <span className="text-primary font-medium">{contact.location}</span>
-              </div>
-            </li>
+            <ContactItem icon="MapPin" label={labels.location}>
+              {contact.location}
+            </ContactItem>
           </ul>
         </Panel>
       </div>
