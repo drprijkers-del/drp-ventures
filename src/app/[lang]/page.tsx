@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { isValidLanguage, Language, Persona, LANGUAGES } from "@/content/persona";
 import { useState } from "react";
+import { IntroHero } from "@/components/landing/IntroHero";
 
 // ============================================
 // CONTENT PER LANGUAGE
@@ -173,7 +174,7 @@ export default function LandingPage() {
   const content = LANDING_CONTENT[lang];
 
   return (
-    <main className="min-h-screen bg-surface-body flex flex-col">
+    <main className="min-h-screen bg-surface-body">
       {/* Header with language selector */}
       <header className="w-full py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -201,15 +202,18 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Main content */}
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="w-full max-w-5xl">
-          {/* Headline */}
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-3 sm:mb-4 tracking-tight">
+      {/* Intro Hero */}
+      <IntroHero lang={lang} />
+
+      {/* Persona Selection */}
+      <div className="px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+        <div className="w-full max-w-5xl mx-auto">
+          {/* Section headline */}
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-primary mb-2">
               {content.headline}
-            </h1>
-            <p className="text-secondary text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+            </h2>
+            <p className="text-secondary text-sm sm:text-base max-w-xl mx-auto">
               {content.subline}
             </p>
           </div>
