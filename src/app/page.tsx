@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
 export default function Home() {
-  // Redirect to default persona page (Dutch, Agile Coach)
-  redirect("/nl/agile-coach");
+  // Redirect to Dutch landing page (persona selection)
+  redirect("/nl");
 }
