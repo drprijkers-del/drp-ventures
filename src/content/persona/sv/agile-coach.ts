@@ -44,7 +44,7 @@ export const content: PersonaContent = {
     title: "Om mig",
     subtitle: "Dennis Rijkers — Enterprise Agile Coach",
     intro:
-      "Med över tjugo års erfarenhet av Agile och förändringsledning hjälper jag organisationer att gå från att 'göra Agile' till att 'vara Agile'. Mitt fokus ligger på hållbar förändring som består när coachen lämnar.",
+      "Med över femton års erfarenhet av Agile och förändringsledning hjälper jag organisationer att gå från att 'göra Agile' till att 'vara Agile'. Mitt fokus ligger på hållbar förändring som består när coachen lämnar.",
     approach: {
       title: "Mitt arbetssätt",
       description:
@@ -233,6 +233,7 @@ export const content: PersonaContent = {
   ],
 
   clients: [
+    "Jumbo",
     "ING",
     "Rabobank",
     "ABN AMRO",
