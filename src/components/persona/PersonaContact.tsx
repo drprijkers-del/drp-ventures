@@ -9,16 +9,16 @@ import { Icon } from "@/components/ui/Icons";
 // TRANSLATIONS
 // ============================================
 
-const LABELS: Record<Language, { phone: string; linkedin: string; location: string }> = {
-  nl: { phone: "Telefoon", linkedin: "LinkedIn", location: "Locatie" },
-  en: { phone: "Phone", linkedin: "LinkedIn", location: "Location" },
-  sv: { phone: "Telefon", linkedin: "LinkedIn", location: "Plats" },
+const LABELS: Record<Language, { phone: string; email: string; linkedin: string; location: string }> = {
+  nl: { phone: "Telefoon", email: "E-mail", linkedin: "LinkedIn", location: "Locatie" },
+  en: { phone: "Phone", email: "Email", linkedin: "LinkedIn", location: "Location" },
+  sv: { phone: "Telefon", email: "E-post", linkedin: "LinkedIn", location: "Plats" },
 };
 
-const REVEAL_TEXT: Record<Language, string> = {
-  nl: "Toon nummer",
-  en: "Show number",
-  sv: "Visa nummer",
+const REVEAL_TEXT: Record<Language, { phone: string; email: string }> = {
+  nl: { phone: "Toon nummer", email: "Toon adres" },
+  en: { phone: "Show number", email: "Show address" },
+  sv: { phone: "Visa nummer", email: "Visa adress" },
 };
 
 // ============================================
@@ -32,12 +32,22 @@ interface PersonaContactProps {
 export function PersonaContact({ content }: PersonaContactProps) {
   const { contactSection, contact, sectionLabels, language } = content;
   const [phoneRevealed, setPhoneRevealed] = useState(false);
+  const [emailRevealed, setEmailRevealed] = useState(false);
   const labels = LABELS[language];
 
   // Mask phone: "+31 6 1234 5678" → "+31 6 •••• ••78"
   const maskPhone = (phone: string) => {
     if (phone.length < 8) return "••••••••••";
     return phone.slice(0, 6) + "•••• ••" + phone.slice(-2);
+  };
+
+  // Mask email: "info@drpventures.nl" → "in••@••••ventures.nl"
+  const maskEmail = (email: string) => {
+    const [local, domain] = email.split("@");
+    if (!domain) return "••••@••••.••";
+    const domainParts = domain.split(".");
+    const ext = domainParts.pop();
+    return local.slice(0, 2) + "••@••••" + domainParts.join(".").slice(-8) + "." + ext;
   };
 
   return (
@@ -76,7 +86,39 @@ export function PersonaContact({ content }: PersonaContactProps) {
                       onClick={() => setPhoneRevealed(true)}
                       className="text-xs text-accent hover:text-accent-light px-2 py-1 bg-accent/10 hover:bg-accent/20 rounded transition-colors"
                     >
-                      {REVEAL_TEXT[language]}
+                      {REVEAL_TEXT[language].phone}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </li>
+
+            {/* Email */}
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                <Icon name="Mail" size={22} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted uppercase tracking-wider mb-1">
+                  {labels.email}
+                </p>
+                {emailRevealed ? (
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    {contact.email}
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <span className="text-secondary font-medium">
+                      {maskEmail(contact.email)}
+                    </span>
+                    <button
+                      onClick={() => setEmailRevealed(true)}
+                      className="text-xs text-accent hover:text-accent-light px-2 py-1 bg-accent/10 hover:bg-accent/20 rounded transition-colors"
+                    >
+                      {REVEAL_TEXT[language].email}
                     </button>
                   </div>
                 )}
