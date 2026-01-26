@@ -6,7 +6,7 @@ import {
   Image,
   StyleSheet,
 } from "@react-pdf/renderer";
-import { PersonaContent } from "@/content/persona";
+import { PersonaContent, Language, Persona, PERSONA_LABELS } from "@/content/persona";
 
 // ============================================
 // COLORS
@@ -20,6 +20,29 @@ const colors = {
   background: "#0f0f0f",
   card: "#1a1a1a",
   border: "#2a2a2a",
+  watermark: "rgba(255, 255, 255, 0.06)",
+};
+
+// ============================================
+// TRANSLATIONS
+// ============================================
+
+const WATERMARK_TEXT: Record<Language, string> = {
+  nl: "Persoonlijk CV — niet bedoeld voor doorplaatsing zonder toestemming",
+  en: "Personal CV — not intended for redistribution without permission",
+  sv: "Personligt CV — ej avsett för vidarebefordran utan tillstånd",
+};
+
+const DISCLAIMER_TEXT: Record<Language, string> = {
+  nl: "Dit CV is persoonlijk verstrekt voor beoordeling in het kader van een mogelijke samenwerking. Doorplaatsen of delen met derden is niet toegestaan zonder voorafgaande toestemming. Voor een deelbare versie kunt u contact opnemen via info@drpventures.nl.",
+  en: "This CV has been personally provided for assessment in the context of a potential collaboration. Redistribution or sharing with third parties is not permitted without prior consent. For a shareable version, please contact info@drpventures.nl.",
+  sv: "Detta CV har personligen tillhandahållits för bedömning i samband med ett potentiellt samarbete. Vidarebefordran eller delning med tredje part är inte tillåten utan föregående samtycke. För en delbar version, kontakta info@drpventures.nl.",
+};
+
+const GENERATED_TEXT: Record<Language, string> = {
+  nl: "Gegenereerd via drpventures.nl",
+  en: "Generated via drpventures.nl",
+  sv: "Genererat via drpventures.nl",
 };
 
 // ============================================
@@ -30,10 +53,43 @@ const styles = StyleSheet.create({
   page: {
     backgroundColor: colors.background,
     padding: 35,
-    paddingBottom: 60,
+    paddingBottom: 70,
     fontFamily: "Helvetica",
     color: colors.secondary,
     fontSize: 9,
+    position: "relative",
+  },
+
+  // Watermark - subtle background text
+  watermark: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%) rotate(-30deg)",
+    fontSize: 11,
+    color: colors.watermark,
+    textAlign: "center",
+    width: 400,
+    letterSpacing: 1,
+  },
+
+  // Disclaimer box - page 1 only
+  disclaimer: {
+    position: "absolute",
+    bottom: 70,
+    left: 35,
+    right: 35,
+    padding: 8,
+    backgroundColor: colors.card,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  disclaimerText: {
+    fontSize: 6,
+    color: colors.muted,
+    lineHeight: 1.5,
+    textAlign: "center",
   },
 
   // Header with photo
@@ -224,23 +280,115 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  // Footer
+  // Footer - enhanced
   footer: {
     position: "absolute",
-    bottom: 25,
+    bottom: 20,
     left: 35,
     right: 35,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     paddingTop: 8,
     borderTopWidth: 1,
     borderTopColor: colors.border,
   },
+  footerLeft: {
+    flexDirection: "column",
+  },
+  footerCenter: {
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  footerRight: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
   footerText: {
-    fontSize: 7,
+    fontSize: 6,
     color: colors.muted,
   },
+  footerTextSmall: {
+    fontSize: 5,
+    color: colors.muted,
+    opacity: 0.7,
+  },
 });
+
+// ============================================
+// REUSABLE COMPONENTS
+// ============================================
+
+/**
+ * Watermark - Subtle background text on every page
+ * Renders at ~6% opacity, rotated -30deg
+ */
+interface WatermarkProps {
+  lang: Language;
+}
+
+function Watermark({ lang }: WatermarkProps) {
+  return (
+    <Text style={styles.watermark} fixed>
+      {WATERMARK_TEXT[lang]}
+    </Text>
+  );
+}
+
+/**
+ * Disclaimer - Legal notice at bottom of page 1
+ * Explains CV is for personal review only
+ */
+interface DisclaimerProps {
+  lang: Language;
+}
+
+function Disclaimer({ lang }: DisclaimerProps) {
+  return (
+    <View style={styles.disclaimer} wrap={false}>
+      <Text style={styles.disclaimerText}>{DISCLAIMER_TEXT[lang]}</Text>
+    </View>
+  );
+}
+
+/**
+ * Footer - Appears on every page
+ * Contains: company name, persona/lang, generation info
+ */
+interface FooterProps {
+  lang: Language;
+  persona: Persona;
+  contactName: string;
+}
+
+function Footer({ lang, persona, contactName }: FooterProps) {
+  const personaLabel = PERSONA_LABELS[lang][persona];
+  const now = new Date();
+  const monthNames: Record<Language, string[]> = {
+    nl: ["januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december"],
+    en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    sv: ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"],
+  };
+  const month = monthNames[lang][now.getMonth()];
+  const year = now.getFullYear();
+
+  return (
+    <View style={styles.footer} fixed>
+      <View style={styles.footerLeft}>
+        <Text style={styles.footerText}>DRP Ventures BV · {contactName}</Text>
+        <Text style={styles.footerTextSmall}>{personaLabel} · {lang.toUpperCase()}</Text>
+      </View>
+      <View style={styles.footerCenter}>
+        <Text style={styles.footerTextSmall}>drpventures.nl</Text>
+      </View>
+      <View style={styles.footerRight}>
+        <Text style={styles.footerTextSmall}>
+          {GENERATED_TEXT[lang]} — {month} {year}
+        </Text>
+      </View>
+    </View>
+  );
+}
 
 // ============================================
 // CV DOCUMENT COMPONENT
@@ -252,11 +400,14 @@ interface CVDocumentProps {
 }
 
 export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
-  const { contact, hero, about, services, assignments, experience, clients } = content;
+  const { contact, hero, about, services, assignments, experience, clients, language, persona } = content;
 
   return (
     <Document>
       <Page size="A4" style={styles.page} wrap>
+        {/* Watermark - renders on every page at low opacity */}
+        <Watermark lang={language} />
+
         {/* Header with Photo */}
         <View style={styles.header} wrap={false}>
           {photoBase64 && <Image src={photoBase64} style={styles.photo} />}
@@ -371,12 +522,11 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
           </View>
         </View>
 
-        {/* Footer */}
-        <View style={styles.footer} fixed>
-          <Text style={styles.footerText}>DRP Ventures BV</Text>
-          <Text style={styles.footerText}>{contact.location}</Text>
-          <Text style={styles.footerText}>drpventures.nl</Text>
-        </View>
+        {/* Disclaimer - page 1 only, above footer */}
+        <Disclaimer lang={language} />
+
+        {/* Footer - every page */}
+        <Footer lang={language} persona={persona} contactName={contact.name} />
       </Page>
     </Document>
   );
