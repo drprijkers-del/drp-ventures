@@ -182,8 +182,22 @@ export default function LandingPage() {
             DRP<span className="text-accent">.</span>
           </span>
 
-          {/* Language selector */}
-          <LanguageSelector currentLang={lang} label={content.languageLabel} />
+          {/* Right side: Language selector + Login */}
+          <div className="flex items-center gap-3">
+            <LanguageSelector currentLang={lang} label={content.languageLabel} />
+
+            {/* Admin login link */}
+            <Link
+              href="/login"
+              className="p-2 text-muted hover:text-secondary transition-colors rounded-lg"
+              aria-label="Admin login"
+              title="Admin"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </header>
 
