@@ -18,7 +18,7 @@ export function About() {
   return (
     <Section id="about">
       <SectionHeader
-        label="Over Ons"
+        label="Over mij"
         title={about.subtitle}
       />
 
@@ -44,8 +44,8 @@ export function About() {
                 {/* Image or placeholder */}
                 {!imageError ? (
                   <Image
-                    src="/about.jpg"
-                    alt="Over DRP Ventures"
+                    src="/images/profiel-foto-2.jpg"
+                    alt="Dennis Rijkers - DRP Ventures"
                     fill
                     className="object-cover"
                     onError={() => setImageError(true)}
@@ -89,16 +89,16 @@ export function About() {
               {about.intro}
             </p>
 
-            {/* Mission block */}
+            {/* Approach block */}
             <div className="p-6 bg-surface-elevated/50 rounded-xl border border-surface-border mb-8">
               <div className="flex items-center gap-3 mb-3">
                 <span className="w-6 h-px bg-accent" aria-hidden="true" />
                 <h4 className="text-accent font-semibold text-sm uppercase tracking-wider">
-                  {about.mission.title}
+                  {about.approach.title}
                 </h4>
               </div>
               <p className="text-secondary leading-relaxed">
-                {about.mission.description}
+                {about.approach.description}
               </p>
             </div>
 

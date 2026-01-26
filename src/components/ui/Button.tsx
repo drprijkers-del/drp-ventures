@@ -14,6 +14,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   href?: string;
+  target?: string;
   isLoading?: boolean;
   children: ReactNode;
 }
@@ -52,6 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "primary",
       size = "md",
       href,
+      target,
       isLoading = false,
       className,
       disabled,
@@ -76,6 +78,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <a
           href={href}
+          target={target}
+          rel={target === "_blank" ? "noopener noreferrer" : undefined}
           className={baseStyles}
           aria-disabled={disabled || isLoading}
         >

@@ -1,3 +1,4 @@
+import { Nav } from "@/components/ui/Nav";
 import {
   Hero,
   About,
@@ -13,15 +14,18 @@ import {
 export default function Home() {
   return (
     <>
-      <Hero />
-      <About />
-      <Services />
-      <Assignments />
-      <Experience />
-      <Process />
-      <Clients />
-      <Contact />
-      <Footer />
+      <Nav />
+      <main className="pt-20">
+        <Hero />
+        <About />
+        <Services />
+        <Assignments />
+        <Experience />
+        <Process />
+        <Clients />
+        <Contact />
+        <Footer />
+      </main>
     </>
   );
 }

@@ -175,7 +175,7 @@ export function Contact() {
                   Bericht verzonden!
                 </h3>
                 <p className="text-secondary max-w-md mx-auto">
-                  Bedankt voor uw bericht. Wij nemen binnen 24 uur contact met u op.
+                  Bedankt voor uw bericht. Ik neem binnen 24 uur contact met u op.
                 </p>
               </div>
             ) : (

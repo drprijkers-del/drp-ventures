@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { SectionHeader, Panel } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { services } from "@/content/site";
+import { services, servicesSection } from "@/content/site";
 import { Icon, IconName, CheckCircleIcon } from "@/components/ui/Icons";
 
 // Service card accent colors for variety
@@ -42,9 +42,9 @@ export function Services() {
       <Container>
         <Panel>
           <SectionHeader
-            label="Diensten"
-            title="Wat wij bieden"
-            description="Van strategische consultancy tot hands-on development. Wij ondersteunen organisaties in elke fase van hun digitale journey."
+            label={servicesSection.label}
+            title={servicesSection.title}
+            description={servicesSection.description}
           />
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -70,7 +70,7 @@ interface ServiceCardProps {
     title: string;
     description: string;
     icon: string;
-    features: string[];
+    deliverables: string[];
   };
   colorIndex: number;
   animate: boolean;
@@ -137,9 +137,9 @@ function ServiceCard({ service, colorIndex, animate, delay }: ServiceCardProps) 
           {service.description}
         </p>
 
-        {/* Features list */}
+        {/* Deliverables list */}
         <ul className="space-y-2.5">
-          {service.features.map((feature, index) => (
+          {service.deliverables.map((item, index) => (
             <li
               key={index}
               className="flex items-center gap-3 text-sm text-tertiary group-hover:text-secondary transition-colors duration-300"
@@ -148,7 +148,7 @@ function ServiceCard({ service, colorIndex, animate, delay }: ServiceCardProps) 
                 size={15}
                 className={cn("shrink-0 transition-colors duration-300", colors.text)}
               />
-              {feature}
+              {item}
             </li>
           ))}
         </ul>

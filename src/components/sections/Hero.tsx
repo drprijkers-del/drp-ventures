@@ -1,123 +1,145 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { hero, siteConfig } from "@/content/site";
+import { hero } from "@/content/site";
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Take first 3 stats for cleaner layout
   const displayStats = hero.stats.slice(0, 3);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[80vh] lg:min-h-[85vh] flex items-center overflow-hidden"
     >
-      {/* Full-bleed background image */}
-      <div className="absolute inset-0">
-        {/* Background image using img element for better positioning control */}
-        <img
+      {/* ============================================ */}
+      {/* LAYER 1: Dark background (full)             */}
+      {/* ============================================ */}
+      <div className="absolute inset-0 bg-bg" />
+
+      {/* ============================================ */}
+      {/* LAYER 2: Photo - right side only            */}
+      {/* Desktop: right 55%, Mobile: hidden          */}
+      {/* ============================================ */}
+      <div className="absolute inset-y-0 right-0 w-[50%] lg:w-[55%] hidden md:block">
+        <Image
           src="/images/hero.jpg"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center md:object-[80%_center]"
+          fill
+          priority
+          className="object-cover object-[30%_center]"
+          sizes="55vw"
         />
-
-        {/* Fallback color in case image doesn't load */}
-        <div className="absolute inset-0 -z-10 bg-panel" />
-
-        {/* Dark overlays for text readability */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-linear-to-t from-bg via-transparent to-transparent" />
-
-        {/* Subtle vignette */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)]" />
+        {/* Gradient fade from left edge into photo */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "linear-gradient(to right, #0a0a0a 0%, rgba(10,10,10,0.7) 15%, rgba(10,10,10,0.3) 30%, transparent 50%)",
+          }}
+        />
+        {/* Bottom fade on photo */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-40"
+          style={{
+            background: "linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.8) 40%, transparent 100%)",
+          }}
+        />
       </div>
 
+      {/* Mobile: full overlay, no photo visible */}
+      <div className="absolute inset-0 bg-bg/95 md:hidden" />
+
+      {/* ============================================ */}
+      {/* LAYER 3: Bottom transition to body color    */}
+      {/* Fades from transparent to #0a0a0a (bg)      */}
+      {/* ============================================ */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 md:h-32 z-5"
+        style={{
+          background: "linear-gradient(to bottom, transparent 0%, #0a0a0a 100%)",
+        }}
+      />
+
+      {/* ============================================ */}
+      {/* LAYER 4: Subtle vignette for premium feel   */}
+      {/* ============================================ */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at 70% 50%, transparent 40%, rgba(0,0,0,0.4) 100%)",
+        }}
+      />
+
+      {/* ============================================ */}
+      {/* CONTENT: Always on left, above all overlays */}
+      {/* ============================================ */}
       <Container className="relative z-10">
-        <div className="max-w-3xl py-20 lg:py-0">
-          {/* Content */}
-          <div
-            className={cn(
-              "transition-all duration-700",
-              mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}
-          >
-            {/* Small label */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-10 h-px bg-accent" aria-hidden="true" />
-              <span className="text-label uppercase text-text-secondary">
-                {siteConfig.tagline.split("•")[0].trim()}
+        <div className="max-w-xl lg:max-w-2xl py-16 md:py-20 lg:py-0">
+          {/* Label */}
+          <div className="flex items-center gap-4 mb-6">
+            <span className="w-10 h-px bg-accent" aria-hidden="true" />
+            <span className="text-xs uppercase tracking-widest text-white/60">
+              {hero.label}
+            </span>
+          </div>
+
+          {/* Main headline: DRP Ventures */}
+          <h1 className="mb-2">
+            <span className="block text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+              {hero.headline.split(" ")[0]}{" "}
+              <span className="text-accent">
+                {hero.headline.split(" ").slice(1).join(" ")}
               </span>
-            </div>
+            </span>
+          </h1>
 
-            {/* Main headline */}
-            <h1 className="mb-6">
-              <span className="block text-display-lg md:text-display-xl text-text-primary">
-                {siteConfig.name.split(" ")[0]}{" "}
-                <span className="text-accent">
-                  {siteConfig.name.split(" ").slice(1).join(" ")}
-                </span>
-              </span>
-            </h1>
+          {/* Subline: Door Dennis Rijkers */}
+          <p className="text-lg md:text-xl text-white/70 mb-6">
+            {hero.subline}
+          </p>
 
-            {/* Subline */}
-            <p className="text-text-secondary text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
-              {hero.subline}
-            </p>
+          {/* Description */}
+          <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-lg">
+            {hero.description}
+          </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-16">
-              <Button href={hero.cta.primary.href} size="lg">
-                {hero.cta.primary.label}
-              </Button>
-              <Button href={hero.cta.secondary.href} variant="secondary" size="lg">
-                {hero.cta.secondary.label}
-              </Button>
-            </div>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mb-12">
+            <Button href={hero.cta.primary.href} size="lg">
+              {hero.cta.primary.label}
+            </Button>
+            <Button href={hero.cta.secondary.href} variant="secondary" size="lg">
+              {hero.cta.secondary.label}
+            </Button>
+          </div>
 
-            {/* Stats - 3 column */}
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
-              {displayStats.map((stat, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "transition-all duration-500",
-                    mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  )}
-                  style={{ transitionDelay: `${400 + index * 100}ms` }}
-                >
-                  <div className="text-3xl md:text-4xl font-bold text-accent mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-text-muted leading-tight">
-                    {stat.label}
-                  </div>
+          {/* Stats row */}
+          <div className="grid grid-cols-3 gap-6 md:gap-8 pt-8 border-t border-white/10">
+            {displayStats.map((stat, index) => (
+              <div key={index}>
+                <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-accent mb-1">
+                  {stat.value}
                 </div>
-              ))}
-            </div>
+                <div className="text-xs md:text-sm text-white/50 leading-tight">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
 
-      {/* Scroll indicator */}
-      <div
-        className={cn(
-          "absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2",
-          "transition-all duration-700 delay-500",
-          mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        )}
-      >
-        <span className="text-text-muted text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <div className="w-px h-8 bg-linear-to-b from-border to-transparent" />
+      {/* ============================================ */}
+      {/* Scroll indicator (desktop only)             */}
+      {/* ============================================ */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 z-10">
+        <span className="text-white/40 text-[10px] uppercase tracking-[0.3em]">
+          Scroll
+        </span>
+        <div className="w-px h-8 bg-linear-to-b from-white/20 to-transparent" />
       </div>
     </section>
   );

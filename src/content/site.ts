@@ -14,6 +14,8 @@ export interface NavItem {
 
 export interface SiteConfig {
   name: string;
+  brandName: string;
+  founder: string;
   tagline: string;
   description: string;
   url: string;
@@ -35,8 +37,10 @@ export interface SiteConfig {
 }
 
 export interface HeroContent {
+  label: string;
   headline: string;
   subline: string;
+  description: string;
   cta: {
     primary: { label: string; href: string };
     secondary: { label: string; href: string };
@@ -48,7 +52,11 @@ export interface AboutContent {
   title: string;
   subtitle: string;
   intro: string;
-  mission: {
+  background: {
+    title: string;
+    description: string;
+  };
+  approach: {
     title: string;
     description: string;
   };
@@ -64,35 +72,23 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
-  features: string[];
+  deliverables: string[];
 }
 
-export interface Skill {
-  skill: string;
-  level: number;
+export interface ExpertiseBlock {
+  id: string;
+  title: string;
+  description: string;
+  areas: string[];
+  icon: string;
 }
 
 export interface ExperienceItem {
-  year: string;
-  title: string;
-  company: string;
-  description: string;
-  type: "venture" | "employment";
-}
-
-export interface PortfolioItem {
   id: string;
   title: string;
-  category: string;
+  organization: string;
   description: string;
-  image: string;
-  tags: string[];
-  stats?: Record<string, string>;
-}
-
-export interface PortfolioCategory {
-  id: string;
-  label: string;
+  type: "current" | "venture" | "foundation";
 }
 
 export interface Assignment {
@@ -110,19 +106,8 @@ export interface ProcessStep {
   icon: string;
 }
 
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  image: string;
-}
-
 export interface Client {
   name: string;
-  logo: string;
 }
 
 export interface ContactContent {
@@ -143,6 +128,7 @@ export interface ContactContent {
 export interface FooterContent {
   tagline: string;
   copyright: string;
+  legal: string;
   links: Array<{ label: string; href: string }>;
 }
 
@@ -151,12 +137,14 @@ export interface FooterContent {
 // ============================================
 
 export const siteConfig: SiteConfig = {
-  name: "Dennis Rijkers",
+  name: "DRP Ventures",
+  brandName: "DRP Ventures BV",
+  founder: "Dennis Rijkers",
   tagline: "Transformatie & Leiderschap",
   description:
-    "Senior transformation consultant gespecialiseerd in organisatieverandering, leiderschap en Agile op schaal. Begeleiding van complexe transities voor enterprise organisaties.",
+    "DRP Ventures ondersteunt organisaties bij complexe verandertrajecten. Van teamcoaching tot organisatieverandering, van Agile implementatie tot leiderschapsontwikkeling.",
   url: "https://drpventures.nl",
-  email: "info@pinkpollos.com",
+  email: "info@drpventures.nl",
   phone: "+31 6 28 975 904",
   kvk: "",
   btw: "",
@@ -179,10 +167,10 @@ export const siteConfig: SiteConfig = {
 
 export const navigation: NavItem[] = [
   { label: "Home", href: "#hero" },
-  { label: "Over", href: "#about" },
-  { label: "Diensten", href: "#services" },
+  { label: "Over mij", href: "#about" },
+  { label: "Inzetgebieden", href: "#services" },
   { label: "Opdrachten", href: "#assignments" },
-  { label: "Ervaring", href: "#experience" },
+  { label: "Loopbaan", href: "#experience" },
   { label: "Werkwijze", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
@@ -192,17 +180,19 @@ export const navigation: NavItem[] = [
 // ============================================
 
 export const hero: HeroContent = {
-  headline: "Transformatie met richting",
-  subline:
-    "Ik begeleid organisaties door complexe verandertrajecten. Van strategie tot uitvoering, van boardroom tot werkvloer.",
+  label: "Transformatie & Leiderschap",
+  headline: "DRP Ventures",
+  subline: "Door Dennis Rijkers",
+  description:
+    "Ik begeleid organisaties door complexe verandertrajecten. Hands-on, pragmatisch en gericht op duurzaam resultaat — van strategie tot uitvoering.",
   cta: {
     primary: { label: "Neem contact op", href: "#contact" },
-    secondary: { label: "Meer over mij", href: "#about" },
+    secondary: { label: "Bekijk opdrachten", href: "#assignments" },
   },
   stats: [
     { value: "20+", label: "Jaar ervaring" },
-    { value: "Enterprise", label: "Financieel, energie, overheid" },
-    { value: "Agile", label: "Leiderschap op schaal" },
+    { value: "Enterprise", label: "Finance, energie, overheid" },
+    { value: "Hands-on", label: "Van boardroom tot team" },
   ],
 };
 
@@ -211,191 +201,199 @@ export const hero: HeroContent = {
 // ============================================
 
 export const about: AboutContent = {
-  title: "Dennis Rijkers",
-  subtitle: "Senior Transformation Consultant",
+  title: "Over mij",
+  subtitle: "Dennis Rijkers — Transformatie Consultant",
   intro:
-    "Met een achtergrond in verandermanagement en ruim twee decennia ervaring als consultant en ondernemer, begeleid ik organisaties bij fundamentele transformaties. Mijn werk bevindt zich op het snijvlak van business en IT — waar strategische ambities vertaald worden naar werkende praktijk.",
-  mission: {
+    "Met ruim twintig jaar ervaring in verandermanagement en organisatieontwikkeling help ik organisaties bij het realiseren van complexe transities. Mijn werk bevindt zich op het snijvlak van strategie en uitvoering — waar plannen werkelijkheid worden.",
+  background: {
+    title: "Achtergrond",
+    description:
+      "Mijn fundament ligt in verandermanagement: een MBA en HEAO-opleiding in dit vakgebied gaven mij de theoretische basis. Die heb ik aangevuld met een full-stack development opleiding (React, Next.js, TypeScript) — niet om developer te worden, maar om de taal van development teams te spreken en de realiteit van IT-trajecten te begrijpen.",
+  },
+  approach: {
     title: "Aanpak",
     description:
-      "Ik geloof in een pragmatische benadering. Geen methodologische dogma's, maar oplossingen die passen bij de context van de organisatie. Complexe vraagstukken ontleed ik systematisch tot behapbare onderdelen, wat de besluitvorming versnelt en teams in beweging brengt.",
+      "Ik geloof in pragmatiek boven methodologie. Frameworks als SAFe of Scrum zijn middelen, geen doel. Mijn rol is om organisaties te helpen vinden wat bij hen werkt — en dat vervolgens te implementeren met oog voor mensen, processen en resultaat.",
   },
   values: [
     {
-      title: "Verbinden",
-      description: "Partijen samenbrengen, synergieën creëren en samenwerking stimuleren.",
-      icon: "Users",
-    },
-    {
-      title: "Helderheid",
-      description: "Complexe uitdagingen systematisch ontrafelen naar beheersbare onderdelen.",
-      icon: "Target",
-    },
-    {
       title: "Pragmatisch",
-      description: "Concrete resultaten realiseren met een participatieve rol waar dat waarde toevoegt.",
+      description: "Geen dogma's, maar oplossingen die werken in de specifieke context.",
       icon: "Zap",
     },
     {
-      title: "Integriteit",
-      description: "Heldere communicatie en adaptief leiderschap als fundament.",
-      icon: "Shield",
+      title: "Hands-on",
+      description: "Ik werk mét teams, niet alleen óver teams. Van boardroom tot werkvloer.",
+      icon: "Users",
+    },
+    {
+      title: "Resultaatgericht",
+      description: "Verandering is geen doel op zich. Het gaat om meetbare verbetering.",
+      icon: "Target",
+    },
+    {
+      title: "Verbindend",
+      description: "Bruggen bouwen tussen business en IT, tussen management en uitvoering.",
+      icon: "Handshake",
     },
   ],
 };
 
 // ============================================
-// SERVICES
+// SERVICES (INZETGEBIEDEN)
 // ============================================
+
+export const servicesSection = {
+  label: "Inzetgebieden",
+  title: "Waarvoor ik word ingeschakeld",
+  description:
+    "Afhankelijk van de situatie neem ik verschillende rollen aan — van coach tot interim manager, van facilitator tot sparringpartner.",
+};
 
 export const services: Service[] = [
   {
-    id: "organisatie-transformatie",
-    title: "Organisatie & Transformatie",
+    id: "team-coaching",
+    title: "Teamcoaching & -ontwikkeling",
     description:
-      "Begeleiding bij het herinrichten van afdelingen, het opzetten van nieuwe teams en het vormgeven van aansturing. Van analyse tot implementatie, met oog voor zowel structuur als cultuur.",
+      "Ik help teams effectiever samenwerken en eigenaarschap nemen. Dit kan variëren van het begeleiden van een nieuw team tot het weer op de rails krijgen van een vastgelopen groep.",
+    icon: "Users",
+    deliverables: [
+      "Teamcoaching en -begeleiding",
+      "Conflictbemiddeling",
+      "Teamstructuur en rolverdeling",
+      "Retrospectives en verbetercycli",
+    ],
+  },
+  {
+    id: "change-management",
+    title: "Veranderbegeleiding",
+    description:
+      "Bij organisatieveranderingen zorg ik voor een gestructureerde aanpak die mensen meeneemt. Van reorganisaties tot cultuurverandering, van nieuwe werkwijzen tot governance-herinrichting.",
     icon: "Building",
-    features: [
+    deliverables: [
+      "Veranderstrategie en -planning",
+      "Stakeholdermanagement",
       "Organisatieherontwerp",
-      "Teamontwikkeling",
-      "Verandermanagement",
+      "Implementatiebegeleiding",
+    ],
+  },
+  {
+    id: "agile-delivery",
+    title: "Agile & Delivery Support",
+    description:
+      "Ik ondersteun organisaties bij het invoeren of verbeteren van Agile werkwijzen. Niet als doel op zich, maar als middel om voorspelbaarder en effectiever te leveren.",
+    icon: "Layers",
+    deliverables: [
+      "Agile coaching (Scrum, Kanban)",
+      "SAFe en LeSS implementatie",
+      "Value stream inrichting",
+      "Delivery-optimalisatie",
+    ],
+  },
+  {
+    id: "leadership-coaching",
+    title: "Coaching van Leads & PO's",
+    description:
+      "Ik coach Scrum Masters, Product Owners, Tribe Leads en teammanagers in hun rol. Gericht op effectieve besluitvorming, stakeholdermanagement en het creëren van eigenaarschap.",
+    icon: "Target",
+    deliverables: [
+      "Individuele coaching",
+      "Leiderschapsontwikkeling",
+      "Product Owner effectiviteit",
+      "Scrum Master groei",
+    ],
+  },
+];
+
+// ============================================
+// EXPERTISE (3 BLOKKEN)
+// ============================================
+
+export const expertiseSection = {
+  label: "Expertise",
+  title: "Waar ik sterk in ben",
+  description:
+    "Drie domeinen waarin ik diepgaande kennis en ervaring heb opgebouwd.",
+};
+
+export const expertise: ExpertiseBlock[] = [
+  {
+    id: "change-org",
+    title: "Verandermanagement & Organisatiekunde",
+    description:
+      "Met een MBA en HEAO in verandermanagement heb ik een stevige theoretische basis. In de praktijk vertaal ik dit naar concrete interventies: van organisatieherontwerp tot cultuurverandering.",
+    areas: [
+      "Organisatieverandering",
+      "Governance en aansturing",
+      "Cultuur en gedrag",
       "Stakeholdermanagement",
     ],
+    icon: "Building",
   },
   {
-    id: "agile-op-schaal",
-    title: "Agile op Schaal",
+    id: "agile-delivery",
+    title: "Agile & Delivery",
     description:
-      "Ondersteuning bij de invoering en doorontwikkeling van Agile werkwijzen in complexe omgevingen. Inclusief frameworks als SAFe en LeSS, afgestemd op de specifieke situatie.",
+      "Ruime ervaring met Agile op schaal in enterprise-omgevingen. Van het coachen van individuele teams tot het inrichten van complete value streams en tribes.",
+    areas: [
+      "SAFe, LeSS, Scrum, Kanban",
+      "Tribe en value stream inrichting",
+      "Coaching van SM's en PO's",
+      "Delivery-optimalisatie",
+    ],
     icon: "Layers",
-    features: [
-      "SAFe & LeSS implementatie",
-      "Agile coaching",
-      "Scrum & Kanban",
-      "Portfolio management",
-    ],
   },
   {
-    id: "leiderschapsontwikkeling",
-    title: "Leiderschapsontwikkeling",
+    id: "tech-context",
+    title: "Technische Context",
     description:
-      "Coaching van management en leiderschapsteams in veranderende contexten. Gericht op effectieve besluitvorming, heldere communicatie en het creëren van eigenaarschap.",
-    icon: "Users",
-    features: [
-      "Leiderschapscoaching",
-      "Teamcoaching",
-      "Facilitatie",
-      "Besluitvormingsprocessen",
+      "Een full-stack development opleiding (React, Next.js, TypeScript, Java/Spring Boot) geeft mij de technische basis om de taal van development teams te spreken — en realistische verwachtingen te scheppen.",
+    areas: [
+      "Begrip van development-processen",
+      "Technische schuld en prioritering",
+      "CI/CD en delivery pipelines",
+      "IT-architectuur basics",
     ],
-  },
-  {
-    id: "transitiebegeleiding",
-    title: "Transitiebegeleiding",
-    description:
-      "Hands-on ondersteuning bij het doorvoeren van verandertrajecten. Van het inrichten van processen op value stream niveau tot het borgen van aansluiting met de bredere organisatie.",
-    icon: "ArrowRight",
-    features: [
-      "Value stream inrichting",
-      "Procesoptimalisatie",
-      "Offshoring begeleiding",
-      "Kennisoverdracht",
-    ],
+    icon: "Code",
   },
 ];
 
 // ============================================
-// EXPERTISE / SKILLS
+// EXPERIENCE (LOOPBAAN - BEKNOPT)
 // ============================================
 
-export const expertise: Skill[] = [
-  { skill: "Verandermanagement", level: 95 },
-  { skill: "Agile Coaching", level: 95 },
-  { skill: "Leiderschapscoaching", level: 90 },
-  { skill: "SAFe & LeSS", level: 90 },
-  { skill: "Teamontwikkeling", level: 92 },
-  { skill: "Stakeholdermanagement", level: 88 },
-  { skill: "Facilitatie", level: 90 },
-  { skill: "Portfolio Management", level: 85 },
-];
-
-// ============================================
-// EXPERIENCE TIMELINE
-// ============================================
+export const experienceSection = {
+  label: "Loopbaan",
+  title: "Professionele achtergrond",
+  description:
+    "Een selectie van mijlpalen die mijn ontwikkeling als consultant hebben gevormd.",
+};
 
 export const experience: ExperienceItem[] = [
   {
-    year: "2024 - heden",
-    title: "Agile Team Manager IAM",
-    company: "Jumbo Supermarkten (Hoofdkantoor)",
+    id: "jumbo",
+    title: "Agile Team Manager",
+    organization: "Jumbo Supermarkten",
     description:
-      "Aansturing van Identity & Access Management teams binnen het hoofdkantoor. Verantwoordelijk voor teamontwikkeling, Agile werkwijzen en de aansluiting op de bredere IT-organisatie.",
-    type: "employment",
+      "Momenteel actief als Agile Team Manager voor de IAM-teams op het hoofdkantoor. Verantwoordelijk voor teamontwikkeling, procesoptimalisatie en de verbinding met de bredere IT-organisatie.",
+    type: "current",
   },
   {
-    year: "2008 - 2024",
+    id: "pink-pollos",
     title: "Oprichter & Principal Consultant",
-    company: "Pink Pollos",
+    organization: "Pink Pollos",
     description:
-      "Organisaties door complexe transities geleid binnen financiële sector, nutsbedrijven en media. Van het coachen van leiderschapsteams tot het faciliteren van Agile werkwijzen op team- en organisatieniveau.",
+      "Via mijn eigen consultancy heb ik meer dan vijftien jaar organisaties begeleid bij complexe transities. Van financiële instellingen tot energiebedrijven, van overheid tot media.",
     type: "venture",
   },
   {
-    year: "2009 - 2019",
-    title: "Oprichter",
-    company: "Lifebrander.nl",
-    description:
-      "Platform voor professionele online CV's met aanvullende diensten voor CV-revisie en LinkedIn-optimalisatie. Verantwoordelijk voor strategische leiding en productontwikkeling.",
-    type: "venture",
-  },
-  {
-    year: "2001 - 2008",
+    id: "foundation",
     title: "Business Consultant",
-    company: "Yacht / Falanx / Jufidet",
+    organization: "Diverse consultancies",
     description:
-      "Projecten gericht op het herstructureren van bedrijfsprocessen en IT-systemen binnen zorg, financiën en overheid. Basis gelegd voor latere specialisatie in verandermanagement.",
-    type: "employment",
+      "Mijn carrière begon in de consultancy, waar ik de basis legde voor mijn specialisatie in verandermanagement. Projecten in zorg, financiën en overheid vormden het fundament.",
+    type: "foundation",
   },
-];
-
-// ============================================
-// PORTFOLIO (Key Engagements)
-// ============================================
-
-export const portfolio: PortfolioItem[] = [
-  {
-    id: "alliander",
-    title: "Alliander",
-    category: "energie",
-    description:
-      "Herinrichting van een afdeling, opzetten van nieuwe teams en vormgeven van de managementaansturing.",
-    image: "/images/portfolio/alliander.jpg",
-    tags: ["Organisatieherontwerp", "Teamontwikkeling", "Agile"],
-  },
-  {
-    id: "alfen",
-    title: "Alfen",
-    category: "energie",
-    description:
-      "Verantwoordelijk voor de transitie van een bedrijfsonderdeel, van teaminrichting tot Agile processen op value stream niveau.",
-    image: "/images/portfolio/alfen.jpg",
-    tags: ["Value Stream", "Agile Transitie", "Scaling"],
-  },
-  {
-    id: "lvnl",
-    title: "LVNL",
-    category: "overheid",
-    description:
-      "In samenwerking met KPMG: begeleiding van een afdeling bij het inrichten van Agile werkwijzen en aansluiting op de bredere transitie.",
-    image: "/images/portfolio/lvnl.jpg",
-    tags: ["Agile Inrichting", "Transitie", "Samenwerking"],
-  },
-];
-
-export const portfolioCategories: PortfolioCategory[] = [
-  { id: "all", label: "Alle opdrachten" },
-  { id: "energie", label: "Energie" },
-  { id: "overheid", label: "Overheid" },
-  { id: "financieel", label: "Financieel" },
 ];
 
 // ============================================
@@ -406,7 +404,7 @@ export const assignmentsSection = {
   label: "Opdrachten",
   title: "Geselecteerde opdrachten",
   description:
-    "Een selectie uit een breder portfolio aan opdrachten in de financiële sector, energie, overheid en infrastructuur.",
+    "Een selectie uit mijn portfolio aan opdrachten in finance, energie, overheid en infrastructuur.",
 };
 
 export const assignments: Assignment[] = [
@@ -415,7 +413,7 @@ export const assignments: Assignment[] = [
     organization: "Jumbo Supermarkten",
     role: "Agile Team Manager – Identity & Access Management",
     description:
-      "Aansturing van meerdere IAM-teams binnen het hoofdkantoor van een van de grootste Nederlandse retailers. Focus op teamontwikkeling, samenwerking tussen technische disciplines en het stroomlijnen van processen rondom toegangsbeheer. Verbinding tussen IT-operatie en de bredere digitale strategie van de organisatie.",
+      "Aansturing van meerdere IAM-teams binnen het hoofdkantoor. Focus op teamontwikkeling, samenwerking tussen technische disciplines en het stroomlijnen van processen rondom toegangsbeheer.",
     sector: "retail",
   },
   {
@@ -423,7 +421,7 @@ export const assignments: Assignment[] = [
     organization: "Alliander",
     role: "Verandermanager & Agile Coach",
     description:
-      "Begeleiding van een afdeling die kampte met onduidelijke verantwoordelijkheden en versnipperde aansturing. Samen met het management nieuwe teamstructuren ontworpen en geïmplementeerd. De focus lag op het creëren van eigenaarschap bij teamleads en het verbeteren van de dagelijkse samenwerking tussen development en operations.",
+      "Begeleiding van een afdeling met onduidelijke verantwoordelijkheden. Samen met het management nieuwe teamstructuren ontworpen en eigenaarschap gecreëerd bij teamleads.",
     sector: "energie",
   },
   {
@@ -431,7 +429,7 @@ export const assignments: Assignment[] = [
     organization: "Alfen",
     role: "Transitieleider & Agile Coach",
     description:
-      "Verantwoordelijk voor de transitie van een bedrijfsonderdeel naar een Agile werkwijze op value stream niveau. Teams opnieuw ingericht rond productlijnen, rollen verduidelijkt en de samenwerking met stakeholders buiten IT verbeterd. Nadruk op pragmatische invoering zonder de operatie te verstoren.",
+      "Verantwoordelijk voor de transitie naar Agile op value stream niveau. Teams heringericht rond productlijnen, rollen verduidelijkt en stakeholder-samenwerking verbeterd.",
     sector: "energie",
   },
   {
@@ -439,15 +437,15 @@ export const assignments: Assignment[] = [
     organization: "ING",
     role: "Agile Coach – Enterprise Transformatie",
     description:
-      "Onderdeel van een grootschalige Agile transformatie binnen een van de grootste banken van Nederland. Directe ondersteuning van Scrum Masters en Product Owners in meerdere tribes. Gericht op het verhogen van voorspelbaarheid in delivery en het verbeteren van de samenwerking tussen business en IT.",
+      "Onderdeel van een grootschalige Agile transformatie. Directe ondersteuning van Scrum Masters en Product Owners in meerdere tribes, gericht op voorspelbaarheid en samenwerking.",
     sector: "financieel",
   },
   {
     id: "lvnl",
     organization: "LVNL",
-    role: "Agile Coach (in samenwerking met KPMG)",
+    role: "Agile Coach",
     description:
-      "Begeleiding van een afdeling binnen de luchtverkeersleiding bij het inrichten van Agile werkwijzen. De uitdaging: een organisatie met hoge kwaliteitseisen en strikte protocollen laten wennen aan iteratieve werkwijzen. Focus op teambegeleiding, het faciliteren van retrospectives en het creëren van draagvlak bij het management.",
+      "Begeleiding bij het inrichten van Agile werkwijzen binnen de luchtverkeersleiding. Focus op teambegeleiding en het creëren van draagvlak in een omgeving met strikte protocollen.",
     sector: "infrastructuur",
   },
   {
@@ -455,7 +453,7 @@ export const assignments: Assignment[] = [
     organization: "Rabobank",
     role: "Scrum Master & Agile Coach",
     description:
-      "Ondersteuning van ontwikkelteams binnen een coöperatieve bank met complexe stakeholderrelaties. Verantwoordelijk voor het verbeteren van sprintprocessen en het wegnemen van structurele blokkades. Nauwe samenwerking met Product Owners om de balans tussen business-prioriteiten en technische schuld te bewaken.",
+      "Ondersteuning van ontwikkelteams met complexe stakeholderrelaties. Verantwoordelijk voor het verbeteren van sprintprocessen en het wegnemen van structurele blokkades.",
     sector: "financieel",
   },
   {
@@ -463,7 +461,7 @@ export const assignments: Assignment[] = [
     organization: "Enexis",
     role: "Agile Coach – Netbeheer",
     description:
-      "Begeleiding van teams binnen een netbeheerder die te maken had met toenemende druk door de energietransitie. Focus op het verbeteren van werkprocessen in een omgeving waar IT en operationele technologie samenkomen. Ondersteuning bij het opzetten van cross-functionele samenwerking tussen kantoor en buitendienst.",
+      "Begeleiding van teams onder druk van de energietransitie. Focus op werkprocessen waar IT en operationele technologie samenkomen.",
     sector: "energie",
   },
   {
@@ -471,15 +469,15 @@ export const assignments: Assignment[] = [
     organization: "DPG Media",
     role: "Verandermanager",
     description:
-      "Ondersteuning bij een organisatorische herstructurering binnen een van de grootste mediabedrijven van de Benelux. Betrokken bij het samenbrengen van teams uit verschillende labels onder een gezamenlijke werkwijze. Nadruk op het behouden van autonomie binnen de teams terwijl de onderlinge afstemming verbeterde.",
+      "Ondersteuning bij organisatorische herstructurering. Betrokken bij het samenbrengen van teams uit verschillende labels onder een gezamenlijke werkwijze.",
     sector: "media",
   },
   {
     id: "uwv",
     organization: "UWV",
-    role: "Agile Coach – Overheidscontext",
+    role: "Agile Coach",
     description:
-      "Begeleiding van teams binnen een uitvoeringsorganisatie met grote maatschappelijke verantwoordelijkheid. De uitdaging: wendbaarheid introduceren in een omgeving met strikte wet- en regelgeving. Focus op het coachen van Scrum Masters, het verbeteren van de samenwerking met ketenpartners en het realistisch managen van verwachtingen.",
+      "Begeleiding van teams binnen een uitvoeringsorganisatie met grote maatschappelijke verantwoordelijkheid. Wendbaarheid introduceren binnen strikte wet- en regelgeving.",
     sector: "overheid",
   },
   {
@@ -487,71 +485,77 @@ export const assignments: Assignment[] = [
     organization: "PGGM",
     role: "Agile Coach – Pensioenbeheer",
     description:
-      "Ondersteuning van IT-teams binnen een pensioenbeheerder tijdens een periode van systeemvernieuwing. Focus op het verbeteren van de samenwerking tussen development, beheer en de pensioenuitvoering. Begeleiding bij het vinden van een werkbare balans tussen stabiliteit en vernieuwing.",
+      "Ondersteuning van IT-teams tijdens systeemvernieuwing. Begeleiding bij het vinden van balans tussen stabiliteit en vernieuwing.",
     sector: "financieel",
   },
 ];
 
 // ============================================
-// PROCESS
+// PROCESS (WERKWIJZE)
 // ============================================
+
+export const processSection = {
+  label: "Werkwijze",
+  title: "Hoe ik werk",
+  description:
+    "Elke opdracht is anders, maar mijn aanpak volgt een herkenbare structuur.",
+};
 
 export const process: ProcessStep[] = [
   {
     step: 1,
-    title: "Analyse",
+    title: "Verkenning",
     description:
-      "Grondige verkenning van de huidige situatie, stakeholders en onderliggende dynamiek. Geen aannames, maar een helder beeld van waar de organisatie staat.",
+      "Ik begin met luisteren. Wat is de werkelijke vraag? Wie zijn de stakeholders? Wat is er al geprobeerd? Een grondige analyse voorkomt symptoombestrijding.",
     icon: "Search",
   },
   {
     step: 2,
     title: "Ontwerp",
     description:
-      "Samen met de opdrachtgever vormgeven van de gewenste richting. Concrete doelen, heldere rolverdeling en een aanpak die past bij de organisatiecultuur.",
+      "Samen met de opdrachtgever bepalen we de aanpak. Concrete doelen, heldere rolverdeling en een realistische planning die past bij de organisatiecultuur.",
     icon: "Target",
   },
   {
     step: 3,
-    title: "Implementatie",
+    title: "Uitvoering",
     description:
-      "Hands-on begeleiding bij de uitvoering. Teams opzetten, processen inrichten, mensen meenemen in de verandering.",
+      "Hands-on aan de slag. Ik werk mét teams, niet alleen óver teams. Verandering ontstaat door te doen, niet door te presenteren.",
     icon: "Zap",
   },
   {
     step: 4,
-    title: "Verankering",
+    title: "Borging",
     description:
-      "Zorgen dat veranderingen beklijven. Eigenaarschap overdragen, competenties ontwikkelen en de organisatie zelfstandig verder laten bouwen.",
+      "Mijn doel is overbodig worden. Eigenaarschap overdragen, competenties ontwikkelen en zorgen dat de organisatie zelfstandig verder kan.",
     icon: "CheckCircle",
   },
 ];
 
 // ============================================
-// BLOG (placeholder - kan later gevuld worden)
-// ============================================
-
-export const blog: BlogPost[] = [];
-
-// ============================================
 // CLIENTS
 // ============================================
 
+export const clientsSection = {
+  label: "Klanten",
+  title: "Organisaties waar ik heb gewerkt",
+};
+
 export const clients: Client[] = [
-  { name: "Jumbo", logo: "/images/clients/jumbo.svg" },
-  { name: "Alliander", logo: "/images/clients/alliander.svg" },
-  { name: "Alfen", logo: "/images/clients/alfen.svg" },
-  { name: "LVNL", logo: "/images/clients/lvnl.svg" },
-  { name: "Enexis", logo: "/images/clients/enexis.svg" },
-  { name: "ING", logo: "/images/clients/ing.svg" },
-  { name: "Rabobank", logo: "/images/clients/rabobank.svg" },
-  { name: "ABN AMRO", logo: "/images/clients/abnamro.svg" },
-  { name: "UWV", logo: "/images/clients/uwv.svg" },
-  { name: "Belastingdienst", logo: "/images/clients/belastingdienst.svg" },
-  { name: "ASML", logo: "/images/clients/asml.svg" },
-  { name: "Schiphol", logo: "/images/clients/schiphol.svg" },
-  { name: "DPG Media", logo: "/images/clients/dpgmedia.svg" },
-  { name: "PGGM", logo: "/images/clients/pggm.svg" },
+  { name: "Jumbo" },
+  { name: "Alliander" },
+  { name: "Alfen" },
+  { name: "ING" },
+  { name: "Rabobank" },
+  { name: "ABN AMRO" },
+  { name: "LVNL" },
+  { name: "Enexis" },
+  { name: "UWV" },
+  { name: "Belastingdienst" },
+  { name: "DPG Media" },
+  { name: "PGGM" },
+  { name: "ASML" },
+  { name: "Schiphol" },
 ];
 
 // ============================================
@@ -559,10 +563,10 @@ export const clients: Client[] = [
 // ============================================
 
 export const contact: ContactContent = {
-  title: "Laten we kennismaken",
-  subtitle: "Klaar voor een gesprek?",
+  title: "Contact",
+  subtitle: "Laten we kennismaken",
   description:
-    "Staat u voor een organisatieverandering of transitie? Ik ga graag het gesprek aan om te verkennen hoe ik van betekenis kan zijn.",
+    "Staat u voor een verandering of transitie? Ik ga graag het gesprek aan om te verkennen hoe ik kan helpen.",
   formFields: {
     name: "Naam",
     email: "E-mailadres",
@@ -572,10 +576,10 @@ export const contact: ContactContent = {
     submit: "Verstuur bericht",
   },
   subjects: [
-    "Organisatie & Transformatie",
-    "Agile op Schaal",
-    "Leiderschapsontwikkeling",
-    "Transitiebegeleiding",
+    "Teamcoaching",
+    "Veranderbegeleiding",
+    "Agile ondersteuning",
+    "Coaching van leads/PO's",
     "Algemene vraag",
   ],
 };
@@ -586,9 +590,11 @@ export const contact: ContactContent = {
 
 export const footer: FooterContent = {
   tagline: "Transformatie met richting",
-  copyright: `© ${new Date().getFullYear()} DRP Ventures BV. Alle rechten voorbehouden.`,
+  copyright: `© ${new Date().getFullYear()} DRP Ventures BV`,
+  legal: "Amersfoort, Nederland",
   links: [
     { label: "Privacy", href: "/privacy" },
     { label: "Voorwaarden", href: "/terms" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/dennisrijkers" },
   ],
 };

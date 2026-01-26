@@ -1,0 +1,10 @@
+export { PersonaNav } from "./PersonaNav";
+export { PersonaHero } from "./PersonaHero";
+export { PersonaAbout } from "./PersonaAbout";
+export { PersonaServices } from "./PersonaServices";
+export { PersonaAssignments } from "./PersonaAssignments";
+export { PersonaExperience } from "./PersonaExperience";
+export { PersonaProcess } from "./PersonaProcess";
+export { PersonaClients } from "./PersonaClients";
+export { PersonaContact } from "./PersonaContact";
+export { PersonaFooter } from "./PersonaFooter";

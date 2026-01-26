@@ -27,10 +27,10 @@ export function SectionHeader({
         className
       )}
     >
-      {/* Label with line: ─ ABOUT */}
+      {/* Label */}
       <div
         className={cn(
-          "flex items-center gap-3 mb-5",
+          "flex items-center gap-4 mb-5",
           align === "center" && "justify-center"
         )}
       >

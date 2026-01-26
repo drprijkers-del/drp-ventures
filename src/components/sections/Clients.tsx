@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
-import { clients } from "@/content/site";
+import { clients, clientsSection } from "@/content/site";
 
 // Colors for pill variety
 const pillColors = [
@@ -47,7 +47,7 @@ export function Clients() {
         >
           {/* Label */}
           <p className="text-muted text-sm uppercase tracking-widest mb-8">
-            Vertrouwd door toonaangevende organisaties
+            {clientsSection.label}
           </p>
 
           {/* Client pills */}

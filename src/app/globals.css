@@ -52,13 +52,7 @@
   }
 
   body {
-    /* Premium dark gradient background */
     background-color: #0a0a0a;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(30, 30, 30, 0.5) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(20, 20, 20, 0.4) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 30% at 0% 80%, rgba(25, 25, 25, 0.3) 0%, transparent 50%);
-    background-attachment: fixed;
     color: #999999;
     min-height: 100vh;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -147,11 +141,8 @@
       0 8px 30px rgba(0, 0, 0, 0.25);
   }
 
-  /* Section label with line */
+  /* Section label */
   .section-label {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
     font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.2em;
@@ -159,12 +150,10 @@
     color: #666666;
   }
 
-  .section-label::before {
-    content: '';
-    width: 40px;
+  .section-line {
+    width: 2.5rem;
     height: 1px;
-    background: linear-gradient(90deg, #8bc34a 0%, rgba(139, 195, 74, 0.3) 100%);
-    flex-shrink: 0;
+    background: linear-gradient(to right, #8bc34a, transparent);
   }
 
   /* Progress bar */

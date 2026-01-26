@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { SectionHeader } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { process } from "@/content/site";
+import { process, processSection } from "@/content/site";
 import { Icon, IconName } from "@/components/ui/Icons";
 
 // Process step colors for variety
@@ -41,9 +41,9 @@ export function Process() {
     <section id="process" ref={sectionRef} className="py-section-sm md:py-section">
       <Container>
         <SectionHeader
-          label="Werkwijze"
-          title="Ons proces"
-          description="Een gestructureerde aanpak die kwaliteit en transparantie garandeert."
+          label={processSection.label}
+          title={processSection.title}
+          description={processSection.description}
         />
 
         {/* Process steps with connector */}
