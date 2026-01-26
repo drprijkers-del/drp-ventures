@@ -1,15 +1,44 @@
 "use client";
 
+import { useState } from "react";
 import { Section, SectionHeader, Panel } from "@/components/ui/Section";
-import { PersonaContent } from "@/content/persona";
+import { PersonaContent, Language } from "@/content/persona";
 import { Icon } from "@/components/ui/Icons";
+
+// ============================================
+// TRANSLATIONS
+// ============================================
+
+const LABELS: Record<Language, { phone: string; linkedin: string; location: string }> = {
+  nl: { phone: "Telefoon", linkedin: "LinkedIn", location: "Locatie" },
+  en: { phone: "Phone", linkedin: "LinkedIn", location: "Location" },
+  sv: { phone: "Telefon", linkedin: "LinkedIn", location: "Plats" },
+};
+
+const REVEAL_TEXT: Record<Language, string> = {
+  nl: "Toon nummer",
+  en: "Show number",
+  sv: "Visa nummer",
+};
+
+// ============================================
+// COMPONENT
+// ============================================
 
 interface PersonaContactProps {
   content: PersonaContent;
 }
 
 export function PersonaContact({ content }: PersonaContactProps) {
-  const { contactSection, contact, sectionLabels } = content;
+  const { contactSection, contact, sectionLabels, language } = content;
+  const [phoneRevealed, setPhoneRevealed] = useState(false);
+  const labels = LABELS[language];
+
+  // Mask phone: "+31 6 1234 5678" → "+31 6 •••• ••78"
+  const maskPhone = (phone: string) => {
+    if (phone.length < 8) return "••••••••••";
+    return phone.slice(0, 6) + "•••• ••" + phone.slice(-2);
+  };
 
   return (
     <Section id="contact">
@@ -19,135 +48,77 @@ export function PersonaContact({ content }: PersonaContactProps) {
         description={contactSection.description}
       />
 
-      <div className="grid lg:grid-cols-5 gap-8">
-        {/* Contact Form */}
-        <div className="lg:col-span-3">
-          <Panel padding="lg">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-secondary mb-2">
-                    {contactSection.formFields.name}
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 bg-surface-card border border-surface-border rounded-lg text-primary placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
-                    placeholder={contactSection.formFields.name}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-secondary mb-2">
-                    {contactSection.formFields.email}
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 bg-surface-card border border-surface-border rounded-lg text-primary placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
-                    placeholder={contactSection.formFields.email}
-                  />
-                </div>
+      <div className="max-w-xl mx-auto">
+        <Panel padding="lg">
+          <ul className="space-y-6">
+            {/* Phone */}
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                <Icon name="Phone" size={22} />
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-secondary mb-2">
-                    {contactSection.formFields.company}
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 bg-surface-card border border-surface-border rounded-lg text-primary placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
-                    placeholder={contactSection.formFields.company}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-secondary mb-2">
-                    {contactSection.formFields.subject}
-                  </label>
-                  <select className="w-full px-4 py-3 bg-surface-card border border-surface-border rounded-lg text-primary focus:outline-none focus:border-accent transition-colors">
-                    {contactSection.subjects.map((subject, i) => (
-                      <option key={i} value={subject}>
-                        {subject}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-secondary mb-2">
-                  {contactSection.formFields.message}
-                </label>
-                <textarea
-                  rows={5}
-                  className="w-full px-4 py-3 bg-surface-card border border-surface-border rounded-lg text-primary placeholder:text-muted focus:outline-none focus:border-accent transition-colors resize-none"
-                  placeholder={contactSection.formFields.message}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full px-6 py-3 bg-accent hover:bg-accent-light text-white font-medium rounded-lg transition-colors"
-              >
-                {contactSection.formFields.submit}
-              </button>
-            </form>
-          </Panel>
-        </div>
-
-        {/* Contact Info */}
-        <div className="lg:col-span-2 space-y-6">
-          <Panel padding="md">
-            <h3 className="text-lg font-semibold text-primary mb-4">
-              Contact
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                  <Icon name="Mail" size={18} />
-                </div>
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="text-secondary hover:text-accent transition-colors"
-                >
-                  {contact.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                  <Icon name="Phone" size={18} />
-                </div>
-                <a
-                  href={`tel:${contact.phone}`}
-                  className="text-secondary hover:text-accent transition-colors"
-                >
-                  {contact.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                  <Icon name="MapPin" size={18} />
-                </div>
-                <span className="text-secondary">{contact.location}</span>
-              </li>
-              {contact.linkedin && (
-                <li className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                    <Icon name="LinkedIn" size={18} />
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted uppercase tracking-wider mb-1">
+                  {labels.phone}
+                </p>
+                {phoneRevealed ? (
+                  <a
+                    href={`tel:${contact.phone}`}
+                    className="text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    {contact.phone}
+                  </a>
+                ) : (
+                  <div className="flex items-center gap-3">
+                    <span className="text-secondary font-medium">
+                      {maskPhone(contact.phone)}
+                    </span>
+                    <button
+                      onClick={() => setPhoneRevealed(true)}
+                      className="text-xs text-accent hover:text-accent-light px-2 py-1 bg-accent/10 hover:bg-accent/20 rounded transition-colors"
+                    >
+                      {REVEAL_TEXT[language]}
+                    </button>
                   </div>
+                )}
+              </div>
+            </li>
+
+            {/* LinkedIn */}
+            {contact.linkedin && (
+              <li className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                  <Icon name="LinkedIn" size={22} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-muted uppercase tracking-wider mb-1">
+                    {labels.linkedin}
+                  </p>
                   <a
                     href={contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary hover:text-accent transition-colors"
+                    className="text-primary hover:text-accent transition-colors font-medium"
                   >
-                    LinkedIn
+                    {contact.name}
                   </a>
-                </li>
-              )}
-            </ul>
-          </Panel>
-        </div>
+                </div>
+              </li>
+            )}
+
+            {/* Location */}
+            <li className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
+                <Icon name="MapPin" size={22} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted uppercase tracking-wider mb-1">
+                  {labels.location}
+                </p>
+                <span className="text-primary font-medium">{contact.location}</span>
+              </div>
+            </li>
+          </ul>
+        </Panel>
       </div>
     </Section>
   );
