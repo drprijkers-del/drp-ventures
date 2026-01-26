@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.border,
   },
   photo: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 75,
+    height: 90,
+    borderRadius: 6,
     marginRight: 15,
-    borderWidth: 2,
-    borderColor: colors.accent,
+    objectFit: "cover",
+    objectPosition: "center top",
   },
   headerContent: {
     flex: 1,
