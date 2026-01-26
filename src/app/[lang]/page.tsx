@@ -378,7 +378,7 @@ function LanguageSelector({ currentLang, label }: LanguageSelectorProps) {
           />
 
           {/* Dropdown */}
-          <div className="absolute right-0 top-full mt-2 w-44 bg-surface-panel border border-surface-border rounded-lg shadow-xl shadow-black/20 z-20 overflow-hidden">
+          <div className="absolute right-0 top-full mt-2 w-44 bg-[#1a1a1a] border border-surface-border rounded-lg shadow-xl shadow-black/20 z-20 overflow-hidden">
             {LANGUAGES.map((langOption) => (
               <button
                 key={langOption}
@@ -388,7 +388,7 @@ function LanguageSelector({ currentLang, label }: LanguageSelectorProps) {
                   "transition-colors duration-150",
                   currentLang === langOption
                     ? "bg-accent/10 text-accent"
-                    : "text-secondary hover:bg-surface-elevated hover:text-primary"
+                    : "text-secondary hover:bg-white/5 hover:text-primary"
                 )}
               >
                 <span className="text-lg">{LANGUAGE_FLAGS[langOption]}</span>
