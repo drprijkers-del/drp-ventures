@@ -108,7 +108,9 @@ export const AssignmentSchema = z.object({
   id: z.string(),
   organization: z.string(),
   role: z.string(),
+  period: z.string().optional(),
   description: z.string(),
+  achievements: z.array(z.string()).optional(),
   sector: z.enum(["financieel", "energie", "overheid", "retail", "media", "infrastructuur", "technology"]),
 });
 

@@ -34,6 +34,9 @@ export function PersonaAssignments({ content }: PersonaAssignmentsProps) {
                   {assignment.organization}
                 </h3>
                 <p className="text-sm text-accent">{assignment.role}</p>
+                {assignment.period && (
+                  <p className="text-xs text-muted mt-1">{assignment.period}</p>
+                )}
               </div>
 
               {/* Sector badge */}
@@ -50,6 +53,20 @@ export function PersonaAssignments({ content }: PersonaAssignmentsProps) {
             <p className="text-secondary text-sm leading-relaxed">
               {assignment.description}
             </p>
+
+            {assignment.achievements && assignment.achievements.length > 0 && (
+              <ul className="mt-3 space-y-1.5">
+                {assignment.achievements.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 text-xs text-muted"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
+                    <span className="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </Panel>
         ))}
       </div>

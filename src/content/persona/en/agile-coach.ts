@@ -6,7 +6,7 @@ export const content: PersonaContent = {
 
   contact: {
     name: "Dennis Rijkers",
-    title: "Enterprise Agile Coach",
+    title: "Agile Coach & Transformation Consultant",
     email: "info@drpventures.nl",
     phone: "+31 6 28 975 904",
     linkedin: "https://linkedin.com/in/dennisrijkers",
@@ -24,17 +24,17 @@ export const content: PersonaContent = {
   },
 
   hero: {
-    label: "Enterprise Agile Coach",
+    label: "Agile Coach & Transformation Consultant",
     headline: "Dennis Rijkers",
-    subline: "Agile Coach & Transformation Expert",
+    subline: "Agile Coach & Transformation Consultant",
     description:
-      "I guide organizations through Agile transformations at scale. From team-level coaching to enterprise adoption — with focus on sustainable change and measurable results.",
+      "I guide organizations through Agile transformations at scale. From team-level coaching to enterprise adoption, with focus on sustainable change and measurable results.",
     cta: {
       primary: { label: "Get in touch", href: "#contact" },
       secondary: { label: "View assignments", href: "#assignments" },
     },
     stats: [
-      { value: "20+", label: "Years experience" },
+      { value: "25+", label: "Years experience" },
       { value: "SAFe & LeSS", label: "Certified" },
       { value: "Enterprise", label: "Transformations" },
     ],
@@ -42,13 +42,13 @@ export const content: PersonaContent = {
 
   about: {
     title: "About me",
-    subtitle: "Dennis Rijkers — Enterprise Agile Coach",
+    subtitle: "Dennis Rijkers, Agile Coach & Transformation Consultant",
     intro:
-      "With over fifteen years of experience in Agile and change management, I help organizations make the transition from 'doing Agile' to 'being Agile'. My focus is on sustainable change that persists when the coach leaves.",
+      "With eighteen years of experience in Agile and change management, I help organizations make the transition from 'doing Agile' to 'being Agile'. My focus is on sustainable change that persists when the coach leaves.",
     approach: {
       title: "My approach",
       description:
-        "I believe in pragmatic Agile — no dogmas, but principles that work in the specific context of the organization. SAFe, LeSS, or Scrum are means, not ends. It's about delivering value and helping people grow.",
+        "I believe in pragmatic Agile: no dogmas, but principles that work in the specific context of the organization. SAFe, LeSS, or Scrum are means, not ends. It's about delivering value and helping people grow.",
     },
     values: [
       {
@@ -92,7 +92,7 @@ export const content: PersonaContent = {
       id: "safe-implementation",
       title: "SAFe Implementation",
       description:
-        "Practical implementation of the Scaled Agile Framework — or LeSS where it fits better. No copy-paste, but tailored for the organization.",
+        "Practical implementation of the Scaled Agile Framework, or LeSS where it fits better. No copy-paste, but tailored for the organization.",
       icon: "Layers",
       deliverables: [
         "ART launch & support",
@@ -131,72 +131,95 @@ export const content: PersonaContent = {
 
   assignments: [
     {
-      id: "ing",
-      organization: "ING",
-      role: "Enterprise Agile Coach",
+      id: "jumbo",
+      organization: "Jumbo Supermarkten",
+      role: "Scrum Master, then interim Lead Engineering IAM & Workplace",
+      period: "Nov 2025 to Oct 2026",
       description:
-        "Part of the central Agile Coaching team during the 'Think Forward' transformation. Coaching tribes and ARTs in the transition to a fully Agile organization.",
-      sector: "financieel",
-    },
-    {
-      id: "alfen",
-      organization: "Alfen",
-      role: "Agile Transformation Lead",
-      description:
-        "Leading role in the Agile transformation of the IT organization. From project-based to product-based working with value streams and dedicated teams.",
-      sector: "energie",
+        "Started as Scrum Master, improving how several platform teams worked. When the Lead Engineering role for IAM and Workplace fell vacant, took it on to safeguard continuity. Handed over to a permanent internal successor.",
+      sector: "retail",
     },
     {
       id: "alliander",
       organization: "Alliander",
-      role: "Agile Coach – Value Stream Level",
+      role: "Agile Coach, departmental restructuring",
+      period: "2024 to 2025",
       description:
-        "Coaching at value stream level within the grid operator. Focus on end-to-end flow and cross-team collaboration.",
+        "Restructured a department: assembled and redistributed teams around more logical products, with day-to-day direction placed with permanent management.",
       sector: "energie",
     },
     {
-      id: "pggm",
-      organization: "PGGM",
-      role: "Agile Coach – IT Organization",
+      id: "lvnl",
+      organization: "LVNL",
+      role: "Agile Coach, middle management intervention",
+      period: "2025",
       description:
-        "Guiding the Agile journey within the pension administrator. Finding balance between stability and agility.",
-      sector: "financieel",
+        "Within a wider KPMG programme, a short and targeted intervention with middle management, who were the bottleneck in the change.",
+      sector: "infrastructuur",
     },
     {
-      id: "dpg-media",
-      organization: "DPG Media",
-      role: "Agile Coach",
+      id: "alfen",
+      organization: "Alfen",
+      role: "Agile Coach, new operating model implementation",
+      period: "Mar to Jul 2025",
       description:
-        "Supporting the integration of teams from different labels under a shared Agile way of working.",
-      sector: "media",
+        "Contributed to implementing a new operating model for a business unit. Above all an intervention: the company did not have the luxury of changing slowly.",
+      sector: "energie",
+    },
+    {
+      id: "enexis",
+      organization: "Enexis",
+      role: "Scrum Master & Agile Coach, Agile Release Train",
+      period: "Jun 2023 to Feb 2025",
+      description:
+        "Guided several teams through the nationwide rollout of the GIS system used by field engineers across the Netherlands. Left the Agile Release Train more mature and better structured.",
+      sector: "energie",
+    },
+    {
+      id: "belastingdienst",
+      organization: "Dutch Tax Administration",
+      role: "Agile Coach (SAFe), transformation team",
+      period: "2023 to 2024",
+      description:
+        "Coaching within the transformation team, focused on advancing Agile ways of working in a large and heavily regulated organisation.",
+      sector: "overheid",
+    },
+    {
+      id: "ing",
+      organization: "ING Bank",
+      role: "Senior Agile Coach & Trainer",
+      period: "2017 to 2019",
+      description:
+        "Coached leadership teams, Product Owners and Chapter Leads. Responsible for connecting Belgium and the Netherlands and for offshoring to India from an Agile perspective.",
+      sector: "financieel",
     },
   ],
 
   experience: [
     {
       id: "drp-ventures",
-      title: "Principal Consultant",
-      organization: "DRP Ventures",
-      period: "2020 - present",
+      title: "Founder & Consultant",
+      organization: "DRP Ventures B.V.",
+      period: "2025 to present",
       description:
-        "Enterprise Agile Coaching for large organizations in finance, energy, and government. Focus on sustainable transformation.",
+        "Current practice. Agile coaching, transformation support and interim delivery direction at large organisations.",
       type: "current",
     },
     {
       id: "pink-pollos",
-      title: "Founder & Lead Coach",
-      organization: "Pink Pollos",
-      period: "2008 - 2020",
+      title: "Founder",
+      organization: "Pink Pollos B.V.",
+      period: "since 2008",
       description:
-        "Founded and grew an Agile consultancy into a team of coaches. Guided dozens of enterprise transformations.",
+        "More than a personal vehicle: an Agile consultancy with its own team of coaches, including clients, contracts and business operations.",
       type: "venture",
     },
     {
       id: "certifications",
-      title: "Certifications",
-      organization: "Scaled Agile, Scrum.org",
+      title: "Certification",
+      organization: "ICAgile, Scaled Agile, LeSS",
       description:
-        "SAFe SPC (Implementing SAFe), SAFe Agilist, PSM II, Professional Coaching certifications.",
+        "ICAgile Agile Coaching (ICP-ACC) and Team Facilitation (ICP-ATF), SAFe 4.0 SA, Certified LeSS Practitioner, Scrum Master and Product Owner. MBA in Change Management.",
       type: "foundation",
     },
   ],
@@ -271,7 +294,7 @@ export const content: PersonaContent = {
   },
 
   footer: {
-    tagline: "Enterprise Agile Coach",
+    tagline: "Agile Coach & Transformation Consultant",
     copyright: `© ${new Date().getFullYear()} DRP Ventures BV`,
     legal: "Amersfoort, Netherlands",
   },

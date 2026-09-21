@@ -6,7 +6,7 @@ export const content: PersonaContent = {
 
   contact: {
     name: "Dennis Rijkers",
-    title: "Senior Scrum Master",
+    title: "Scrum Master & Agile Coach",
     email: "info@drpventures.nl",
     phone: "+31 6 28 975 904",
     linkedin: "https://linkedin.com/in/dennisrijkers",
@@ -24,9 +24,9 @@ export const content: PersonaContent = {
   },
 
   hero: {
-    label: "Senior Scrum Master",
+    label: "Scrum Master & Agile Coach",
     headline: "Dennis Rijkers",
-    subline: "Scrum Master & Agile Facilitator",
+    subline: "Scrum Master & Agile Coach",
     description:
       "I help development teams reach their full potential. By removing impediments, improving processes, and facilitating a culture of continuous improvement.",
     cta: {
@@ -34,15 +34,15 @@ export const content: PersonaContent = {
       secondary: { label: "View assignments", href: "#assignments" },
     },
     stats: [
-      { value: "20+", label: "Years experience" },
+      { value: "25+", label: "Years experience" },
       { value: "50+", label: "Teams coached" },
-      { value: "PSM II", label: "Certified" },
+      { value: "ICP-ACC", label: "Certified" },
     ],
   },
 
   about: {
     title: "About me",
-    subtitle: "Dennis Rijkers — Senior Scrum Master",
+    subtitle: "Dennis Rijkers, Scrum Master & Agile Coach",
     intro:
       "As a Scrum Master, my focus is on creating an environment where teams can excel. I believe the best results come when teams feel ownership, impediments are resolved quickly, and there's room for experimentation and learning.",
     approach: {
@@ -132,63 +132,94 @@ export const content: PersonaContent = {
   assignments: [
     {
       id: "jumbo",
-      organization: "Jumbo Supermarkets",
-      role: "Senior Scrum Master – IAM Teams",
+      organization: "Jumbo Supermarkten",
+      role: "Scrum Master, then interim Lead Engineering IAM & Workplace",
+      period: "Nov 2025 to Oct 2026",
       description:
-        "Guiding multiple Scrum teams within Identity & Access Management. Focus on team development, sprint health, and cross-team alignment.",
+        "Started as Scrum Master, improving how several platform teams worked. When the Lead Engineering role for IAM and Workplace fell vacant, took it on to safeguard continuity. Handed over to a permanent internal successor.",
       sector: "retail",
-    },
-    {
-      id: "ing",
-      organization: "ING",
-      role: "Scrum Master – Core Banking",
-      description:
-        "Scrum Master for a team in the core banking transformation. Responsible for facilitating ceremonies and removing organizational impediments.",
-      sector: "financieel",
-    },
-    {
-      id: "rabobank",
-      organization: "Rabobank",
-      role: "Scrum Master – Digital Channels",
-      description:
-        "Guiding teams working on digital customer channels. Focus on velocity improvement and stakeholder management.",
-      sector: "financieel",
     },
     {
       id: "alliander",
       organization: "Alliander",
-      role: "Scrum Master – Smart Grid",
+      role: "Agile Coach, departmental restructuring",
+      period: "2024 to 2025",
       description:
-        "Scrum Master for teams in the smart grid domain. Challenge: combining technically complex subject matter with Agile practices.",
+        "Restructured a department: assembled and redistributed teams around more logical products, with day-to-day direction placed with permanent management.",
       sector: "energie",
+    },
+    {
+      id: "lvnl",
+      organization: "LVNL",
+      role: "Agile Coach, middle management intervention",
+      period: "2025",
+      description:
+        "Within a wider KPMG programme, a short and targeted intervention with middle management, who were the bottleneck in the change.",
+      sector: "infrastructuur",
+    },
+    {
+      id: "alfen",
+      organization: "Alfen",
+      role: "Agile Coach, new operating model implementation",
+      period: "Mar to Jul 2025",
+      description:
+        "Contributed to implementing a new operating model for a business unit. Above all an intervention: the company did not have the luxury of changing slowly.",
+      sector: "energie",
+    },
+    {
+      id: "enexis",
+      organization: "Enexis",
+      role: "Scrum Master & Agile Coach, Agile Release Train",
+      period: "Jun 2023 to Feb 2025",
+      description:
+        "Guided several teams through the nationwide rollout of the GIS system used by field engineers across the Netherlands. Left the Agile Release Train more mature and better structured.",
+      sector: "energie",
+    },
+    {
+      id: "belastingdienst",
+      organization: "Dutch Tax Administration",
+      role: "Agile Coach (SAFe), transformation team",
+      period: "2023 to 2024",
+      description:
+        "Coaching within the transformation team, focused on advancing Agile ways of working in a large and heavily regulated organisation.",
+      sector: "overheid",
+    },
+    {
+      id: "ing",
+      organization: "ING Bank",
+      role: "Senior Agile Coach & Trainer",
+      period: "2017 to 2019",
+      description:
+        "Coached leadership teams, Product Owners and Chapter Leads. Responsible for connecting Belgium and the Netherlands and for offshoring to India from an Agile perspective.",
+      sector: "financieel",
     },
   ],
 
   experience: [
     {
       id: "drp-ventures",
-      title: "Principal Consultant",
-      organization: "DRP Ventures",
-      period: "2020 - present",
+      title: "Founder & Consultant",
+      organization: "DRP Ventures B.V.",
+      period: "2025 to present",
       description:
-        "Through DRP Ventures, I deliver Scrum Master services to enterprise organizations. Focus on complex IT environments and scalable Agile practices.",
+        "Current practice. Agile coaching, transformation support and interim delivery direction at large organisations.",
       type: "current",
     },
     {
       id: "pink-pollos",
-      title: "Founder & Scrum Master",
-      organization: "Pink Pollos",
-      period: "2008 - 2020",
+      title: "Founder",
+      organization: "Pink Pollos B.V.",
+      period: "since 2008",
       description:
-        "Founded as an Agile consultancy. Guided dozens of teams at banks, insurers, and energy companies.",
+        "More than a personal vehicle: an Agile consultancy with its own team of coaches, including clients, contracts and business operations.",
       type: "venture",
     },
     {
-      id: "certified",
-      title: "Certifications",
-      organization: "Scrum.org",
+      id: "certifications",
+      title: "Certification",
+      organization: "ICAgile, Scaled Agile, LeSS",
       description:
-        "PSM II (Professional Scrum Master), PSM I, PSPO I. Supplemented with SAFe certifications for enterprise contexts.",
+        "ICAgile Agile Coaching (ICP-ACC) and Team Facilitation (ICP-ATF), SAFe 4.0 SA, Certified LeSS Practitioner, Scrum Master and Product Owner. MBA in Change Management.",
       type: "foundation",
     },
   ],

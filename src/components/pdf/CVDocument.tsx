@@ -28,9 +28,9 @@ const colors = {
 // ============================================
 
 const WATERMARK_TEXT: Record<Language, string> = {
-  nl: "Persoonlijk CV — niet bedoeld voor doorplaatsing zonder toestemming",
-  en: "Personal CV — not intended for redistribution without permission",
-  sv: "Personligt CV — ej avsett för vidarebefordran utan tillstånd",
+  nl: "Persoonlijk CV, niet bedoeld voor doorplaatsing zonder toestemming",
+  en: "Personal CV, not intended for redistribution without permission",
+  sv: "Personligt CV, ej avsett för vidarebefordran utan tillstånd",
 };
 
 const DISCLAIMER_TEXT: Record<Language, string> = {
@@ -43,6 +43,42 @@ const GENERATED_TEXT: Record<Language, string> = {
   nl: "Gegenereerd via drpventures.nl",
   en: "Generated via drpventures.nl",
   sv: "Genererat via drpventures.nl",
+};
+
+interface CVLabels {
+  profile: string;
+  experience: string;
+  assignments: string;
+  values: string;
+  services: string;
+  clients: string;
+}
+
+const CV_LABELS: Record<Language, CVLabels> = {
+  nl: {
+    profile: "Profiel",
+    experience: "Loopbaan",
+    assignments: "Uitgelichte opdrachten",
+    values: "Kernwaarden",
+    services: "Diensten",
+    clients: "Klanten",
+  },
+  en: {
+    profile: "Profile",
+    experience: "Experience",
+    assignments: "Selected assignments",
+    values: "Core values",
+    services: "Services",
+    clients: "Clients",
+  },
+  sv: {
+    profile: "Profil",
+    experience: "Karriär",
+    assignments: "Utvalda uppdrag",
+    values: "Kärnvärden",
+    services: "Tjänster",
+    clients: "Kunder",
+  },
 };
 
 // ============================================
@@ -217,6 +253,13 @@ const styles = StyleSheet.create({
     lineHeight: 1.4,
     color: colors.secondary,
   },
+  achievement: {
+    fontSize: 8,
+    lineHeight: 1.4,
+    color: colors.muted,
+    marginTop: 2,
+    paddingLeft: 6,
+  },
 
   // Two column layout
   twoColumn: {
@@ -383,7 +426,7 @@ function Footer({ lang, persona, contactName }: FooterProps) {
       </View>
       <View style={styles.footerRight}>
         <Text style={styles.footerTextSmall}>
-          {GENERATED_TEXT[lang]} — {month} {year}
+          {GENERATED_TEXT[lang]} · {month} {year}
         </Text>
       </View>
     </View>
@@ -401,6 +444,7 @@ interface CVDocumentProps {
 
 export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
   const { contact, hero, about, services, assignments, experience, clients, language, persona } = content;
+  const labels = CV_LABELS[language];
 
   return (
     <Document>
@@ -442,14 +486,14 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
           <View style={styles.columnMain}>
             {/* Profile */}
             <View style={styles.section} wrap={false}>
-              <Text style={styles.sectionTitle}>Profile</Text>
+              <Text style={styles.sectionTitle}>{labels.profile}</Text>
               <Text style={styles.profileText}>{about.intro}</Text>
               <Text style={styles.profileText}>{about.approach.description}</Text>
             </View>
 
             {/* Experience */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Experience</Text>
+              <Text style={styles.sectionTitle}>{labels.experience}</Text>
               {experience.slice(0, 3).map((exp) => (
                 <View key={exp.id} style={styles.expItem} wrap={false}>
                   <View style={styles.expHeader}>
@@ -468,12 +512,24 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
 
             {/* Selected Assignments */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Assignments</Text>
+              <Text style={styles.sectionTitle}>{labels.assignments}</Text>
               {assignments.slice(0, 3).map((assignment) => (
                 <View key={assignment.id} style={styles.expItem} wrap={false}>
-                  <Text style={styles.expTitle}>{assignment.organization}</Text>
-                  <Text style={styles.expOrg}>{assignment.role}</Text>
+                  <View style={styles.expHeader}>
+                    <View>
+                      <Text style={styles.expTitle}>{assignment.organization}</Text>
+                      <Text style={styles.expOrg}>{assignment.role}</Text>
+                    </View>
+                    {assignment.period && (
+                      <Text style={styles.expPeriod}>{assignment.period}</Text>
+                    )}
+                  </View>
                   <Text style={styles.expDesc}>{assignment.description}</Text>
+                  {assignment.achievements?.map((item, i) => (
+                    <Text key={i} style={styles.achievement}>
+                      {`\u2022  ${item}`}
+                    </Text>
+                  ))}
                 </View>
               ))}
             </View>
@@ -483,7 +539,7 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
           <View style={styles.columnSide}>
             {/* Core Values */}
             <View style={styles.section} wrap={false}>
-              <Text style={styles.sectionTitle}>Core Values</Text>
+              <Text style={styles.sectionTitle}>{labels.values}</Text>
               <View style={styles.tagsRow}>
                 {about.values.map((value, i) => (
                   <View key={i} style={styles.tag}>
@@ -495,7 +551,7 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
 
             {/* Services */}
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Services</Text>
+              <Text style={styles.sectionTitle}>{labels.services}</Text>
               {services.slice(0, 3).map((service) => (
                 <View key={service.id} style={styles.serviceItem} wrap={false}>
                   <Text style={styles.serviceTitle}>{service.title}</Text>
@@ -510,7 +566,7 @@ export function CVDocument({ content, photoBase64 }: CVDocumentProps) {
 
             {/* Clients */}
             <View style={styles.section} wrap={false}>
-              <Text style={styles.sectionTitle}>Clients</Text>
+              <Text style={styles.sectionTitle}>{labels.clients}</Text>
               <View style={styles.tagsRow}>
                 {clients.slice(0, 8).map((client, i) => (
                   <View key={i} style={styles.tag}>

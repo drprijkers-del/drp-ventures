@@ -19,21 +19,21 @@ const INTRO_CONTENT: Record<Language, IntroContent> = {
     eyebrow: "DRP Ventures BV",
     headline: "Agile transformatie met ervaring en nuance",
     subline:
-      "Als Enterprise Agile Coach en Scrum Master begeleid ik organisaties bij duurzame verandering. Pragmatisch, zonder dogma's — gericht op wat werkt in uw specifieke context.",
+      "Als Enterprise Agile Coach en Scrum Master begeleid ik organisaties bij duurzame verandering. Pragmatisch, zonder dogma's, gericht op wat werkt in uw specifieke context.",
     helper: "Kies hieronder het perspectief dat het beste past.",
   },
   en: {
     eyebrow: "DRP Ventures BV",
     headline: "Agile transformation with experience and nuance",
     subline:
-      "As an Enterprise Agile Coach and Scrum Master, I guide organizations through sustainable change. Pragmatic, without dogmas — focused on what works in your specific context.",
+      "As an Enterprise Agile Coach and Scrum Master, I guide organizations through sustainable change. Pragmatic, without dogmas, focused on what works in your specific context.",
     helper: "Choose the perspective below that best suits your needs.",
   },
   sv: {
     eyebrow: "DRP Ventures BV",
     headline: "Agil transformation med erfarenhet och nyans",
     subline:
-      "Som Enterprise Agile Coach och Scrum Master vägleder jag organisationer genom hållbar förändring. Pragmatiskt, utan dogmer — fokuserat på vad som fungerar i er specifika kontext.",
+      "Som Enterprise Agile Coach och Scrum Master vägleder jag organisationer genom hållbar förändring. Pragmatiskt, utan dogmer, fokuserat på vad som fungerar i er specifika kontext.",
     helper: "Välj det perspektiv nedan som passar dig bäst.",
   },
 };

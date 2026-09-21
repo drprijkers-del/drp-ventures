@@ -6,7 +6,7 @@ export const content: PersonaContent = {
 
   contact: {
     name: "Dennis Rijkers",
-    title: "Agile Team Manager",
+    title: "Interim Engineering Lead",
     email: "info@drpventures.nl",
     phone: "+31 6 28 975 904",
     linkedin: "https://linkedin.com/in/dennisrijkers",
@@ -24,9 +24,9 @@ export const content: PersonaContent = {
   },
 
   hero: {
-    label: "Agile Team Manager",
+    label: "Interim Engineering Lead",
     headline: "Dennis Rijkers",
-    subline: "Team Manager & People Lead",
+    subline: "Interim Engineering Lead",
     description:
       "I combine people management with Agile leadership. Focus on developing people, building high-performing teams, and creating a culture of ownership and growth.",
     cta: {
@@ -34,7 +34,7 @@ export const content: PersonaContent = {
       secondary: { label: "View assignments", href: "#assignments" },
     },
     stats: [
-      { value: "20+", label: "Years experience" },
+      { value: "25+", label: "Years experience" },
       { value: "100+", label: "People coached" },
       { value: "Hands-on", label: "Leadership" },
     ],
@@ -42,7 +42,7 @@ export const content: PersonaContent = {
 
   about: {
     title: "About me",
-    subtitle: "Dennis Rijkers — Agile Team Manager",
+    subtitle: "Dennis Rijkers, Interim Engineering Lead",
     intro:
       "As a Team Manager, I believe the best results come from teams that feel ownership and have room to grow. My role is creating those conditions: clear goals, psychological safety, and continuous development.",
     approach: {
@@ -132,63 +132,94 @@ export const content: PersonaContent = {
   assignments: [
     {
       id: "jumbo",
-      organization: "Jumbo Supermarkets",
-      role: "Agile Team Manager – IAM",
+      organization: "Jumbo Supermarkten",
+      role: "Scrum Master, then interim Lead Engineering IAM & Workplace",
+      period: "Nov 2025 to Oct 2026",
       description:
-        "Team Manager for multiple IAM teams. Responsible for 15+ engineers, their development, and the delivery of the IAM platform.",
+        "Started as Scrum Master, improving how several platform teams worked. When the Lead Engineering role for IAM and Workplace fell vacant, took it on to safeguard continuity. Handed over to a permanent internal successor.",
       sector: "retail",
     },
     {
       id: "alliander",
       organization: "Alliander",
-      role: "Interim Team Lead",
+      role: "Agile Coach, departmental restructuring",
+      period: "2024 to 2025",
       description:
-        "Interim Team Lead for a development team without a permanent manager. Focus on stability, clarity, and finding a permanent solution.",
+        "Restructured a department: assembled and redistributed teams around more logical products, with day-to-day direction placed with permanent management.",
       sector: "energie",
     },
     {
-      id: "ing",
-      organization: "ING",
-      role: "Chapter Lead",
+      id: "lvnl",
+      organization: "LVNL",
+      role: "Agile Coach, middle management intervention",
+      period: "2025",
       description:
-        "Chapter Lead in ING's Agile model. Responsible for the development of engineers spread across multiple squads.",
-      sector: "financieel",
+        "Within a wider KPMG programme, a short and targeted intervention with middle management, who were the bottleneck in the change.",
+      sector: "infrastructuur",
     },
     {
-      id: "dpg",
-      organization: "DPG Media",
-      role: "Engineering Manager",
+      id: "alfen",
+      organization: "Alfen",
+      role: "Agile Coach, new operating model implementation",
+      period: "Mar to Jul 2025",
       description:
-        "Engineering Manager for teams working on content management systems. Combination of people management and technical guidance.",
-      sector: "media",
+        "Contributed to implementing a new operating model for a business unit. Above all an intervention: the company did not have the luxury of changing slowly.",
+      sector: "energie",
+    },
+    {
+      id: "enexis",
+      organization: "Enexis",
+      role: "Scrum Master & Agile Coach, Agile Release Train",
+      period: "Jun 2023 to Feb 2025",
+      description:
+        "Guided several teams through the nationwide rollout of the GIS system used by field engineers across the Netherlands. Left the Agile Release Train more mature and better structured.",
+      sector: "energie",
+    },
+    {
+      id: "belastingdienst",
+      organization: "Dutch Tax Administration",
+      role: "Agile Coach (SAFe), transformation team",
+      period: "2023 to 2024",
+      description:
+        "Coaching within the transformation team, focused on advancing Agile ways of working in a large and heavily regulated organisation.",
+      sector: "overheid",
+    },
+    {
+      id: "ing",
+      organization: "ING Bank",
+      role: "Senior Agile Coach & Trainer",
+      period: "2017 to 2019",
+      description:
+        "Coached leadership teams, Product Owners and Chapter Leads. Responsible for connecting Belgium and the Netherlands and for offshoring to India from an Agile perspective.",
+      sector: "financieel",
     },
   ],
 
   experience: [
     {
       id: "drp-ventures",
-      title: "Principal Consultant",
-      organization: "DRP Ventures",
-      period: "2020 - present",
+      title: "Founder & Consultant",
+      organization: "DRP Ventures B.V.",
+      period: "2025 to present",
       description:
-        "Interim Team Management assignments at enterprise organizations. Focus on stabilizing and developing engineering teams.",
+        "Current practice. Agile coaching, transformation support and interim delivery direction at large organisations.",
       type: "current",
     },
     {
       id: "pink-pollos",
-      title: "Managing Director",
-      organization: "Pink Pollos",
-      period: "2008 - 2020",
+      title: "Founder",
+      organization: "Pink Pollos B.V.",
+      period: "since 2008",
       description:
-        "Besides consulting, also responsible for the own team. People management combined with business development.",
+        "More than a personal vehicle: an Agile consultancy with its own team of coaches, including clients, contracts and business operations.",
       type: "venture",
     },
     {
-      id: "background",
-      title: "Management Education",
-      organization: "MBA & HEAO",
+      id: "certifications",
+      title: "Certification",
+      organization: "ICAgile, Scaled Agile, LeSS",
       description:
-        "MBA with focus on leadership and change management. Supplemented with coaching certifications and continuous development.",
+        "ICAgile Agile Coaching (ICP-ACC) and Team Facilitation (ICP-ATF), SAFe 4.0 SA, Certified LeSS Practitioner, Scrum Master and Product Owner. MBA in Change Management.",
       type: "foundation",
     },
   ],
@@ -257,7 +288,7 @@ export const content: PersonaContent = {
   },
 
   footer: {
-    tagline: "Agile Team Manager",
+    tagline: "Interim Engineering Lead",
     copyright: `© ${new Date().getFullYear()} DRP Ventures BV`,
     legal: "Amersfoort, Netherlands",
   },
