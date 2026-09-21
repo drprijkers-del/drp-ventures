@@ -7,7 +7,7 @@ export const content: PersonaContent = {
   contact: {
     name: "Dennis Rijkers",
     title: "Scrum Master & Agile Coach",
-    email: "info@drpventures.nl",
+    email: "info@drpventures.org",
     phone: "+31 6 28 975 904",
     linkedin: "https://linkedin.com/in/dennisrijkers",
     location: "Amersfoort, Netherlands",

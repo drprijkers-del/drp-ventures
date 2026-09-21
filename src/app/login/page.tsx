@@ -60,7 +60,7 @@ function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="w-full bg-bg border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent"
-            placeholder="admin@drpventures.nl"
+            placeholder="admin@drpventures.org"
           />
         </div>
 

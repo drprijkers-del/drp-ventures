@@ -34,15 +34,15 @@ const WATERMARK_TEXT: Record<Language, string> = {
 };
 
 const DISCLAIMER_TEXT: Record<Language, string> = {
-  nl: "Dit CV is persoonlijk verstrekt voor beoordeling in het kader van een mogelijke samenwerking. Doorplaatsen of delen met derden is niet toegestaan zonder voorafgaande toestemming. Voor een deelbare versie kunt u contact opnemen via info@drpventures.nl.",
-  en: "This CV has been personally provided for assessment in the context of a potential collaboration. Redistribution or sharing with third parties is not permitted without prior consent. For a shareable version, please contact info@drpventures.nl.",
-  sv: "Detta CV har personligen tillhandahållits för bedömning i samband med ett potentiellt samarbete. Vidarebefordran eller delning med tredje part är inte tillåten utan föregående samtycke. För en delbar version, kontakta info@drpventures.nl.",
+  nl: "Dit CV is persoonlijk verstrekt voor beoordeling in het kader van een mogelijke samenwerking. Doorplaatsen of delen met derden is niet toegestaan zonder voorafgaande toestemming. Voor een deelbare versie kunt u contact opnemen via info@drpventures.org.",
+  en: "This CV has been personally provided for assessment in the context of a potential collaboration. Redistribution or sharing with third parties is not permitted without prior consent. For a shareable version, please contact info@drpventures.org.",
+  sv: "Detta CV har personligen tillhandahållits för bedömning i samband med ett potentiellt samarbete. Vidarebefordran eller delning med tredje part är inte tillåten utan föregående samtycke. För en delbar version, kontakta info@drpventures.org.",
 };
 
 const GENERATED_TEXT: Record<Language, string> = {
-  nl: "Gegenereerd via drpventures.nl",
-  en: "Generated via drpventures.nl",
-  sv: "Genererat via drpventures.nl",
+  nl: "Gegenereerd via drpventures.org",
+  en: "Generated via drpventures.org",
+  sv: "Genererat via drpventures.org",
 };
 
 interface CVLabels {
@@ -422,7 +422,7 @@ function Footer({ lang, persona, contactName }: FooterProps) {
         <Text style={styles.footerTextSmall}>{personaLabel} · {lang.toUpperCase()}</Text>
       </View>
       <View style={styles.footerCenter}>
-        <Text style={styles.footerTextSmall}>drpventures.nl</Text>
+        <Text style={styles.footerTextSmall}>drpventures.org</Text>
       </View>
       <View style={styles.footerRight}>
         <Text style={styles.footerTextSmall}>

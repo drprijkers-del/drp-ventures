@@ -66,7 +66,7 @@ export function PersonaContact({ content }: PersonaContactProps) {
     return phone.slice(0, 6) + "•••• ••" + phone.slice(-2);
   };
 
-  // Mask email: "info@drpventures.nl" → "in••@••••ventures.nl"
+  // Mask email: "info@drpventures.org" → "in••@••••ventures.nl"
   const maskEmail = (email: string) => {
     const [local, domain] = email.split("@");
     if (!domain) return "••••@••••.••";
