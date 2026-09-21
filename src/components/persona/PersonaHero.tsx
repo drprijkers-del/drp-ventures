@@ -12,9 +12,15 @@ interface PersonaHeroProps {
   persona?: Persona;
 }
 
+const CV_LABEL: Record<string, string> = {
+  nl: "CV op aanvraag",
+  en: "CV on request",
+  sv: "CV på begäran",
+};
+
 export function PersonaHero({ content, lang, persona }: PersonaHeroProps) {
   const { hero, contact } = content;
-  const cvUrl = `/api/cv?lang=${lang || content.language}&persona=${persona || content.persona}`;
+
   const displayStats = hero.stats.slice(0, 3);
 
   return (
@@ -110,9 +116,9 @@ export function PersonaHero({ content, lang, persona }: PersonaHeroProps) {
             <Button href={hero.cta.secondary.href} variant="secondary" size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
               {hero.cta.secondary.label}
             </Button>
-            <Button href={cvUrl} variant="outline" size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
+            <Button href="#contact" variant="outline" size="md" className="w-full sm:w-auto sm:px-7 sm:py-3.5">
               <Icon name="Download" className="w-4 h-4 mr-2" />
-              Download CV
+              {CV_LABEL[lang || content.language]}
             </Button>
           </div>
 

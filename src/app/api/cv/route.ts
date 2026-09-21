@@ -14,6 +14,16 @@ export async function GET(request: NextRequest) {
   try {
     // Get query params
     const searchParams = request.nextUrl.searchParams;
+
+    // Toegangssleutel. Zonder geldige sleutel bestaat deze endpoint niet.
+    // Zet CV_ACCESS_KEY in de omgeving en deel links als:
+    //   /api/cv?lang=nl&persona=agile-coach&key=<sleutel>
+    // Is CV_ACCESS_KEY niet gezet, dan is de endpoint volledig dicht.
+    const vereist = process.env.CV_ACCESS_KEY;
+    const gegeven = searchParams.get("key");
+    if (!vereist || gegeven !== vereist) {
+      return new NextResponse("Not found", { status: 404 });
+    }
     const lang = searchParams.get("lang") || "nl";
     const persona = searchParams.get("persona") || "agile-coach";
 
