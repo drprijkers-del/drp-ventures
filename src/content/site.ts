@@ -144,7 +144,7 @@ export const siteConfig: SiteConfig = {
   description:
     "DRP Ventures ondersteunt organisaties bij complexe verandertrajecten. Van teamcoaching tot organisatieverandering, van Agile implementatie tot leiderschapsontwikkeling.",
   url: "https://drpventures.org",
-  email: "info@drpventures.org",
+  email: "dennis@drpventures.org",
   phone: "+31 6 28 975 904",
   kvk: "",
   btw: "",

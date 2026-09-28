@@ -34,9 +34,9 @@ const WATERMARK_TEXT: Record<Language, string> = {
 };
 
 const DISCLAIMER_TEXT: Record<Language, string> = {
-  nl: "Dit CV is persoonlijk verstrekt voor beoordeling in het kader van een mogelijke samenwerking. Doorplaatsen of delen met derden is niet toegestaan zonder voorafgaande toestemming. Voor een deelbare versie kunt u contact opnemen via info@drpventures.org.",
-  en: "This CV has been personally provided for assessment in the context of a potential collaboration. Redistribution or sharing with third parties is not permitted without prior consent. For a shareable version, please contact info@drpventures.org.",
-  sv: "Detta CV har personligen tillhandahållits för bedömning i samband med ett potentiellt samarbete. Vidarebefordran eller delning med tredje part är inte tillåten utan föregående samtycke. För en delbar version, kontakta info@drpventures.org.",
+  nl: "Dit CV is persoonlijk verstrekt voor beoordeling in het kader van een mogelijke samenwerking. Doorplaatsen of delen met derden is niet toegestaan zonder voorafgaande toestemming. Voor een deelbare versie kunt u contact opnemen via dennis@drpventures.org.",
+  en: "This CV has been personally provided for assessment in the context of a potential collaboration. Redistribution or sharing with third parties is not permitted without prior consent. For a shareable version, please contact dennis@drpventures.org.",
+  sv: "Detta CV har personligen tillhandahållits för bedömning i samband med ett potentiellt samarbete. Vidarebefordran eller delning med tredje part är inte tillåten utan föregående samtycke. För en delbar version, kontakta dennis@drpventures.org.",
 };
 
 const GENERATED_TEXT: Record<Language, string> = {
