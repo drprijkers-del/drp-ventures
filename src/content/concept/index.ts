@@ -26,7 +26,7 @@ const MAILTO_EN = "mailto:dennis@drpventures.org?subject=Introduction";
 
 export const nl: ConceptContent = {
   lang: "nl",
-  altLang: { code: "en", href: "/concept/en", label: "EN" },
+  altLang: { code: "en", href: "/en", label: "EN" },
   nav: [
     { label: "Mijn rol", href: "#rol" },
     { label: "Wat ik doe", href: "#wat" },
@@ -139,7 +139,7 @@ export const nl: ConceptContent = {
 
 export const en: ConceptContent = {
   lang: "en",
-  altLang: { code: "nl", href: "/concept", label: "NL" },
+  altLang: { code: "nl", href: "/", label: "NL" },
   nav: [
     { label: "My role", href: "#rol" },
     { label: "What I do", href: "#wat" },

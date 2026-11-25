@@ -11,6 +11,17 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
 
+  // Oude persona-structuur leidt door naar de nieuwe site in plaats van te breken
+  async redirects() {
+    return [
+      { source: "/nl", destination: "/", permanent: true },
+      { source: "/sv", destination: "/", permanent: true },
+      { source: "/nl/:persona", destination: "/", permanent: true },
+      { source: "/sv/:persona", destination: "/", permanent: true },
+      { source: "/en/:persona", destination: "/en", permanent: true },
+    ];
+  },
+
   // Headers for security
   async headers() {
     return [
