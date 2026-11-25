@@ -1,4 +1,20 @@
 /* Huisstijl overgenomen van averden.nl/style.css — palet, typografie en maatvoering. */
+
+/* Fonts zelf gehost: next/font haalt ze tijdens de build op en dat faalt op Vercel. */
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('/fonts/libre-caslon-text-latin.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('/fonts/hanken-grotesk-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 .av {
   color-scheme: light;
   --green:#2F4A3C; --green-deep:#1C2B24; --green-line:#4F6659; --green-ghost:#A8B5AC;
@@ -6,6 +22,8 @@
   --sand:#E2DBCE; --line:#D8D0C2;
   --text:#1C2B24; --text-soft:#3E4A43; --muted:#5E5E59;
   --radius:2px;
+  --font-serif:'Libre Caslon Text', Georgia, 'Times New Roman', serif;
+  --font-sans:'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   background:var(--ivory-light); color:var(--text);
   font-family:var(--font-sans), system-ui, sans-serif;

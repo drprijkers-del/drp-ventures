@@ -1,15 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Caslon_Text, Hanken_Grotesk } from "next/font/google";
 import "./concept.css";
-
-const serif = Libre_Caslon_Text({
-  subsets: ["latin"], weight: ["400", "700"], style: ["normal", "italic"],
-  variable: "--font-serif", display: "swap",
-});
-const sans = Hanken_Grotesk({
-  subsets: ["latin"], weight: ["400", "500", "600", "700"],
-  variable: "--font-sans", display: "swap",
-});
 
 export const metadata: Metadata = {
   title: { absolute: "Dennis Rijkers · Agile Coach & Interim Lead Engineering" },
@@ -26,5 +16,23 @@ export const metadata: Metadata = {
 };
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
-  return <div className={`${serif.variable} ${sans.variable}`}>{children}</div>;
+  return (
+    <>
+      <link
+        rel="preload"
+        href="/fonts/libre-caslon-text-latin.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="/fonts/hanken-grotesk-latin.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      {children}
+    </>
+  );
 }
