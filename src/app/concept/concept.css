@@ -1,0 +1,156 @@
+/* Huisstijl overgenomen van averden.nl/style.css — palet, typografie en maatvoering. */
+.av {
+  color-scheme: light;
+  --green:#2F4A3C; --green-deep:#1C2B24; --green-line:#4F6659; --green-ghost:#A8B5AC;
+  --ivory:#F1ECE3; --ivory-light:#FAF7F1; --ivory-dim:#E4DED3;
+  --sand:#E2DBCE; --line:#D8D0C2;
+  --text:#1C2B24; --text-soft:#3E4A43; --muted:#5E5E59;
+  --radius:2px;
+
+  background:var(--ivory-light); color:var(--text);
+  font-family:var(--font-sans), system-ui, sans-serif;
+  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.av *, .av *::before, .av *::after { box-sizing:border-box; }
+.av .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+.av .wrap.wide { max-width:900px; }
+
+/* Typografie */
+.av h1, .av h2, .av h3, .av h4, .av .serif {
+  font-family:var(--font-serif), Georgia, serif; font-weight:400; letter-spacing:-.012em;
+  color:var(--text); /* expliciet: anders erven koppen de lichte kleur uit de globale stijlen */
+}
+.av p, .av li, .av span, .av b { color:inherit; }
+.av .eyebrow { font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--green); margin:0 0 14px; }
+
+/* Navigatie */
+.av .nav { position:sticky; top:0; z-index:20; background:rgba(250,247,241,.94);
+  backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line); }
+.av .nav .wrap { display:flex; align-items:center; justify-content:space-between; gap:18px;
+  padding-block:14px; max-width:900px; }
+.av .nav a { color:var(--text-soft); text-decoration:none; font-size:.92rem; }
+.av .nav a:hover { color:var(--green); }
+.av .nav .brand { font-family:var(--font-serif), Georgia, serif; font-size:1.12rem;
+  color:var(--text); letter-spacing:-.01em; }
+.av .nav ul { display:flex; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap; }
+.av .nav .lang { font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); }
+
+/* Hero */
+.av .hero { background:var(--green-deep); color:var(--ivory); padding:92px 0 80px; }
+.av .hero .wrap { max-width:900px; }
+.av .hero .kick { font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--green-ghost); margin:0 0 24px; }
+.av .hero h1 { font-size:clamp(2.3rem,6vw,3.6rem); line-height:1.05; margin:0 0 20px;
+  color:var(--ivory-light); text-wrap:balance; }
+.av .hero .sub { font-size:1.06rem; color:var(--ivory-dim); margin:0 0 24px; }
+.av .hero .lead { font-size:1.06rem; color:var(--ivory-dim); margin:0 0 34px; max-width:56ch; }
+.av .hero .cta { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px; }
+.av .promises { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:18px;
+  padding-top:30px; border-top:1px solid var(--green-line); }
+.av .promises div b { display:block; color:var(--ivory-light); font-weight:600; font-size:.97rem;
+  margin-bottom:4px; }
+.av .promises div span { font-size:.9rem; color:var(--green-ghost); }
+
+/* Knoppen */
+.av .btn { display:inline-block; padding:13px 24px; border-radius:var(--radius);
+  font-size:.95rem; font-weight:600; text-decoration:none; border:1px solid transparent; }
+.av .btn-primary { background:var(--ivory-light); color:var(--green-deep); }
+.av .btn-primary:hover { background:#fff; }
+.av .btn-ghost { border-color:var(--green-line); color:var(--ivory-dim); }
+.av .btn-ghost:hover { border-color:var(--green-ghost); color:var(--ivory-light); }
+.av .btn-dark { background:var(--green); color:var(--ivory-light); }
+.av .btn-dark:hover { background:var(--green-deep); }
+
+/* Secties */
+.av section { padding:76px 0; border-bottom:1px solid var(--line); }
+.av section.alt { background:var(--ivory); }
+.av section h2 { font-size:clamp(1.6rem,3.6vw,2.2rem); line-height:1.14; margin:0 0 16px;
+  text-wrap:balance; }
+.av section .intro { font-size:1.03rem; color:var(--text-soft); margin:0 0 34px; max-width:58ch; }
+
+/* Niet / Wel */
+.av .nietwel { display:grid; grid-template-columns:1fr 1fr; background:#fff;
+  border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+.av .nietwel > div { padding:24px 26px; }
+.av .nietwel > div:first-child { border-right:1px solid var(--line); }
+.av .nietwel h4 { font-family:var(--font-sans), sans-serif; font-size:.68rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; margin:0 0 12px; color:var(--muted); }
+.av .hero h1, .av .contact h2, .av footer .brand { color:var(--ivory-light); }
+.av .nietwel > div:last-child h4 { color:var(--green); }
+.av .nietwel p { margin:0; font-size:1rem; color:var(--text-soft); }
+
+/* Ingangen */
+.av .ways { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+.av .way { background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  padding:28px 28px 26px; }
+.av .way h3 { font-size:1.3rem; margin:0 0 10px; }
+.av .way p { font-size:.97rem; color:var(--text-soft); margin:0 0 16px; }
+.av .way a { color:var(--green); font-size:.93rem; font-weight:600; text-decoration:none;
+  border-bottom:1px solid var(--sand); }
+.av .way a:hover { border-color:var(--green); }
+
+/* Genummerde diensten */
+.av .svc { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:var(--radius);
+  overflow:hidden; }
+.av .svc > div { background:#fff; padding:26px 26px 24px; }
+.av .svc .n { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.8rem;
+  color:var(--green-ghost); margin-bottom:10px; }
+.av .svc h3 { font-size:1.14rem; margin:0 0 8px; }
+.av .svc p { font-size:.95rem; color:var(--text-soft); margin:0; }
+
+/* Cases */
+.av .case { background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  padding:30px 32px; margin-bottom:14px; }
+.av .case .client { font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--green); margin-bottom:10px; }
+.av .case h3 { font-size:1.26rem; line-height:1.3; margin:0 0 12px; }
+.av .case p { font-size:.98rem; color:var(--text-soft); margin:0; }
+.av .case .period { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.76rem;
+  color:var(--muted); margin-top:14px; }
+
+.av .also { margin-top:34px; padding-top:28px; border-top:1px solid var(--line); }
+.av .also p { font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 14px; }
+.av .also ul { display:flex; flex-wrap:wrap; gap:8px 10px; list-style:none; margin:0; padding:0; }
+.av .also li { font-size:.92rem; color:var(--text-soft); background:var(--ivory);
+  border:1px solid var(--line); border-radius:var(--radius); padding:6px 13px; }
+
+/* Ondernemingen */
+.av .vent { border-top:1px solid var(--line); padding:20px 0; display:grid;
+  grid-template-columns:minmax(0,1fr) auto; gap:6px 24px; align-items:baseline; }
+.av .vent:last-child { border-bottom:1px solid var(--line); }
+.av .vent h3 { font-size:1.1rem; margin:0; }
+.av .vent .yr { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.78rem;
+  color:var(--muted); white-space:nowrap; }
+.av .vent p { grid-column:1 / -1; font-size:.95rem; color:var(--text-soft); margin:0; }
+
+/* Contact */
+.av .contact { background:var(--green-deep); color:var(--ivory-dim); border-bottom:0; }
+.av .contact h2 { color:var(--ivory-light); }
+.av .contact .intro { color:var(--green-ghost); }
+.av .contact .meta { margin-top:30px; padding-top:24px; border-top:1px solid var(--green-line);
+  font-size:.93rem; color:var(--green-ghost); }
+.av .contact a { color:var(--ivory-light); }
+
+/* Voettekst */
+.av footer { background:var(--green-deep); color:var(--green-ghost); padding:44px 0 56px;
+  font-size:.9rem; border-top:1px solid var(--green-line); }
+.av footer .brand { font-family:var(--font-serif), Georgia, serif; font-size:1.3rem;
+  color:var(--ivory-light); display:block; margin-bottom:6px; }
+.av footer .tag { color:var(--green-ghost); margin:0 0 20px; }
+.av footer .legal { font-size:.84rem; }
+.av footer a { color:var(--ivory-dim); }
+
+.av a:focus-visible, .av .btn:focus-visible { outline:2px solid var(--green-ghost);
+  outline-offset:3px; }
+
+@media (max-width:620px) {
+  .av section { padding:54px 0; }
+  .av .hero { padding:64px 0 56px; }
+  .av .nietwel { grid-template-columns:1fr; }
+  .av .nietwel > div:first-child { border-right:0; border-bottom:1px solid var(--line); }
+  .av .case { padding:24px 22px; }
+}
