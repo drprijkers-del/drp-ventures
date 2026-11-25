@@ -3,6 +3,7 @@ export interface ConceptContent {
   altLang: { code: string; href: string; label: string };
   nav: { label: string; href: string }[];
   hero: {
+    name: string; place: string;
     kick: string; title: string; sub: string; lead: string;
     ctaPrimary: string; ctaSecondary: string;
     promises: { title: string; body: string }[];
@@ -34,6 +35,8 @@ export const nl: ConceptContent = {
     { label: "Contact", href: "#contact" },
   ],
   hero: {
+    name: "Dennis Rijkers",
+    place: "Amersfoort, Nederland",
     kick: "Agile coaching · Verandering · Interim leiderschap",
     title: "Doet het werk, en begeleidt wie het doet.",
     sub: "Agile Coach · Interim Lead Engineering · Zelfstandig sinds 2008",
@@ -145,6 +148,8 @@ export const en: ConceptContent = {
     { label: "Contact", href: "#contact" },
   ],
   hero: {
+    name: "Dennis Rijkers",
+    place: "Amersfoort, the Netherlands",
     kick: "Agile coaching · Change · Interim leadership",
     title: "Does the work, and coaches the people doing it.",
     sub: "Agile Coach · Interim Lead Engineering · Independent since 2008",

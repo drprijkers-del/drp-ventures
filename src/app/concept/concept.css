@@ -25,33 +25,45 @@
   color:var(--green); margin:0 0 14px; }
 
 /* Navigatie */
-.av .nav { position:sticky; top:0; z-index:20; background:rgba(250,247,241,.94);
-  backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line); }
+.av .nav { position:sticky; top:0; z-index:20; background:var(--ivory);
+  border-bottom:1px solid var(--line); }
 .av .nav .wrap { display:flex; align-items:center; justify-content:space-between; gap:18px;
   padding-block:14px; max-width:900px; }
-.av .nav a { color:var(--text-soft); text-decoration:none; font-size:.92rem; }
+.av .nav a { color:var(--text-soft); text-decoration:none; font-size:.78rem; font-weight:500;
+  letter-spacing:.1em; text-transform:uppercase; }
 .av .nav a:hover { color:var(--green); }
-.av .nav .brand { font-family:var(--font-serif), Georgia, serif; font-size:1.12rem;
-  color:var(--text); letter-spacing:-.01em; }
+.av .nav .brand { font-family:var(--font-serif), Georgia, serif; font-size:1.7rem;
+  color:var(--green); letter-spacing:-.015em; text-transform:none; font-weight:400; }
 .av .nav ul { display:flex; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap; }
-.av .nav .lang { font-size:.78rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--muted); }
+.av .nav .lang { border:1px solid var(--line); border-radius:var(--radius); padding:8px 13px;
+  color:var(--text-soft); background:var(--ivory-light); }
 
 /* Hero */
-.av .hero { background:var(--green-deep); color:var(--ivory); padding:92px 0 80px; }
+.av .hero { background:var(--green); color:var(--ivory); padding:84px 0 76px; }
 .av .hero .wrap { max-width:900px; }
+.av .whoami { display:flex; align-items:center; gap:16px; margin-bottom:30px; }
+.av .whoami .avatar { width:88px; height:88px; border-radius:50%; object-fit:cover;
+  border:1px solid var(--green-line); }
+.av .whoami .naam { display:block; font-family:var(--font-serif), Georgia, serif;
+  font-size:1.5rem; color:var(--ivory-light); line-height:1.2; }
+.av .whoami .plaats { display:block; font-size:.97rem; color:var(--green-ghost); margin-top:2px; }
 .av .hero .kick { font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
   color:var(--green-ghost); margin:0 0 24px; }
 .av .hero h1 { font-size:clamp(2.3rem,6vw,3.6rem); line-height:1.05; margin:0 0 20px;
   color:var(--ivory-light); text-wrap:balance; }
-.av .hero .sub { font-size:1.06rem; color:var(--ivory-dim); margin:0 0 24px; }
+.av .hero .sub { font-family:var(--font-serif), Georgia, serif;
+  font-size:clamp(1.35rem,2.6vw,1.85rem); line-height:1.25; color:var(--ivory-light);
+  margin:0 0 26px; max-width:30ch; }
 .av .hero .lead { font-size:1.06rem; color:var(--ivory-dim); margin:0 0 34px; max-width:56ch; }
 .av .hero .cta { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px; }
-.av .promises { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:18px;
-  padding-top:30px; border-top:1px solid var(--green-line); }
-.av .promises div b { display:block; color:var(--ivory-light); font-weight:600; font-size:.97rem;
-  margin-bottom:4px; }
-.av .promises div span { font-size:.9rem; color:var(--green-ghost); }
+.av .promises { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:0; padding-top:34px; border-top:1px solid var(--green-line); }
+.av .promises div { padding:0 28px; border-left:1px solid var(--green-line); }
+.av .promises div:first-child { padding-left:0; border-left:0; }
+.av .promises div b { display:block; font-family:var(--font-serif), Georgia, serif;
+  color:var(--ivory-light); font-weight:400; font-size:1.3rem; line-height:1.25;
+  margin-bottom:8px; letter-spacing:-.01em; }
+.av .promises div span { font-size:.93rem; color:var(--green-ghost); }
 
 /* Knoppen */
 .av .btn { display:inline-block; padding:13px 24px; border-radius:var(--radius);
@@ -163,6 +175,8 @@
   .av section { padding:54px 0; }
   .av .hero { padding:64px 0 56px; }
   .av .nietwel { grid-template-columns:1fr; }
+  .av .promises div { padding:18px 0 0; border-left:0; border-top:1px solid var(--green-line); }
+  .av .promises div:first-child { padding-top:0; border-top:0; }
   .av .nietwel > div:first-child { border-right:0; border-bottom:1px solid var(--line); }
   .av .case { padding:24px 22px; }
 }

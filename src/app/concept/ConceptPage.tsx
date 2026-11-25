@@ -18,6 +18,21 @@ export default function ConceptPage({ c }: { c: ConceptContent }) {
 
       <header className="hero" id="top">
         <div className="wrap">
+          <div className="whoami">
+            <Image
+              className="avatar"
+              src="/images/portret-averden.jpg"
+              alt={c.rol.portraitAlt}
+              width={800}
+              height={800}
+              sizes="88px"
+              priority
+            />
+            <div>
+              <span className="naam">{c.hero.name}</span>
+              <span className="plaats">{c.hero.place}</span>
+            </div>
+          </div>
           <p className="kick">{c.hero.kick}</p>
           <h1>{c.hero.title}</h1>
           <p className="sub">{c.hero.sub}</p>
