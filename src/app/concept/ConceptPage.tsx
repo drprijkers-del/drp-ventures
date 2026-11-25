@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ConceptContent } from "@/content/concept";
 
 export default function ConceptPage({ c }: { c: ConceptContent }) {
@@ -34,10 +35,22 @@ export default function ConceptPage({ c }: { c: ConceptContent }) {
       </header>
 
       <section id="rol">
-        <div className="wrap">
+        <div className="wrap wide">
           <p className="eyebrow">{c.rol.eyebrow}</p>
           <h2>{c.rol.title}</h2>
-          <p className="intro">{c.rol.intro}</p>
+          <div className="rolgrid">
+            <figure className="portret">
+              <Image
+                src="/images/portret-averden.jpg"
+                alt={c.rol.portraitAlt}
+                width={800}
+                height={800}
+                sizes="(max-width: 760px) 100vw, 260px"
+                priority
+              />
+            </figure>
+            <p className="intro">{c.rol.intro}</p>
+          </div>
           <div className="nietwel">
             <div><h4>{c.rol.nietLabel}</h4><p>{c.rol.niet}</p></div>
             <div><h4>{c.rol.welLabel}</h4><p>{c.rol.wel}</p></div>

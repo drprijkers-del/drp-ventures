@@ -7,7 +7,7 @@ export interface ConceptContent {
     ctaPrimary: string; ctaSecondary: string;
     promises: { title: string; body: string }[];
   };
-  rol: { eyebrow: string; title: string; intro: string; niet: string; nietLabel: string; wel: string; welLabel: string };
+  rol: { eyebrow: string; title: string; intro: string; portraitAlt: string; niet: string; nietLabel: string; wel: string; welLabel: string };
   ways: { eyebrow: string; title: string; intro: string; items: { title: string; body: string }[] };
   services: { eyebrow: string; title: string; items: { n: string; title: string; body: string }[] };
   ervaring: {
@@ -49,6 +49,7 @@ export const nl: ConceptContent = {
   rol: {
     eyebrow: "Mijn rol",
     title: "De rem zit zelden bij het team.",
+    portraitAlt: "Portret van Dennis Rijkers",
     intro: "Als de levering stokt, wijst iedereen naar de teams. In mijn ervaring ligt de blokkade bijna altijd ergens anders: in de afspraken eromheen, in een managementlaag die besluiten ophoudt, of in een afhankelijkheid die niemand bezit. Dat benoemen is het werk, en het is zelden het makkelijkste gesprek.",
     nietLabel: "Niet",
     niet: "Een volwassenheidsscan met een verbeterplan dat in de la belandt.",
@@ -159,6 +160,7 @@ export const en: ConceptContent = {
   rol: {
     eyebrow: "My role",
     title: "The brake is rarely the team.",
+    portraitAlt: "Portrait of Dennis Rijkers",
     intro: "When delivery stalls, everyone points at the teams. In my experience the blocker sits somewhere else almost every time: in the agreements around them, in a management layer holding up decisions, or in a dependency nobody owns. Naming it is the job, and it is rarely the easiest conversation.",
     nietLabel: "Not",
     niet: "A maturity assessment with an improvement plan that ends up in a drawer.",

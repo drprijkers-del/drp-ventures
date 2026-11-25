@@ -70,6 +70,14 @@
   text-wrap:balance; }
 .av section .intro { font-size:1.03rem; color:var(--text-soft); margin:0 0 34px; max-width:58ch; }
 
+/* Portret */
+.av .rolgrid { display:grid; grid-template-columns:260px minmax(0,1fr); gap:38px;
+  align-items:start; margin-bottom:34px; }
+.av .portret { margin:0; border:1px solid var(--line); border-radius:var(--radius);
+  overflow:hidden; background:var(--sand); line-height:0; }
+.av .portret img { width:100%; height:auto; display:block; }
+.av .rolgrid .intro { margin:0; }
+
 /* Niet / Wel */
 .av .nietwel { display:grid; grid-template-columns:1fr 1fr; background:#fff;
   border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
@@ -147,6 +155,10 @@
 .av a:focus-visible, .av .btn:focus-visible { outline:2px solid var(--green-ghost);
   outline-offset:3px; }
 
+@media (max-width:760px) {
+  .av .rolgrid { grid-template-columns:1fr; gap:26px; }
+  .av .portret { max-width:240px; }
+}
 @media (max-width:620px) {
   .av section { padding:54px 0; }
   .av .hero { padding:64px 0 56px; }
