@@ -112,7 +112,7 @@ export const nl: ConceptContent = {
     title: "Zelf gebouwd wat ik anderen adviseer.",
     intro: "Ik praat over ondernemerschap en verandering vanuit de praktijk van het zelf doen, inclusief de keren dat het tegenviel.",
     items: [
-      { name: "Pink Pollos B.V.", years: "sinds 2008", body: "Adviesbureau met een eigen team van coaches, inclusief klanten, contracten en bedrijfsvoering." },
+      { name: "Averden B.V.", years: "sinds 2008", body: "In 2008 opgericht als Pink Pollos: een adviesbureau met een eigen team van coaches, inclusief klanten, contracten en bedrijfsvoering. Gaat nu verder als Averden, waarin ik partner ben voor verandering en Agile." },
       { name: "Lifebrander.nl", years: "2009 tot 2019", body: "Platform voor cv's en personal branding, van de grond opgebouwd en na tien jaar verkocht." },
       { name: "Agile & Pixels B.V.", years: "sinds 2015", body: "Vennootschap waaronder ik een deel van mijn opdrachten en samenwerkingen heb gevoerd." },
       { name: "DRP Ventures B.V.", years: "sinds 2025", body: "De vennootschap waaronder ik vandaag werk, opgericht op 4 augustus 2025." },
@@ -222,7 +222,7 @@ export const en: ConceptContent = {
     title: "I have built what I advise others on.",
     intro: "I talk about entrepreneurship and change from the practice of doing it myself, including the times it did not work out.",
     items: [
-      { name: "Pink Pollos B.V.", years: "since 2008", body: "Consultancy with its own team of coaches, including clients, contracts and business operations." },
+      { name: "Averden B.V.", years: "since 2008", body: "Founded in 2008 as Pink Pollos: a consultancy with its own team of coaches, including clients, contracts and business operations. Now continuing as Averden, where I am partner for change and Agile." },
       { name: "Lifebrander.nl", years: "2009 to 2019", body: "Platform for CVs and personal branding, built from the ground up and sold after ten years." },
       { name: "Agile & Pixels B.V.", years: "since 2015", body: "The company through which I ran part of my assignments and collaborations." },
       { name: "DRP Ventures B.V.", years: "since 2025", body: "The company I work through today, incorporated on 4 August 2025." },
